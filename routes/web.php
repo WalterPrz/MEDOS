@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\IngresoMedicamentoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,11 @@ Route::get('categoria/{categoria}', [CategoriaController::class,'show'])->name('
 Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
 //eliminar
 Route::get('categoria/{categoria}/destoy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
+
+Route::controller(IngresoMedicamentoController::class)->group(function(){
+    //Ingresar medicamentos
+    Route::get('ingresomed/crear', 'create');
+    Route::get('ingresomed/crear', 'store');
+    //Editar ingreso de medicamentos
+    Route::get('ingresomed/crear', 'create');
+});
