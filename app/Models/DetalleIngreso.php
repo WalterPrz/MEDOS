@@ -10,7 +10,6 @@ class DetalleIngreso extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
-        'idMedicamento',
         'cantidadIngreso',
         'precioCompra',
         'descuentoIngreso',
@@ -18,8 +17,12 @@ class DetalleIngreso extends Model
         'precioCompraUnidad',
         'precioVentaUnidad'
     ];
-    public function creditos()
+    public function ingresoMedicamento()
     {
-        return $this->hasMany(Credito::class);
+        return $this->belongsToMany(IngresoMedicamento::class);
+    }
+    public function medicamento()
+    {
+        return $this->belongsToMany(Medicamento::class);
     }
 }

@@ -10,11 +10,14 @@ class IngresoMedicamento extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
-        'idCredito',
         'fechaIngreso'
     ];
-    public function creditos()
+    public function credito()
     {
-        return $this->hasMany(Credito::class);
+        return $this->belongsToMany(Credito::class);
+    }
+    public function detalleIngreso()
+    {
+        return $this->hasMany(DetalleIngreso::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credito;
+use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
 
 class IngresoMedicamentoController extends Controller
@@ -36,7 +38,19 @@ class IngresoMedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $credito = new Credito();
+            $credito->idProveedor = $request->proveedor;
+            $credito->save();
+
+            $ingreso = new IngresoMedicamento();
+            $ingreso->credito_id = $credito->id;
+            $ingreso->fechaIngreso = date('d-m-Y');
+            $ingreso->save();
+            return redirect()->route('ingresomed.detalle',$ingreso);
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**

@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('creditos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idProveedor');
-            //$table->foreignIdFor(Proveedor::class);
-            $table->decimal('credito', $precision = 5, $scale = 2);
-            $table->string('diaPago',10);
-            $table->integer('plazo');
-            $table->decimal('saldoPendiente', $precision = 5, $scale = 2);
-            $table->string('fechaCreacion',10);
+            //$table->foreignIdFor(Proveedor::class)->references('id')->on('proveedors');
+            $table->decimal('credito', $precision = 5, $scale = 2)->nullable();
+            $table->string('diaPago',10)->nullable();
+            $table->integer('plazo')->nullable();
+            $table->decimal('saldoPendiente', $precision = 5, $scale = 2)->nullable();
+            $table->string('fechaCreacion',10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

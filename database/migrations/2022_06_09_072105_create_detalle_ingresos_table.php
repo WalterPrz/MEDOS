@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\IngresoMedicamento;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,7 @@ return new class extends Migration
     {
         Schema::create('detalle_ingresos', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(IngresoMedicamento::class)->references('id')->on('ingreso_medicamentos');
             $table->foreignIdFor(Medicamento::class)->references('id')->on('medicamentos');
             $table->integer('cantidadIngreso');
             $table->decimal('precioCompra', $precision = 5, $scale = 2);

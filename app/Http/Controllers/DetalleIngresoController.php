@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetalleIngreso;
+use App\Models\Medicamento;
+use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
 
 class DetalleIngresoController extends Controller
@@ -13,7 +16,7 @@ class DetalleIngresoController extends Controller
      */
     public function index()
     {
-        //
+                
     }
 
     /**
@@ -21,9 +24,15 @@ class DetalleIngresoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(IngresoMedicamento $ingreso)
     {
-        //
+        try{
+            $detalleIngreso = DetalleIngreso::where('ingreso_medicamento_id',$ingreso->id)->get();
+            $medicamentos = Medicamento::all();
+            return view('DetalleIngreso.create', compact('detalleIngreso','ingreso','medicamentos'));
+        } catch(\Exception $e){
+            $e->getMessage();
+        }
     }
 
     /**
@@ -32,9 +41,13 @@ class DetalleIngresoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, IngresoMedicamento $ingreso, Medicamento $medicamento)
     {
-        //
+        try{
+            return redirect()->route('ingresomed.detalle',$ingreso);
+        } catch(\Exception $e){
+            $e->getMessage();
+        }
     }
 
     /**

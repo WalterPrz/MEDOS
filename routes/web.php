@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DetalleIngresoController;
 use App\Http\Controllers\IngresoMedicamentoController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,15 @@ Route::controller(IngresoMedicamentoController::class)->group(function(){
     //Ingresar medicamentos
     Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
     Route::post('ingresomed/save', 'store')->name('ingresomed.store');
+    //Editar ingreso de medicamentos
+    //Route::get('ingresomed/crear', 'create');
+});
+
+Route::controller(DetalleIngresoController::class)->group(function(){
+    //Ingresar detalle
+    Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
+    Route::post('ingresomed/detalle/{ingreso}/{medicamento}', 'store')->name('detalleingreso.store');
+
     //Editar ingreso de medicamentos
     //Route::get('ingresomed/crear', 'create');
 });
