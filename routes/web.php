@@ -31,8 +31,8 @@ Route::get('categoria/{categoria}/destoy', [CategoriaController::class,'destroy'
 
 Route::controller(IngresoMedicamentoController::class)->group(function(){
     //Ingresar medicamentos
-    Route::get('ingresomed/crear', 'create');
-    Route::get('ingresomed/crear', 'store');
+    Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
+    Route::post('ingresomed/save', 'store')->name('ingresomed.store');
     //Editar ingreso de medicamentos
-    Route::get('ingresomed/crear', 'create');
+    //Route::get('ingresomed/crear', 'create');
 });

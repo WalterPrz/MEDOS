@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class IngresoMedicamentoController extends Controller
+class DetalleIngresoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +23,7 @@ class IngresoMedicamentoController extends Controller
      */
     public function create()
     {
-        //$proveedores=Proveedores::pluck('id','nombreProveedor');
-        //return view('IngresoMedicamento.create', compact('proveedores'));
-        return view('IngresoMedicamento.create');
+        //
     }
 
     /**

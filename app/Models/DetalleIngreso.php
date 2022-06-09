@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class IngresoMedicamento extends Model
+class DetalleIngreso extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
-        'idCredito',
-        'fechaIngreso'
+        'idMedicamento',
+        'cantidadIngreso',
+        'precioCompra',
+        'descuentoIngreso',
+        'fechaVenc',
+        'precioCompraUnidad',
+        'precioVentaUnidad'
     ];
     public function creditos()
     {
