@@ -13,8 +13,16 @@ class Medicamento extends Model
         'nombre',
         'descripcion'
     ];
+    public function ingreso_medicamentos()
+    {
+        return $this->hasMany(IngresoMedicamento::class);
+    }
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
+    }
+    public function ventas()
+    {
+        return $this->belongsToMany(Venta::class,'detalle_ventas');
     }
 }
