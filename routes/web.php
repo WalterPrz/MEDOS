@@ -35,3 +35,13 @@ Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
 Route::post('venta',[VentaController::class,'store'])->name('venta.store');
 //---------------------------Detalle Ventas------------------------------------------------------
 Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
