@@ -3,62 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetalleVenta;
+use App\Models\Medicamento;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class DetalleVentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Venta $venta)
     {
         $detalle_venta = DetalleVenta::where('venta_id',$venta->id)->get();
-        return $detalle_venta;
+        $medicamentos = Medicamento::all();
+        return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request, Venta $venta, Medicamento $medicamento)
     {
-        //
+        $detalle_venta =  new DetalleVenta();
+        $detalle_venta->cantidad_venta = 1;
+        $detalle_venta->ganancia = 0.00;
+        $detalle_venta->venta_id = $venta->id;
+        $detalle_venta->medicamento_id=$medicamento->id;
+        $detalle_venta->save();
+        return redirect()->route('venta.detalle',$venta);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\DetalleVenta  $detalleVenta
-     * @return \Illuminate\Http\Response
-     */
     public function show(DetalleVenta $detalleVenta)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetalleVenta  $detalleVenta
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, DetalleVenta $detalleVenta)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\DetalleVenta  $detalleVenta
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(DetalleVenta $detalleVenta)
     {
         //

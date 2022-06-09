@@ -9,8 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DetalleVenta extends Model
 {
     use HasFactory,SoftDeletes;
+    
     protected $fillable = [
         'cantidad_venta',
         'ganancia'
     ];
+    public function medicamento()
+    {
+        return $this->belongsTo(Medicamento::class);
+    }
+    public function venta()
+    {
+        return $this->belongsTo(Venta::class);
+    }
 }
