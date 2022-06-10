@@ -17,8 +17,18 @@ class Credito extends Model
         'saldoPendiente',
         'fechaCreacion'
     ];
-    public function creditos()
+    /*public function proveedor()
     {
-        return $this->hasMany(Credito::class);
+        return $this->belongsTo(Proveedor::class);
+    }*/
+    public function ingresoMedicamento()
+    {
+        return $this->hasMany(IngresoMedicamento::class);
     }
+    /*public function abono()
+    {
+        return $this->hasMany(Abono::class);
+    }*/
+
+    //Los comentados serviran cuando esos modelos ya esten creados
 }

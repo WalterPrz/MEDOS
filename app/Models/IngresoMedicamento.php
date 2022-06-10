@@ -14,7 +14,7 @@ class IngresoMedicamento extends Model
     ];
     public function credito()
     {
-        return $this->belongsToMany(Credito::class);
+        return $this->belongsTo(Credito::class);
     }
     public function detalleIngreso()
     {

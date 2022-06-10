@@ -41,9 +41,20 @@ class DetalleIngresoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, IngresoMedicamento $ingreso, Medicamento $medicamento)
+    public function store(Request $request, IngresoMedicamento $ingreso)
     {
         try{
+            $detalleIngreso =  new DetalleIngreso();
+            $detalleIngreso->ingreso_medicamento_id = $ingreso->id;
+            $detalleIngreso->medicamento_id = $request->medicamento;
+            $detalleIngreso->cantidadIngreso = $request->cantidadIngreso;
+            $detalleIngreso->precioCompra = $request->precioCompra;
+            $detalleIngreso->descuentoIngreso = $request->descuentoIngreso;
+            $detalleIngreso->fechaVenc = $request->fechaVenc;
+            $detalleIngreso->precioCompraUnidad = $request->precioCompraUnidad;
+            $detalleIngreso->precioVentaUnidad = $request->precioVentaUnidad;
+            $detalleIngreso->save();
+
             return redirect()->route('ingresomed.detalle',$ingreso);
         } catch(\Exception $e){
             $e->getMessage();
@@ -67,9 +78,10 @@ class DetalleIngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
     {
-        //
+        $medicamentos = Medicamento::all();
+        return view('DetalleIngreso.edit', compact('detalleIngreso','ingreso','medicamentos'));
     }
 
     /**
@@ -79,9 +91,23 @@ class DetalleIngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
     {
-        //
+        try{
+            $detalleIngreso->ingreso_medicamento_id = $ingreso->id;
+            $detalleIngreso->medicamento_id = $request->medicamento;
+            $detalleIngreso->cantidadIngreso = $request->cantidadIngreso;
+            $detalleIngreso->precioCompra = $request->precioCompra;
+            $detalleIngreso->descuentoIngreso = $request->descuentoIngreso;
+            $detalleIngreso->fechaVenc = $request->fechaVenc;
+            $detalleIngreso->precioCompraUnidad = $request->precioCompraUnidad;
+            $detalleIngreso->precioVentaUnidad = $request->precioVentaUnidad;
+            $detalleIngreso->update();
+
+            return redirect()->route('ingresomed.detalle',$ingreso);
+        } catch(\Exception $e){
+            $e->getMessage();
+        }
     }
 
     /**
@@ -90,8 +116,9 @@ class DetalleIngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
     {
-        //
+        $detalleIngreso->delete();
+        return redirect()->route('ingresomed.detalle',$ingreso);
     }
 }

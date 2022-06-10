@@ -19,10 +19,10 @@ class DetalleIngreso extends Model
     ];
     public function ingresoMedicamento()
     {
-        return $this->belongsToMany(IngresoMedicamento::class);
+        return $this->belongsTo(IngresoMedicamento::class);
     }
     public function medicamento()
     {
-        return $this->belongsToMany(Medicamento::class);
+        return $this->belongsTo(Medicamento::class);
     }
 }

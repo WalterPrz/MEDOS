@@ -41,8 +41,12 @@ Route::controller(IngresoMedicamentoController::class)->group(function(){
 Route::controller(DetalleIngresoController::class)->group(function(){
     //Ingresar detalle
     Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
-    Route::post('ingresomed/detalle/{ingreso}/{medicamento}', 'store')->name('detalleingreso.store');
+    Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
 
     //Editar ingreso de medicamentos
-    //Route::get('ingresomed/crear', 'create');
+    Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
+    Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
+
+    //Dar de baja el detalle del ingreso
+    Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
 });
