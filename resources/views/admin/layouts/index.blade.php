@@ -83,20 +83,13 @@
             <span>Roles</span></a>
         </li>
       @endrole
-      @role('admin')
+      @permission(['ver.usuarios'])
         <li class="nav-item">
           <a class="nav-link" href="/user">
             <i class="fas fa-fw fa-table"></i>
             <span>Usuarios</span></a>
         </li>
-      @endrole
-      @role('manager,content-editor')
-      <li class="nav-item">
-        <a class="nav-link" href="/posts">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Test</span></a>
-      </li>
-      @endrole
+      @endpermission
     </ul>
 
     <div id="content-wrapper">
@@ -174,6 +167,7 @@
 
   <!-- Demo scripts for this page-->
   <script src="/js/admin/demo/datatables-demo.js"></script>
+
  
     
   @yield('js_post_page')

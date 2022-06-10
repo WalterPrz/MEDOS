@@ -48,6 +48,7 @@
             </tfoot>
             <tbody>
                 @foreach ($users as $user)     
+                @if(!\Auth::user()->hasRole('admin') && $user->hasRole('admin')) @continue; @endif       
                 <tr {{ Auth::user()->id == $user->id ? 'bgcolor=#FFCE30' : '' }}>
                     <td>{{$user['id']}}</td>
                     <td>{{$user['name']}}</td>

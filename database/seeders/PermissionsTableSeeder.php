@@ -19,27 +19,27 @@ class PermissionsTableSeeder extends Seeder
          */
         $Permissionitems = [
             [
-                'name'        => 'Can View Users',
-                'slug'        => 'view.users',
-                'description' => 'Can view users',
+                'name'        => 'Ver usuarios',
+                'slug'        => 'ver.usuarios',
+                'description' => 'Se pueden ver los usuarios',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Create Users',
-                'slug'        => 'create.users',
-                'description' => 'Can create new users',
+                'name'        => 'Crear usuarios',
+                'slug'        => 'crear.usuarios',
+                'description' => 'Se pueden crear nuevos usuarios',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Edit Users',
-                'slug'        => 'edit.users',
-                'description' => 'Can edit users',
+                'name'        => 'Editar usuarios',
+                'slug'        => 'editar.usuarios',
+                'description' => 'Se pueden editar usuarios',
                 'model'       => 'Permission',
             ],
             [
-                'name'        => 'Can Delete Users',
-                'slug'        => 'delete.users',
-                'description' => 'Can delete users',
+                'name'        => 'Eliminar usuarios',
+                'slug'        => 'eliminar.usuarios',
+                'description' => 'Se pueden eliminar usuarios',
                 'model'       => 'Permission',
             ],
         ];
