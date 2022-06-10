@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,10 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
+        $role = config('roles.models.role')::where('name', '=', 'Admin')->first();  //choose the default role upon user creation.
+        auth()->user()->attachRole($role);
         return view('dashboard');
     })->name('dashboard');
+    Route::resource('/user', UsersController::class)->middleware('role:admin');
 });
+
