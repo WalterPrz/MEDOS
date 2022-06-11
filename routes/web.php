@@ -23,12 +23,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//---------------------------Ventas------------------------------------------------------
-Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
-Route::post('venta',[VentaController::class,'store'])->name('venta.store');
-//---------------------------Detalle Ventas------------------------------------------------------
-Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
-Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -52,6 +48,12 @@ Route::middleware([
     Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
     //eliminar
     Route::get('categoria/{categoria}/destroy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
+    //---------------------------Ventas------------------------------------------------------
+    Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
+    Route::post('venta',[VentaController::class,'store'])->name('venta.store');
+    //---------------------------Detalle Ventas------------------------------------------------------
+    Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
+    Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
   
 });
 
