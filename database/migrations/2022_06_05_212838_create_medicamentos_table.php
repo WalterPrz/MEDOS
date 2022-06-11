@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',50);
             $table->string('nombre_comercial',80);
             $table->unsignedBigInteger('categoria_id')->unsigned();
             $table->string('presentacion',25);

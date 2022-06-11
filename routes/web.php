@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\InventarioController;
+use App\Models\DetalleVenta;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,9 +39,15 @@ Route::get('categoria/{categoria}/destoy', [CategoriaController::class,'destroy'
 //---------------------------Ventas------------------------------------------------------
 Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
 Route::post('venta',[VentaController::class,'store'])->name('venta.store');
+Route::put('venta/completarVenta/{venta}',[VentaController::class,'update'])->name('venta.pagar');
 //---------------------------Detalle Ventas------------------------------------------------------
 Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
 Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
+Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
+Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
+
+
+
 
 Route::middleware([
     'auth:sanctum',
