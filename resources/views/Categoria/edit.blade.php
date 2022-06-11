@@ -6,6 +6,7 @@
     <form action="{{route('categoria.update',$categoria)}}" method="POST">
         @csrf
         @method('put')
+        <p>{{$categoria}}</p>
         <div class="form-row">
           <div class="col-md-4">
             <label for="nombre">Nombre</label>
