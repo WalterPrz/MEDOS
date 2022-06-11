@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Credito;
+use App\Models\Proveedor;
 use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
 
@@ -14,9 +14,9 @@ class IngresoMedicamentoController extends Controller
     }
     public function create()
     {
-        //$proveedores=Proveedores::pluck('id','nombreProveedor');
-        //return view('IngresoMedicamento.create', compact('proveedores'));
-        return view('IngresoMedicamento.create');
+        $ingresoMedicamentos = IngresoMedicamento::all();
+        $proveedors=Proveedor::all();
+        return view('IngresoMedicamento.create', compact('ingresoMedicamentos','proveedors'));
     }
     public function store(Request $request)
     {

@@ -73,7 +73,8 @@ Route::controller(IngresoMedicamentoController::class)->group(function(){
 
 Route::controller(DetalleIngresoController::class)->group(function(){
     //Ingresar detalle
-    Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
+    Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
+    Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
     Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
 
     //Editar ingreso de medicamentos

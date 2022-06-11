@@ -14,9 +14,11 @@ class DetalleIngresoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IngresoMedicamento $ingreso)
     {
-                
+        $detalle_ingreso = DetalleIngreso::where('ingreso_medicamento_id',$ingreso->id)->get();
+        $medicamentos = Medicamento::all();
+        return view('DetalleIngreso.index',compact('detalle_ingreso', 'medicamentos'));
     }
 
     /**

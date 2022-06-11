@@ -21,4 +21,12 @@ class Proveedor extends Model
   //  {
  //       return $this->hasMany(Medicamento::class);
   //  }
+  public function ingreso_medicamentos()
+    {
+        return $this->hasMany(IngresoMedicamento::class,'ingreso_medicamentos');
+    }
+    public function credito()
+    {
+        return $this->hasMany(Credito::class);
+    }
 }
