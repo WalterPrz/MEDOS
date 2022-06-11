@@ -16,7 +16,7 @@ return [
         'show-permission'           => 'Mostrando permiso: <strong>:name</strong>',
         'roles-table'               => 'Roles activos',
         'roles-card'                => 'Roles',
-        'role-card'                 => 'Role: ',
+        'role-card'                 => 'Rol: ',
         'permissions-card'          => 'Permisos',
         'permissions-table'         => 'Permisos activos',
         'dropdown-menu-alt'         => 'Mostrar roles menú desplegable',
@@ -80,7 +80,7 @@ return [
     ],
 
     'roles-table' => [
-        'caption'       => '{1} :count role total|[2,*] :count total roles',
+        'caption'       => '{1} :count role total|[2,*] :count roles',
         'id'            => 'ID',
         'name'          => 'Nombre',
         'desc'          => 'Descripción',
@@ -98,7 +98,7 @@ return [
     ],
 
     'permissions-table' => [
-        'caption'       => '{1} :count permission total|[2,*] :count total permissions',
+        'caption'       => '{1} :count permission total|[2,*] :count permisos',
         'id'            => 'ID',
         'name'          => 'Nombre',
         'slug'          => 'Slug',
@@ -112,7 +112,7 @@ return [
     ],
 
     'permissions-deleted-table' => [
-        'caption'       => '{1} :count deleted permission total|[2,*] :count total deleted permissions',
+        'caption'       => '{1} :count deleted permission total|[2,*] :count permisos borrados',
     ],
 
     'buttons' => [

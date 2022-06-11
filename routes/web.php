@@ -23,26 +23,6 @@ use App\Models\DetalleVenta;
 Route::get('/', function () {
     return view('auth.login');
 });
-//----------------------------Categoria------------------------
-//listar
-Route::get('categoria', [CategoriaController::class,'index'])->name('categoria.index');
-//crear
-Route::view('categoria/crear','categoria.create')->name('categoria.create');
-Route::post('categoria',[CategoriaController::class,'store'])->name('categoria.store');
-//actualizar
-Route::get('categoria/{categoria}', [CategoriaController::class,'show'])->name('categoria.show');
-Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
-//eliminar
-Route::get('categoria/{categoria}/destoy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
-//---------------------------Ventas------------------------------------------------------
-Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
-Route::post('venta',[VentaController::class,'store'])->name('venta.store');
-Route::put('venta/completarVenta/{venta}',[VentaController::class,'update'])->name('venta.pagar');
-//---------------------------Detalle Ventas------------------------------------------------------
-Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
-Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
-Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
-Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
 
 
@@ -58,26 +38,44 @@ Route::middleware([
         return view('admin.layouts.index');
     })->name('admin');
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
+    //----------------------------Categoria------------------------
+    //listar
+    Route::get('categoria', [CategoriaController::class,'index'])->name('categoria.index');
+    //crear
+    Route::view('categoria/crear','categoria.create')->name('categoria.create');
+    Route::post('categoria',[CategoriaController::class,'store'])->name('categoria.store');
+    //actualizar
+    Route::get('categoria/{categoria}', [CategoriaController::class,'show'])->name('categoria.show');
+    Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
+    //eliminar
+    Route::get('categoria/{categoria}/destroy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
+    //---------------------------Ventas------------------------------------------------------
+    Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
+    Route::post('venta',[VentaController::class,'store'])->name('venta.store');
+    //---------------------------Detalle Ventas------------------------------------------------------
+    Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
+    Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
+    Route::controller(IngresoMedicamentoController::class)->group(function(){
+        //Ingresar medicamentos
+        Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
+        Route::post('ingresomed/save', 'store')->name('ingresomed.store');
+        //Editar ingreso de medicamentos
+        //Route::get('ingresomed/crear', 'create');
+    });
+    Route::controller(DetalleIngresoController::class)->group(function(){
+        //Ingresar detalle
+        Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
+        Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
+    
+        //Editar ingreso de medicamentos
+        Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
+        Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
+    
+        //Dar de baja el detalle del ingreso
+        Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
+    });
 });
 
 
-Route::controller(IngresoMedicamentoController::class)->group(function(){
-    //Ingresar medicamentos
-    Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
-    Route::post('ingresomed/save', 'store')->name('ingresomed.store');
-    //Editar ingreso de medicamentos
-    //Route::get('ingresomed/crear', 'create');
-});
 
-Route::controller(DetalleIngresoController::class)->group(function(){
-    //Ingresar detalle
-    Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
-    Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
 
-    //Editar ingreso de medicamentos
-    Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
-    Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
-
-    //Dar de baja el detalle del ingreso
-    Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
-});
