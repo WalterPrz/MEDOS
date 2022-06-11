@@ -84,13 +84,40 @@
             <span>Roles</span></a>
         </li>
       @endrole
+      <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i class="fas fa-fw fa-box"></i>
+            <span>Inventario</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i class="fas fa-fw fa-coins"></i>
+            <span>Ventas</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i class="fas fa-fw fa-tag"></i>
+            <span>Compras</span></a>
+        </li>
+
       @permission(['ver.usuarios'])
         <li class="nav-item">
           <a class="nav-link" href="/user">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Usuarios</span></a>
         </li>
       @endpermission
+
+      <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i class="fas fa-fw fa-truck"></i>
+            <span>Proveedor</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Categoria</span></a>
+      </li>
     </ul>
 
     <div id="content-wrapper">
