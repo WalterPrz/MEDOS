@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetalleVentaController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\DetalleIngresoController;
+use App\Http\Controllers\IngresoMedicamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 
@@ -51,3 +53,24 @@ Route::middleware([
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
 });
 
+
+Route::controller(IngresoMedicamentoController::class)->group(function(){
+    //Ingresar medicamentos
+    Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
+    Route::post('ingresomed/save', 'store')->name('ingresomed.store');
+    //Editar ingreso de medicamentos
+    //Route::get('ingresomed/crear', 'create');
+});
+
+Route::controller(DetalleIngresoController::class)->group(function(){
+    //Ingresar detalle
+    Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
+    Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
+
+    //Editar ingreso de medicamentos
+    Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
+    Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
+
+    //Dar de baja el detalle del ingreso
+    Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
+});

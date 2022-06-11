@@ -2,62 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credito;
 use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
 
 class IngresoMedicamentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function create()
+    {
+        //$proveedores=Proveedores::pluck('id','nombreProveedor');
+        //return view('IngresoMedicamento.create', compact('proveedores'));
+        return view('IngresoMedicamento.create');
+    }
     public function store(Request $request)
     {
-        //
+        try{
+            $credito = new Credito();
+            $credito->idProveedor = $request->proveedor;
+            $credito->save();
+            $ingreso = new IngresoMedicamento();
+            $ingreso->credito_id = $credito->id;
+            $ingreso->fechaIngreso = date('d-m-Y');
+            $ingreso->save();
+            return redirect()->route('ingresomed.detalle',$ingreso);
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\IngresoMedicamento  $ingresoMedicamento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(IngresoMedicamento $ingresoMedicamento)
+    public function show($id)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IngresoMedicamento  $ingresoMedicamento
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, IngresoMedicamento $ingresoMedicamento)
+    public function edit($id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\IngresoMedicamento  $ingresoMedicamento
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(IngresoMedicamento $ingresoMedicamento)
+    public function update(Request $request, $id)
+    {
+        //
+    }
+    public function destroy($id)
     {
         //
     }

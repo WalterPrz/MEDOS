@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "jeremykenedy/laravel-roles": "^8.1",
         "jeroennoten/laravel-adminlte": "^3.8",
+        "laravel/fortify": "^1.13",
         "laravel/framework": "^9.2",
         "laravel/jetstream": "^2.8",
         "laravel/sanctum": "^2.14.1",
