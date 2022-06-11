@@ -100,12 +100,12 @@
                 <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a esta usuario
 </div>
                 <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <form method="POST" action="">
                     @method('DELETE')
                     @csrf
                     <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
-                    <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Delete</a>
+                    <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Borrar</a>
                 </form>
                 </div>
             </div>

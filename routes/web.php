@@ -22,17 +22,7 @@ use App\Http\Controllers\UsersController;
 Route::get('/', function () {
     return view('auth.login');
 });
-//----------------------------Categoria------------------------
-//listar
-Route::get('categoria', [CategoriaController::class,'index'])->name('categoria.index');
-//crear
-Route::view('categoria/crear','categoria.create')->name('categoria.create');
-Route::post('categoria',[CategoriaController::class,'store'])->name('categoria.store');
-//actualizar
-Route::get('categoria/{categoria}', [CategoriaController::class,'show'])->name('categoria.show');
-Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
-//eliminar
-Route::get('categoria/{categoria}/destoy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
+
 //---------------------------Ventas------------------------------------------------------
 Route::get('ventas', [VentaController::class,'index'])->name('venta.index');
 Route::post('venta',[VentaController::class,'store'])->name('venta.store');
@@ -51,6 +41,18 @@ Route::middleware([
         return view('admin.layouts.index');
     })->name('admin');
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
+    //----------------------------Categoria------------------------
+    //listar
+    Route::get('categoria', [CategoriaController::class,'index'])->name('categoria.index');
+    //crear
+    Route::view('categoria/crear','categoria.create')->name('categoria.create');
+    Route::post('categoria',[CategoriaController::class,'store'])->name('categoria.store');
+    //actualizar
+    Route::get('categoria/{categoria}', [CategoriaController::class,'show'])->name('categoria.show');
+    Route::put('categoria/{categoria}', [CategoriaController::class,'update'])->name('categoria.update');
+    //eliminar
+    Route::get('categoria/{categoria}/destroy', [CategoriaController::class,'destroy'])->name('categoria.destroy');
+  
 });
 
 

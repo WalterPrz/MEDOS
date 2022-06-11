@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <span data-toggle="tooltip" title data-original-title="Guardar cambios realizados">
-                                    <button type="submit" class="btn btn-success btn-lg btn-block" value="Editar" name="action">
+                                    <button type="submit" class="btn btn-success btn-lg btn-block" value="Guardar" name="action">
                                     <i class="fa fa-save fa-fw">
                                         <span class="sr-only">
                                             Guardar Usuario Icono
