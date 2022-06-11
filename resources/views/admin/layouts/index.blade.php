@@ -85,7 +85,7 @@
         </li>
       @endrole
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/inventario">
             <i class="fas fa-fw fa-box"></i>
             <span>Inventario</span></a>
       </li>
@@ -95,7 +95,7 @@
             <span>Ventas</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/ingresomed/crear">
             <i class="fas fa-fw fa-tag"></i>
             <span>Compras</span></a>
         </li>
@@ -109,7 +109,7 @@
       @endpermission
 
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/proveedor">
             <i class="fas fa-fw fa-truck"></i>
             <span>Proveedor</span></a>
       </li>

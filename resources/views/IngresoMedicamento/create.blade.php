@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('admin.layouts.index')
 @section('title','Ingresar medicamento')
 @section('content')
 <div>
@@ -23,6 +23,6 @@
 
     </div>
   <button type='submit' id='guardar' class='btn btn-primary'>Guardar</button>
-  </form>   
+  </form>
 </div>
 @endsection
