@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,13 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoleAndPermission;
 
+
+    public function adminlte_desc()
+    {
+        return 'That\'s a nice guy';
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +33,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'nombres',
+        'apellidos',
+        'cargo',
         'password',
     ];
 
@@ -58,4 +68,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+
 }

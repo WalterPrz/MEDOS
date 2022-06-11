@@ -47,4 +47,25 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+	{
+		$userLevelCheck = $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\RoleDeniedException ||
+			$e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException ||
+			$e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException;
+		
+		if ($userLevelCheck) {
+			
+			if ($request->expectsJson()) {
+				return Response::json(array(
+					'error'    =>  403,
+					'message'   =>  'Unauthorized.'
+				), 403);
+			}
+			
+			abort(403);
+		}
+		
+		return parent::render($request, $e);
+	}
 }

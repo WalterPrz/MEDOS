@@ -65,10 +65,10 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
-    'usermenu_desc' => false,
+    'usermenu_desc' => true,
     'usermenu_profile_url' => false,
 
     /*
@@ -224,6 +224,7 @@ return [
     |
     */
 
+    
     'menu' => [
         // Navbar items:
         [
@@ -255,8 +256,13 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Usuarios',
+            'url'  => 'user',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Roles y permisos',
+            'url'  => 'roles',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
