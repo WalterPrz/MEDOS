@@ -16,4 +16,9 @@ class Venta extends Model
     {
         return $this->belongsToMany(Medicamento::class,'detalle_ventas');
     }
+    public function scopeFechaVenta($query, $fecha_venta){
+        if($fecha_venta){
+            return $query->where('fecha_venta',$fecha_venta);
+        }
+    }
 }

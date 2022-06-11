@@ -6,13 +6,18 @@ use App\Models\Venta;
 use Illuminate\Http\Request;
 use DateTime;
 use PhpParser\Node\Stmt\Const_;
+use SebastianBergmann\Environment\Console;
 
 class VentaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ventas = Venta::where('estado',true)->get();
-        return view('venta.index', compact('ventas'));
+        $fecha_venta = $request->get('fecha_venta');
+        $ventas = Venta::where('estado',true)
+        ->fechaVenta($fecha_venta)
+        ->get();
+        $ventasSinCompletar = Venta::where('estado',false)->get();
+        return view('venta.index', compact('ventas','ventasSinCompletar','request'));
     }
     public function store(Request $request)
     {
@@ -30,7 +35,7 @@ class VentaController extends Controller
     {
         $venta->estado =  true;
         $venta->save();
-        return VentaController::index();
+        return  redirect()->route('venta.index');
     }
     public function destroy(Venta $venta)
     {
