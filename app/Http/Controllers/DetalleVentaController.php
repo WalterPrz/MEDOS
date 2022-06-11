@@ -12,8 +12,13 @@ class DetalleVentaController extends Controller
     public function index(Venta $venta)
     {
         $detalle_venta = DetalleVenta::where('venta_id',$venta->id)->get();
+        $total = 0;
+        foreach ($detalle_venta as $key) {
+           $total = $total+ ( $key->cantidad_venta *  $key->medicamento->precio_venta);
+        }
+        $total =number_format($total,2);
         $medicamentos = Medicamento::all();
-        return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta'));
+        return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta','total'));
     }
     public function store(Request $request, Venta $venta, Medicamento $medicamento)
     {

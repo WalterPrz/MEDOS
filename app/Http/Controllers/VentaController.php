@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use DateTime;
+use PhpParser\Node\Stmt\Const_;
+
 class VentaController extends Controller
 {
     public function index()
     {
-        return view('venta.index');
+        $ventas = Venta::where('estado',true)->get();
+        return view('venta.index', compact('ventas'));
     }
     public function store(Request $request)
     {
@@ -21,11 +24,13 @@ class VentaController extends Controller
     }
     public function show(Venta $venta)
     {
-        //
+
     }
     public function update(Request $request, Venta $venta)
     {
-        //
+        $venta->estado =  true;
+        $venta->save();
+        return VentaController::index();
     }
     public function destroy(Venta $venta)
     {
