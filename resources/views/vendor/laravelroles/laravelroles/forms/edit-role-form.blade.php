@@ -23,3 +23,13 @@
 </form>
 
 @include('laravelroles::laravelroles.scripts.form-inputs-helpers')
+<script>
+    $(document).ready(function(){
+        $('#name').keyup(function(e){
+            var str = $('#name').val();
+            str = str.replace(/\W+(?!$)/g, '.').toLowerCase();//rplace stapces with dash
+            $('#slug').val(str);
+            $('#slug').attr('placeholder', str);
+        });
+    });
+</script>

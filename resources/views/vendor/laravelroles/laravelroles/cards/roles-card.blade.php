@@ -50,11 +50,6 @@
                                     {!! trans('laravelroles::laravelroles.titles.role-card') !!} <strong class="{{ $indRoleTextClass }}">{{ $item['role']->name }}</strong>
                                 </span>
                                 <div class="text-right">
-                                    <span class="badge badge-dark">
-                                        <small>
-                                            {{ trans('laravelroles::laravelroles.cards.level', ['level' => $item['role']->level]) }}
-                                        </small>
-                                    </span>
                                     <span class="badge badge-pill {{ $indRoleBadgeClass }}">
                                         <small>
                                             {!! trans_choice('laravelroles::laravelroles.cards.users-count', count($item['users']), ['count' => count($item['users'])]) !!}

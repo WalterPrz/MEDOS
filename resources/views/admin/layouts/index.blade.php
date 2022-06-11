@@ -25,8 +25,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8j
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8j"></script>
   <!--CKEditor Plugin-->
   <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
@@ -97,7 +96,7 @@
     <div id="content-wrapper">
 
         <div class="container-fluid">
-        
+
           @yield('content')
 
         </div>
@@ -117,7 +116,7 @@
 
   </div>
   <!-- /#wrapper -->
-  
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -160,7 +159,7 @@
   <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Page level plugin JavaScript-->
-  
+
   <script src="/vendor/datatables/jquery.dataTables.js"></script>
   <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -170,11 +169,11 @@
   <!-- Demo scripts for this page-->
   <script src="/js/admin/demo/datatables-demo.js"></script>
 
- 
-    
+
+
   @yield('js_post_page')
-  @yield('js_user_page') 
-  @yield('js_role_page') 
+  @yield('js_user_page')
+  @yield('js_role_page')
   </body>
-    
+
 </html>

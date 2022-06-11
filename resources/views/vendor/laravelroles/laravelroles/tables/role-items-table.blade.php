@@ -19,9 +19,6 @@
                 <th scope="col" class="hidden-xs ">
                     {!! trans('laravelroles::laravelroles.roles-table.desc') !!}
                 </th>
-                <th scope="col">
-                    {!! trans('laravelroles::laravelroles.roles-table.level') !!}
-                </th>
                 <th scope="col" class="hidden-xs hidden-sm">
                     {!! trans('laravelroles::laravelroles.roles-table.permissons') !!}
                 </th>
@@ -67,14 +64,6 @@
                             @endif
                             @if($tabletype == 'deleted')
                                 {{ $item->description }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($tabletype == 'normal')
-                                {{ $item['role']->level }}
-                            @endif
-                            @if($tabletype == 'deleted')
-                                {{ $item->level }}
                             @endif
                         </td>
                         <td class="hidden-xs hidden-sm">

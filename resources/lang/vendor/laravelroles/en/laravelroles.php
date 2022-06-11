@@ -25,9 +25,9 @@ return [
         'create-permission'         => 'Crea un nuevo permiso',
         'edit-permission'           => 'Permiso de edición: <strong>:name </strong>',
         'roles-deleted-table'       => 'Roles eliminados',
-        'show-role-deleted'         => 'Mostrando el rol eliminado: <strong>: name </strong>',
+        'show-role-deleted'         => 'Mostrando el rol eliminado: <strong>:name </strong>',
         'permissions-deleted-table' => 'Permisos eliminados',
-        'show-permission-deleted'   =>'Mostrando permiso eliminado: <strong>: name </strong>',
+        'show-permission-deleted'   =>'Mostrando permiso eliminado: <strong>:name </strong>',
     ],
 
     'cards' => [
@@ -42,14 +42,14 @@ return [
             'user-email'                => 'Correo electrónico de usuario',
             'permissions-id'            => 'ID de permiso',
             'permissions-name'          => 'Nombre de permiso',
-            'table-users-caption'       => 'Usuarios con rol: <strong> <em>: role </em> </strong>',
-            'table-permissions-caption' => 'Permisos con rol: <strong> <em>: role</em> </strong>',
+            'table-users-caption'       => 'Usuarios con rol: <strong> <em>:role </em> </strong>',
+            'table-permissions-caption' => 'Permisos con rol: <strong> <em>:role</em> </strong>',
         ],
         'permissions-card' => [
             'role-id'                           => 'Identificación del rol',
             'role-name'                         =>'Nombre de rol',
-            'permissions-table-roles-caption'   => 'Roles con permiso: <strong> <em>: name</em> </strong> ',
-            'permissions-table-users-caption'   => 'Usuarios con permiso: <strong> <em>: name</em> </strong> ',
+            'permissions-table-roles-caption'   => 'Roles con permiso: <strong> <em>:permission</em> </strong> ',
+            'permissions-table-users-caption'   => 'Usuarios con permiso: <strong> <em>:permission</em> </strong> ',
         ],
         'role-info-card' => [
             'role-id'           => 'Identificación del rol',
@@ -160,8 +160,8 @@ return [
         'back-permissions'          => 'Volver al tablero',
         'save-role'                 => 'Guardar un nuevo rol',
         'update-role'               => 'Guardar cambios de roles',
-        'save-permission'           => 'Ahorre nuevo permiso',
-        'update-permission'         => 'Ahorrar cambios de permiso',
+        'save-permission'           => 'Guardar nuevo permiso',
+        'update-permission'         => 'Guardar cambios de permiso',
         'restore-role'              => 'Rol de restauración',
         'destroy-permission'        => 'Destruir el permiso',
         'restore-permission'        => 'Restaurar permiso',
@@ -170,10 +170,10 @@ return [
     ],
 
     'modals' => [
-        'delete_modal_title'            => 'Borrar:type :item',
-        'destroy_modal_title'           => 'Destruir :type :item',
-        'delete_modal_message'          => 'estas seguro que quieres borrarlo :type: :item?',
-        'destroy_modal_message'         => '¿Estás seguro de que quieres destruir? :item?',
+        'delete_modal_title'            => 'Borrar :item',
+        'destroy_modal_title'           => 'Destruir :item',
+        'delete_modal_message'          => '¿Estas seguro que quieres borrar el permiso? :item',
+        'destroy_modal_message'         => '¿Estás seguro de que quieres destruir el permiso? :item',
         'delete_role_btn_cancel'        => 'Cancelar',
         'delete_role_btn_confirm'       => 'Confirmar eliminación',
         'destroy_all_role_title'        => 'Destruye todo :type :items',
@@ -271,11 +271,11 @@ return [
             ],
             'buttons' => [
                 'save-permission'     => [
-                    'name'      => 'Ahorrar permiso',
+                    'name'      => 'Guardar permiso',
                     'sr-icon'   => 'Save Permission Icon',
                 ],
                 'update-permission'     => [
-                    'name'      => 'Ahorrar cambios de permiso',
+                    'name'      => 'Guardar cambios de permiso',
                     'sr-icon'   => 'Save Permission Changes Icon',
                 ],
             ],

@@ -90,7 +90,8 @@
                                     @endif
                                 </span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                           <!--<li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-level') !!}
                                 <span class="badge badge-pill">
                                     @if($item->level)
@@ -101,7 +102,7 @@
                                         </span>
                                     @endif
                                 </span>
-                            </li>
+                            </li> -->
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-permissions') !!}
                                 @if($item['permissions']->count() > 0)
