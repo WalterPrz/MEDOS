@@ -29,7 +29,6 @@
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                 <form action="{{ route('venta.index') }}" method="GET">
-                    @csrf
                     <div class="row">
                         <div class="col-sm-2">
                             <input  class="form-control" type="date" id="start" name="fecha_venta" min="2022-01-01">

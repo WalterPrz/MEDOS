@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class DetalleVentaController extends Controller
 {
-    public function index(Venta $venta)
+    public function index(Venta $venta, Request $request)
     {
         $detalle_venta = DetalleVenta::where('venta_id',$venta->id)->get();
         $total = 0;
@@ -17,8 +17,16 @@ class DetalleVentaController extends Controller
            $total = $total+ ( $key->cantidad_venta *  $key->medicamento->precio_venta);
         }
         $total =number_format($total,2);
+        $nombre_comercial = $request->get('nombre_comercial');
+        if($nombre_comercial){
+            $medicamentos = Medicamento::where('nombre_comercial','LIKE',"%$nombre_comercial%")->get();
+            return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta','total'));
+        }else{
+            $medicamentos = Medicamento::all();
+            return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta','total'));
+        }
         $medicamentos = Medicamento::all();
-        return view('venta.detalle',compact('detalle_venta', 'medicamentos','venta','total'));
+        
     }
     public function store(Request $request, Venta $venta, Medicamento $medicamento)
     {
