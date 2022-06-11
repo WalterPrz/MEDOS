@@ -19,7 +19,7 @@
         Tabla de categorias</div>
     <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable6" width="100%" cellspacing="0">
             <thead>
           <tr>
             <th scope="col">id</th>
@@ -92,7 +92,15 @@
             modal.find('form').attr('action','/categoria/' + categoria_id + '/destroy');
         })
     </script>
-
+      <script>
+        $(document).ready(function() {
+            $('#dataTable6').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 @endsection
 
 @endsection

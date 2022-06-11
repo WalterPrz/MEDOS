@@ -67,6 +67,8 @@
             <th scope="col">Precio Unitario</th>
             <th scope="col">Cantidad Venta</th>
             <th scope="col">SubTotal</th>
+            <!--<th scope="col">Operacion</th>-->
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tfoot>
@@ -76,6 +78,8 @@
               <th scope="col">Precio Unitario</th>
               <th scope="col">Cantidad Venta</th>
               <th scope="col">SubTotal</th>
+              <!--<th scope="col">Operacion</th>-->
+              <th scope="col">Opciones</th>
             </tr>
           </tfoot>
         <tbody>
@@ -86,7 +90,7 @@
                 <td>{{$item->medicamento->precio_venta}}</td>
                 <td>{{$item->cantidad_venta}}</td>
                 <td>{{$item->cantidad_venta*$item->medicamento->precio_venta}}</td>
-                <td>{{$item->precio_venta}}</td>
+                <!--<td>{{$item->precio_venta}}</td>-->
                 <td>
                     <a href="{{route('categoria.show',$item->id)}}"><i class="fa fa-edit"></i></a>
                     <a href="{{route('categoria.destroy',$item)}}" ><i class="fas fa-trash-alt"></i></a>
@@ -103,8 +107,16 @@
 
     <script>
 $(document).ready(function() {
-    $('#dataTable1').DataTable();//replace id as per your need
-    $('#dataTable2').DataTable();//replace id as per your need
+    $('#dataTable1').DataTable({
+      "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+    });
+    $('#dataTable2').DataTable({
+      "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+    });
 });
     </script>
 

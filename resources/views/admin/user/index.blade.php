@@ -19,7 +19,7 @@
         Tabla de usuarios</div>
     <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable5" width="100%" cellspacing="0">
             <thead>
             <tr>
                 <th>Id</th>
@@ -127,7 +127,15 @@
             modal.find('form').attr('action','/user/' + user_id);
         })
     </script>
-
+    <script>
+        $(document).ready(function() {
+            $('#dataTable5').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 @endsection
 
 @endsection

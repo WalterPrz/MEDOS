@@ -93,6 +93,7 @@ class DetalleIngresoController extends Controller
      */
     public function update(Request $request, IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
     {
+
         try{
             $detalleIngreso->ingreso_medicamento_id = $ingreso->id;
             $detalleIngreso->medicamento_id = $request->medicamento;

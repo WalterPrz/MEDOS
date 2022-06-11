@@ -94,7 +94,7 @@
             <span>Ventas</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/ingresomed/crear">
             <i class="fas fa-fw fa-tag"></i>
             <span>Compras</span></a>
         </li>
@@ -194,7 +194,6 @@
 
   <!-- Demo scripts for this page-->
   <script src="/js/admin/demo/datatables-demo.js"></script>
-
 
 
   @yield('js_venta_page')
