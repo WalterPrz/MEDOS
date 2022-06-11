@@ -22,13 +22,14 @@
         <div class="col-12">
             <div class="card card-post" id="post_card">
                 <div class="card-header">
-                    Editando usuario: 
-                    <strong>{{$user->name}}</strong>
-                    <div class="pull-right">
-                        <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title="Regresar a lista de usuarios">Regresar</a>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        Editando usuario: 
+                        <div class="pull-right">
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de usuarios">Regresar</a>
+                        </div>
                     </div>
                 </div>
-                <form method="POST" action="/user/{{ $user->id }}" enctype="multipart/form-data">
+                <form method="POST" action="/user/{{ $user->id }}" enctype="multipart/form-data" class="mb-0 needs-validation" role="form">
                     @method('PATCH')
                     @csrf()
                     <div class="card-body">
