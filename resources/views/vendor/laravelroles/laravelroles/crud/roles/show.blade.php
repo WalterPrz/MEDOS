@@ -68,19 +68,19 @@
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-id') !!}
-                                <span class="badge badge-pill">
+                                <span >
                                     {{ $item->id }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-name') !!}
-                                <span class="badge badge-pill">
+                                <span >
                                     {{ $item->name }}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.role-desc') !!}
-                                <span class="badge badge-pill">
+                                <span >
                                     @if($item->desc)
                                         {{ $item->desc }}
                                     @else
@@ -202,20 +202,20 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.created') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     {!! $item->created_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.updated') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     {!! $item->updated_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                 </span>
                             </li>
                             @if ($item->deleted_at)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {!! trans('laravelroles::laravelroles.cards.role-info-card.deleted') !!}
-                                    <span class="badge badge-pill">
+                                    <span>
                                         {!! $item->deleted_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     </span>
                                 </li>

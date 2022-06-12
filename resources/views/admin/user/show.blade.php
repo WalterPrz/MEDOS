@@ -26,31 +26,31 @@
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Nombre de usuario:
-                                <span class="badge badge-pill">
+                                <span >
                                     {{$user->name}}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Correo
-                                <span class="badge badge-pill">
+                                <span >
                                     {{$user->email}}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Nombres:
-                                <span class="badge badge-pill">
+                                <span >
                                     {{$user->nombres}}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Apellidos:
-                                <span class="badge badge-pill">
+                                <span >
                                     {{$user->apellidos}}
                                 </span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Cargo: 
-                                <span class="badge badge-pill">
+                                <span >
                                     {{$user->cargo}}
                                 </span>
                             </li>
