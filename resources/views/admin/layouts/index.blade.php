@@ -20,6 +20,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
   <!-- Custom styles for this template-->
+  <link href="/css/admin/style.css" rel="stylesheet">
   <link href="/css/admin/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -28,6 +29,8 @@
 
   <!--CKEditor Plugin-->
   <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+  
 
   @yield('css_role_page')
 
@@ -125,7 +128,6 @@
         <div class="container-fluid">
 
           @yield('content')
-
         </div>
         <!-- /.container-fluid -->
 
@@ -140,7 +142,6 @@
 
     </div>
   <!-- /.content-wrapper -->
-
   </div>
   <!-- /#wrapper -->
 
