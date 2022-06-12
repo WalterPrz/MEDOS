@@ -173,11 +173,13 @@
         }
     });
     $('#dataTable13').DataTable({
+        dom: '<"top"i>rt<"bottom"flp><"clear">',
         "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         }
     });
     $('#dataTable14').DataTable({
+        dom: '<"top"i>rt<"bottom"flp><"clear">',
         "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         }
