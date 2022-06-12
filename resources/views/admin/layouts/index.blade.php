@@ -91,7 +91,7 @@
             <span>Inventario</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/ventas">
             <i class="fas fa-fw fa-coins"></i>
             <span>Ventas</span></a>
         </li>
@@ -115,7 +115,7 @@
             <span>Proveedor</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/categoria">
             <i class="fas fa-fw fa-table"></i>
             <span>Categoria</span></a>
       </li>

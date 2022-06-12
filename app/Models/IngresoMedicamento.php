@@ -34,4 +34,9 @@ class IngresoMedicamento extends Model
     {
         return $this->belongsTo(Proveedor::class);
     }
+    public function scopeFechaIngreso($query, $fechaIngreso){
+        if($fechaIngreso){
+            return $query->where('fechaIngreso',$fechaIngreso);
+        }
+    }
 }

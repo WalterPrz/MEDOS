@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('admin.layouts.index')
 @section('title', 'Ventas')
 @section('content')
     <div>
@@ -27,18 +27,18 @@
                     <button type="submit" class="btn btn-success">Crear una Venta</button>
                 </form>
             </div>
-            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                 <form action="{{ route('venta.index') }}" method="GET">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-md-10">
                             <input  class="form-control" type="date" id="start" name="fecha_venta" min="2022-01-01">
                         </div>
-                        <div class="col-sm-3">
-                            <button type="submit" class="btn btn-success">Filtrar</button>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-outline-success">Filtrar</button>
                         </div>
                     </div>
                 </form>
-                
+
                 <table class="table">
                     <thead>
                         <tr>

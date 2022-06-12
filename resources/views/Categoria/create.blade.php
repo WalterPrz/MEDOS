@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('admin.layouts.index')
 @section('title', 'Categorías')
 @section('content')
     <div>

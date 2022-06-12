@@ -54,6 +54,7 @@
 </div>
 
 <h3>Medicamentos ingresados al ingreso</h3>
+      <a href="{{ route('ingresomed.create') }}" class="btn btn-info">Finalizar</a>
       <table class="table">
         <thead>
           <tr>

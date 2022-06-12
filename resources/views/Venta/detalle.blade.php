@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('admin.layouts.index')
 @section('title', 'Ventas')
 @section('content')
     <div>
@@ -8,7 +8,7 @@
                 <div class="col-sm-6"  style="height:40rem;overflow-y: scroll;">
                     <h3>Ingresa los medicamentos</h3>
                     <form action="{{ route('venta.detalle',$venta) }}" method="GET">
-                        
+
                         <div class="row">
                             <div class="col-sm-8">
                                 <input  class="form-control" type="text"  name="nombre_comercial" placeholder="Nombre de medicamento">
