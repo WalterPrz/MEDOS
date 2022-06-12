@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetalleVentaController;
 use App\Http\Controllers\VentaController;
@@ -34,11 +35,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/admin', function () {
+    Route::get('/bienvenida', function () {
         //$role = config('roles.models.role')::where('name', '=', 'Admin')->first();  //choose the default role upon user creation.
         //auth()->user()->attachRole($role);
-        return view('admin.layouts.index');
-    })->name('admin');
+        return view('admin.bienvenida.index');
+    })->name('bienvenida');
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
     //----------------------------Categoria------------------------
     //listar
