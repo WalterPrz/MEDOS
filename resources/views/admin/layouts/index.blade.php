@@ -17,6 +17,7 @@
 
   <!-- Page level plugin CSS-->
   <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
   <!-- Custom styles for this template-->
   <link href="/css/admin/sb-admin.css" rel="stylesheet">
@@ -84,7 +85,7 @@
         </li>
       @endrole
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/inventario">
             <i class="fas fa-fw fa-box"></i>
             <span>Inventario</span></a>
       </li>
@@ -108,7 +109,7 @@
       @endpermission
 
       <li class="nav-item">
-          <a class="nav-link" href="/user">
+          <a class="nav-link" href="/proveedor">
             <i class="fas fa-fw fa-truck"></i>
             <span>Proveedor</span></a>
       </li>
@@ -194,7 +195,7 @@
 
   <!-- Demo scripts for this page-->
   <script src="/js/admin/demo/datatables-demo.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
   @yield('js_venta_page')
   @yield('js_user_page')

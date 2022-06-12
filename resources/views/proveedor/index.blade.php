@@ -1,56 +1,63 @@
 @extends('admin.layouts.index')
-
+@section('title','Proveedores')
 @section('content')
-
 <div class="row py-lg-2">
-  <div class="col-md-6">
-       <h2>Lista de categorias</h2>
-  </div>
-  <div class="col-md-6">
-    <a href="{{route('categoria.create')}}" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Nueva categoria</a>
-  </div>
+    <div class="col-md-6">
+       <h2>Lista de proveedores</h2>
+    </div>
+    <div class="col-md-6">
+        <a href="{{route('proveedor.create')}}" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Crear Proveedor</a>
+    </div>
 </div>
-
-
 <div>
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        Tabla de categorias</div>
+        Tabla de proveedores</div>
     <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable6" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable21" width="100%" cellspacing="0">
             <thead>
-          <tr>
+            <tr>
             <th scope="col">id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
+            <th scope="col">Nombre proveedor</th>
+            <th scope="col">Telefono proveedor</th>
+            <th scope="col">Nombre encargado</th>
+            <th scope="col">Telefono encargado</th>
+            <th scope="col">Plazo devolución (días)</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tfoot>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Opciones</th>
-            </tr>
-         </tfoot>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre proveedor</th>
+            <th scope="col">Telefono proveedor</th>
+            <th scope="col">Nombre encargado</th>
+            <th scope="col">Telefono encargado</th>
+            <th scope="col">Plazo devolución (días)</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </tfoot>
         <tbody>
-            @foreach($categorias as $item)
+            @foreach($proveedors as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>{{$item->nombre}}</td>
-                <td>{{$item->descripcion}}</td>
+                <td>{{$item->nombreProveedor}}</td>
+                <td>{{$item->telefonoProveedor}}</td>
+                <td>{{$item->nombreVendedor}}</td>
+                <td>{{$item->telefonoVendedor}}</td>
+                <td>{{$item->plazoDevolucion}}</td>
                 <td>
-                    <a href="{{route('categoria.show',$item->id)}}"><i class="fa fa-edit"></i></a>
-                    <a href="{{route('categoria.destroy',$item)}}" data-toggle="modal" data-target="#deleteModal" data-categoriaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{route('proveedor.show',$item->id)}}" ><i class="fa fa-edit"></i></a>
+                    <a href="{{route('proveedor.destroy',$item)}}" data-toggle="modal" data-target="#deleteModal" data-proveedorid="{{$item->id}}" ><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>
           @endforeach
         </tbody>
       </table>
 </div>
+
  <!-- delete Modal-->
  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -62,7 +69,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
                 </div>
-                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a esta categoria
+                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a este proveedor
 </div>
                 <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
@@ -85,16 +92,16 @@
     <script>
         $('#deleteModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
-            var categoria_id = button.data('categoriaid') 
+            var proveedor_id = button.data('proveedorid') 
             
             var modal = $(this)
             // modal.find('.modal-footer #user_id').val(user_id)
-            modal.find('form').attr('action','/categoria/' + categoria_id + '/destroy');
+            modal.find('form').attr('action','/proveedor/' + proveedor_id + '/destoy');
         })
     </script>
-      <script>
+    <script>
         $(document).ready(function() {
-            $('#dataTable6').DataTable({
+            $('#dataTable21').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -102,5 +109,4 @@
         });
     </script>
 @endsection
-
 @endsection

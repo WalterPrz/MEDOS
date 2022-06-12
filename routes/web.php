@@ -7,6 +7,8 @@ use App\Http\Controllers\DetalleIngresoController;
 use App\Http\Controllers\IngresoMedicamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\InventarioController;
 use App\Models\DetalleVenta;
 
 /*
@@ -68,7 +70,8 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     });
     Route::controller(DetalleIngresoController::class)->group(function(){
         //Ingresar detalle
-        Route::get('ingresomed/detalle/{ingreso}', 'create')->name('ingresomed.detalle');
+        Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
+        Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
         Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
     
         //Editar ingreso de medicamentos
@@ -77,9 +80,25 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     
         //Dar de baja el detalle del ingreso
         Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
+
+
+        //----------------------------Proveedor------------------------
+        //listar
+        Route::get('proveedor', [ProveedorController::class,'index'])->name('proveedor.index');
+        //crear
+        Route::view('proveedor/crear','proveedor.create')->name('proveedor.create');
+        Route::post('proveedor',[ProveedorController::class,'store'])->name('proveedor.store');
+        //actualizar
+        Route::get('proveedor/{proveedor}', [ProveedorController::class,'show'])->name('proveedor.show');
+        Route::put('proveedor/{proveedor}', [ProveedorController::class,'update'])->name('proveedor.update');
+        //eliminar
+        Route::get('proveedor/{proveedor}/destoy', [ProveedorController::class,'destroy'])->name('proveedor.destroy');
+        //----------------------------Inventario------------------------
+        //listar
+        Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
+
     });
 });
-
 
 
 
