@@ -30,4 +30,13 @@ class IngresoMedicamento extends Model
     {
         return $this->hasMany(DetalleIngreso::class);
     }
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class);
+    }
+    public function scopeFechaIngreso($query, $fechaIngreso){
+        if($fechaIngreso){
+            return $query->where('fechaIngreso',$fechaIngreso);
+        }
+    }
 }

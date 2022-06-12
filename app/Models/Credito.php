@@ -25,6 +25,10 @@ class Credito extends Model
     {
         return $this->hasMany(IngresoMedicamento::class);
     }
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class);
+    }
     /*public function abono()
     {
         return $this->hasMany(Abono::class);

@@ -93,10 +93,12 @@
       </div>
     </div>
     <div class="col-sm-9 mb-4 d-flex">
+      
 <div class="card">
   <div class="card-header">
       <i class="fas fa-table"></i>
         Medicamentos entrantes
+        <a href="{{ route('ingresomed.create') }}" class="btn btn-info float-md-right">Finalizar</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -105,25 +107,25 @@
             <tr>
             <th scope="col">id</th>
             <th scope="col">Medicamento</th>
-            <th scope="col">Cantidad de ingreso</th>
-            <th scope="col">Precio de compra</th>
-            <th scope="col">Descuento de ingreso</th>
-            <th scope="col">Fecha de vencimiento</th>
-            <th scope="col">Precio de unidad comprada</th>
-            <th scope="col">Precio de venta unidad</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">Precio compra</th>
+            <th scope="col">Descuento (%)</th>
+            <th scope="col">Fecha vencimiento</th>
+            <th scope="col">Precio Compra(u.)</th>
+            <th scope="col">precio venta (u.)</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tfoot>
             <tr>
-              <th scope="col">id</th>
-              <th scope="col">Medicamento</th>
-              <th scope="col">Cantidad de ingreso</th>
-              <th scope="col">Precio de compra</th>
-              <th scope="col">Descuento de ingreso</th>
-              <th scope="col">Fecha de vencimiento</th>
-              <th scope="col">Precio de unidad comprada</th>
-              <th scope="col">Precio de venta unidad</th>
+            <th scope="col">id</th>
+            <th scope="col">Medicamento</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">Precio compra</th>
+            <th scope="col">Descuento (%)</th>
+            <th scope="col">Fecha vencimiento</th>
+            <th scope="col">Precio Compra(u.)</th>
+            <th scope="col">precio venta (u.)</th>
               <th scope="col">Acciones</th>
             </tr>
           </tfoot>
@@ -140,7 +142,7 @@
                 <td>{{$itemDet->precioVentaUnidad}}</td>
                 <td>
                     <a href="{{route('detalleingreso.edit', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet]) }}" ><i class="fa fa-edit"></i></a>
-                    <a href="{{route('detalleingreso.destroy', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet]) }}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{route('detalleingreso.destroy', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet]) }}" data-toggle="modal" data-target="#deleteModal" data-ingresoid="{{$ingreso->id}}" data-detalleid="{{$itemDet->id}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>
           @endforeach
@@ -151,8 +153,48 @@
 </div>
 </div>
 </div>
+
+ <!-- delete Modal-->
+ <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de que quieres eliminar esto?
+</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a este ingreso
+</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="">
+                    @method('GET')
+                    @csrf
+                    <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
+                    <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Borrar</a>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+</div>
 @section('js_venta_page')
 
+<script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) 
+            var ingreso_id = button.data('ingresoid') 
+            var detalle_id = button.data('detalleid') 
+            
+            var modal = $(this)
+            // modal.find('.modal-footer #user_id').val(user_id)
+            modal.find('form').attr('action','/ingresomed/detalle/destroy/' + ingreso_id + '/' + detalle_id);
+        })
+    </script>
     <script>
 $(document).ready(function() {
     $('#dataTable7').DataTable({

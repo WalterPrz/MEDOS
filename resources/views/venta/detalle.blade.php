@@ -98,7 +98,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('detalleventa.destroy', ['venta' => $venta, 'detalleVenta' => $item]) }}"
-                                            ><i class="fas fa-trash-alt"></i></a>
+                                        data-toggle="modal" data-target="#deleteModal" data-ventaid="{{$venta->id}}" data-detalleid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -162,9 +162,48 @@
             </div>
         @endif
     </div>
+
+     <!-- delete Modal-->
+ <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de que quieres eliminar esto?
+</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a este medicamento de la venta 
+</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="">
+                    @method('GET')
+                    @csrf
+                    <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
+                    <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Borrar</a>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+</div>
     
     @section('js_venta_page')
-
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) 
+            var venta_id = button.data('ventaid') 
+            var detalle_id = button.data('detalleid') 
+            
+            var modal = $(this)
+            // modal.find('.modal-footer #user_id').val(user_id)
+            modal.find('form').attr('action','/venta/detalle/' + venta_id + '/eliminar/' + detalle_id);
+        })
+    </script>
 <script>
     $(document).ready(function() {
     $('#dataTable12').DataTable({
