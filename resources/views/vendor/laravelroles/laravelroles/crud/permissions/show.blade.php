@@ -68,7 +68,7 @@
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-id') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     @isset($typeDeleted)
                                         {{ $item->id }}
                                     @else
@@ -78,7 +78,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-name') !!}
-                                <span class="badge badge-pill">
+                                <span >
                                     @isset($typeDeleted)
                                         {{ $item->name }}
                                     @else
@@ -88,7 +88,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-slug') !!}
-                                <span class="badge badge-pill">
+                                <span >
                                     @isset($typeDeleted)
                                         {{ $item->slug }}
                                     @else
@@ -98,7 +98,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.permission-info-card.permission-model') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     @isset($typeDeleted)
                                         {{ $item->model }}
                                     @else
@@ -213,7 +213,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.created') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     @isset($typeDeleted)
                                         {!! $item->created_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     @else
@@ -223,7 +223,7 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {!! trans('laravelroles::laravelroles.cards.role-info-card.updated') !!}
-                                <span class="badge badge-pill">
+                                <span>
                                     @isset($typeDeleted)
                                         {!! $item->updated_at->format(trans('laravelroles::laravelroles.date-format')) !!}
                                     @else
