@@ -20,7 +20,6 @@
         </div>
         <form action="{{ route('detalleingreso.update', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$detalleIngreso->id]) }}" method='POST'>
           @csrf
-          @method('put')
           <div class="card-body">
             <div class="row">
               <div class="col-md-12">
