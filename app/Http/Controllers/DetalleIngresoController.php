@@ -6,7 +6,7 @@ use App\Models\DetalleIngreso;
 use App\Models\Medicamento;
 use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\DetalleIngresoMedicamentoRequest;
 class DetalleIngresoController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class DetalleIngresoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, IngresoMedicamento $ingreso)
+    public function store(DetalleIngresoMedicamentoRequest $request, IngresoMedicamento $ingreso)
     {
         try{
             $detalleIngreso =  new DetalleIngreso();
@@ -93,7 +93,7 @@ class DetalleIngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
+    public function update(DetalleIngresoMedicamentoRequest $request, IngresoMedicamento $ingreso, DetalleIngreso $detalleIngreso)
     {
 
         try{

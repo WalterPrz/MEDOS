@@ -66,6 +66,7 @@
             </div>
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <x-errores class="mb-4" />
             <form action="{{route('ingresomed.store')}}" method='POST'>
                     @csrf
                     <div class="card-body">

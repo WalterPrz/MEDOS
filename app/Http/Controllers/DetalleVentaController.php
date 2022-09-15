@@ -6,7 +6,7 @@ use App\Models\DetalleVenta;
 use App\Models\Medicamento;
 use App\Models\Venta;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\DetalleVentaRequest;
 class DetalleVentaController extends Controller
 {
     public function index(Venta $venta, Request $request)
@@ -54,7 +54,7 @@ class DetalleVentaController extends Controller
     {
 
     }
-    public function update(Request $request, Venta $venta, String $detalleVenta)
+    public function update(DetalleVentaRequest $request, Venta $venta, String $detalleVenta)
     {
         try{
             $detalleVenta =  DetalleVenta::find($detalleVenta);

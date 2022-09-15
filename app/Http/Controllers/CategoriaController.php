@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CategoriaRequest;
 class CategoriaController extends Controller
 {
     public function index()
@@ -12,7 +12,7 @@ class CategoriaController extends Controller
         $categorias = Categoria::all();
         return view('categoria.index', compact('categorias'));
     }
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
         try{
             $categoria = new Categoria();
@@ -25,7 +25,7 @@ class CategoriaController extends Controller
         }
     }
 
-    public function show(Categoria $categoria)
+    public function show(CategoriaRequest $categoria)
     {
         try{
             return view('categoria.edit', compact('categoria'));

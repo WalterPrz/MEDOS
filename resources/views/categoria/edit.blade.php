@@ -2,15 +2,6 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 <div class="container">
     <div class="row">
         <div class="col-sm-12"></div>
@@ -28,6 +19,7 @@
                         </div>
                     </div>
                 </div>
+                <x-errores class="mb-4" />
                 <form action="{{route('categoria.update',$categoria)}}" method="POST">
                 @csrf
                 @method('put')
@@ -37,13 +29,13 @@
                                 <div class="form-group has-feedback row">
                                     <label for="nombre" class="col-12 control-label">Nombre de categoria:</label>
                                     <div class="col-12">
-                                      <input value="{{$categoria->nombre}}" id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la categoría" required>
+                                      <input value="{{old('nombre',$categoria->nombre)}}" id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la categoría" required>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="descripcion" class="col-12 control-label">Descripcion de categoria:</label>
                                     <div class="col-12">
-                                      <textarea name="descripcion" class="form-control" id="descripcion" rows="3">{{$categoria->descripcion}}</textarea>
+                                      <textarea name="descripcion" class="form-control" id="descripcion" rows="3">{{old('descripcion',$categoria->descripcion)}}</textarea>
                                     </div>
                                 </div>
                             </div>

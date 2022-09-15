@@ -19,6 +19,7 @@
                         </div>
                     </div>
                 </div>
+                <x-errores class="mb-4" />
                 <form action="{{route('categoria.store')}}" method="POST">
                 @csrf
                 <div class="card-body">
@@ -27,13 +28,13 @@
                                 <div class="form-group has-feedback row">
                                     <label for="nombre" class="col-12 control-label">Nombre de categoria:</label>
                                     <div class="col-12">
-                                      <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la categoría" required>
+                                      <input id="nombre" type="text" class="form-control" name="nombre" value="{{old('nombre')}}" placeholder="Nombre de la categoría" >
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="descripcion" class="col-12 control-label">Descripcion de categoria:</label>
                                     <div class="col-12">
-                                      <textarea name="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
+                                      <textarea name="descripcion" class="form-control" value="{{old('descripcion')}}" id="descripcion" rows="3">{{old('descripcion')}}</textarea>
                                     </div>
                                 </div>
                             </div>

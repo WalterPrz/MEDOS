@@ -19,6 +19,8 @@
                         </div>
                     </div>
                 </div>
+
+                <x-errores class="mb-4" />
                 <form action="{{route('proveedor.update',$proveedor)}}" method="POST">
                 @csrf
                 @method('put')
@@ -28,35 +30,35 @@
                                 <div class="form-group has-feedback row">
                                     <label for="nombreProveedor" class="col-12 control-label">Nombre proveedor:</label>
                                     <div class="col-12">
-                                    <input  value="{{$proveedor->nombreProveedor}}" id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" placeholder="Nombre de el proveedor" required>
+                                    <input  value="{{old('nombreProveedor',$proveedor->nombreProveedor)}}" id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" placeholder="Nombre de el proveedor" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoProveedor" class="col-12 control-label">Teléfono proveedor:</label>
                                     <div class="col-12">
-                                    <input value="{{$proveedor->telefonoProveedor}}" id="telefonoProveedor" type="tel" class="form-control" name="telefonoProveedor" placeholder="(Código de área) Número">
+                                    <input value="{{old('telefonoProveedor',$proveedor->telefonoProveedor)}}" id="telefonoProveedor" type="tel" class="form-control" name="telefonoProveedor" placeholder="(Código de área) Número">
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <label for="nombreVendedor" class="col-12 control-label">Nombre vendedor encargado:</label>
                                     <div class="col-12">
-                                    <input value="{{$proveedor->nombreVendedor}}" id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" placeholder="Nombre de el vendedor">
+                                    <input value="{{old('nombreVendedor',$proveedor->nombreVendedor)}}" id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" placeholder="Nombre de el vendedor">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoVendedor" class="col-12 control-label">Teléfono vendedor encargado:</label>
                                     <div class="col-12">
-                                    <input  value="{{$proveedor->telefonoVendedor}}" id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" placeholder="(Código de área) Número">
+                                    <input  value="{{old('telefonoVendedor',$proveedor->telefonoVendedor)}}" id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" placeholder="(Código de área) Número">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="plazoDevolucion" class="col-12 control-label">Plazo de devolución (días):</label>
                                     <div class="col-12">
-                                    <input value="{{$proveedor->plazoDevolucion}}" id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" placeholder="Plazo de devolución en dias">
+                                    <input value="{{old('plazoDevolucion',$proveedor->plazoDevolucion)}}" id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" placeholder="Plazo de devolución en dias">
                                     </div>
                                 </div>
                                 

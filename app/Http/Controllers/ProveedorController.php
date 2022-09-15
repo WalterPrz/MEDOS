@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProveedorRequest;
 class ProveedorController extends Controller
 {
     /**
@@ -24,7 +24,7 @@ class ProveedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProveedorRequest $request)
     {
         try{
             $proveedor = new Proveedor();
@@ -63,7 +63,7 @@ class ProveedorController extends Controller
      * @param  \App\Models\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(ProveedorRequest $request, Proveedor $proveedor)
     {
         try{
 

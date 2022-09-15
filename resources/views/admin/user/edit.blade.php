@@ -3,15 +3,7 @@
 @section('content')
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12"></div>
@@ -38,44 +30,66 @@
                                 <div class="form-group has-feedback row">
                                     <label for="name" class="col-12 control-label">Nombre de usuario:</label>
                                     <div class="col-12">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" value="{{ $user->name }}" required>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" value="{{old('name',$user->name)  }}" required>
                                     </div>
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="email" class="col-12 control-label">Correo:</label>
                                     <div class="col-12">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Correo" value="{{ $user->email }}">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Correo" value="{{old('email',$user->email)  }}">
                                     </div>
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="nombres" class="col-12 control-label">Nombres:</label>
                                     <div class="col-12">
-                                        <input type="text" name="nombres" class="form-control" id="nombres" placeholder="Nombres del usuario" value="{{ $user->nombres }}" required>
+                                        <input type="text" name="nombres" class="form-control" id="nombres" placeholder="Nombres del usuario" value="{{old('nombres',$user->nombres)  }}" required>
                                     </div>
+                                    @error('nombres')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="apellidos" class="col-12 control-label">Apellidos:</label>
                                     <div class="col-12">
-                                        <input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Apellidos del usuario" value="{{ $user->apellidos }}" required>
+                                        <input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Apellidos del usuario" value="{{old('apellidos',$user->apellidos)  }}" required>
                                     </div>
+                                    @error('apellidos')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="cargo" class="col-12 control-label">Cargo:</label>
                                     <div class="col-12">
-                                        <input type="text" name="cargo" class="form-control" id="cargo" placeholder="Cargo del usuario" value="{{ $user->cargo }}" required>
+                                        <input type="text" name="cargo" class="form-control" id="cargo" placeholder="Cargo del usuario" value="{{old('cargo',$user->cargo)  }}" required>
                                     </div>
+                                    @error('cargo')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="password" class="col-12 control-label">Contraseña:</label>
                                     <div class="col-12">
                                         <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" minlength="8">
                                     </div>
+
+                                    @error('password')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <label for="password_confirmation" class="col-12 control-label">Confirmar contraseña:</label>
                                     <div class="col-12">
                                         <input type="password" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña" id="password_confirmation">
                                     </div>
+                                    @error('password_confirmation')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
@@ -84,10 +98,17 @@
                                     <select class="role form-control" name="role" id="role">
                                         <option value="">Seleccione un rol</option>
                                         @foreach ($roles as $role)
+                                        @if (old('role')==$role->id)
+                                        <option selected data-role-id="{{$role->id}}" data-role-slug="{{$role->slug}}" value="{{$role->id}}">{{$role->name}}</option>
+                                        @else
                                         <option data-role-id="{{$role->id}}" data-role-slug="{{$role->slug}}" value="{{$role->id}}" {{ $user->roles->isEmpty() || $role->name != $userRole->name ? "" : "selected"}}>{{$role->name}}</option>                
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('role')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 <div id="permissions_box" >
                                     <label for="roles">Permisos que tiene el rol</label>
                                     <div id="permissions_ckeckbox_list">

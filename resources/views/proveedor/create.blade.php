@@ -18,6 +18,7 @@
                         </div>
                     </div>
                 </div>
+                <x-errores class="mb-4" />
                 <form action="{{route('proveedor.store')}}" method="POST">
                 @csrf
                 <div class="card-body">
@@ -26,35 +27,35 @@
                                 <div class="form-group has-feedback row">
                                     <label for="nombreProveedor" class="col-12 control-label">Nombre proveedor:</label>
                                     <div class="col-12">
-                                    <input id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" placeholder="Nombre de el proveedor" required>
+                                    <input id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" value="{{old('nombreProveedor')}}" placeholder="Nombre de el proveedor" >
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoProveedor" class="col-12 control-label">Teléfono proveedor:</label>
                                     <div class="col-12">
-                                    <input id="telefonoProveedor" type="tel" class="form-control" name="telefonoProveedor" placeholder="(Código de área) Número">
+                                    <input id="telefonoProveedor" type="tel" class="form-control" name="telefonoProveedor" value="{{old('telefonoProveedor')}}" placeholder="(Código de área) Número">
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <label for="nombreVendedor" class="col-12 control-label">Nombre vendedor encargado:</label>
                                     <div class="col-12">
-                                    <input id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" placeholder="Nombre de el vendedor">
+                                    <input id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" value="{{old('nombreVendedor')}}" placeholder="Nombre de el vendedor">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoVendedor" class="col-12 control-label">Teléfono vendedor encargado:</label>
                                     <div class="col-12">
-                                    <input id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" placeholder="(Código de área) Número">
+                                    <input id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" value="{{old('telefonoVendedor')}}" placeholder="(Código de área) Número">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="plazoDevolucion" class="col-12 control-label">Plazo de devolución (días):</label>
                                     <div class="col-12">
-                                    <input id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" placeholder="Plazo de devolución en dias">
+                                    <input id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" value="{{old('plazoDevolucion')}}" placeholder="Plazo de devolución en dias">
                                     </div>
                                 </div>
                                 

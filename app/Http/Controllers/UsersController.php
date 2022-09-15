@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use jeremykenedy\LaravelRoles\Models\Role;
-
+use App\Http\Requests\UsuarioRequest;
+use App\Http\Requests\UsuarioUpdateRequest;
 class UsersController extends Controller
 {
     /**
@@ -45,17 +46,9 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        //validate the fields
-        $request->validate([
-            'name' => 'required|max:191',
-            'email' => 'required|max:191|unique:users|email',
-            'nombres' => 'required|max:191',
-            'apellidos' => 'required|max:191',
-            'password' => 'required|between:8,191|confirmed',
-            'password_confirmation' => 'required' 
-        ]);
+        
 
         $user = new User;
         $user->name = $request->name;
@@ -112,17 +105,10 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UsuarioUpdateRequest $request, User $user)
     {
 
          //validate the fields
-         $request->validate([
-            'name' => 'required|max:191',
-            'email' => 'required|max:191|email',
-            'nombres' => 'required|max:191',
-            'apellidos' => 'required|max:191',
-            'password' => 'confirmed|max:191' 
-        ]);
 
         $user->name = $request->name;
         $user->email = $request->email;

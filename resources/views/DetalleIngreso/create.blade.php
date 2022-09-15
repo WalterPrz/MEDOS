@@ -1,15 +1,6 @@
 @extends('admin.layouts.index')
 
 @section('content')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
   <div class="row">
     <div class="col-sm-3 mb-4 d-flex">
       <div class="card card-post" id="post_card">
@@ -18,7 +9,7 @@
             Detalle del ingreso
           </div>
         </div>
-        <form action="{{ route('detalleingreso.store', ['ingreso'=>$ingreso->id]) }}" method='POST'>
+        <form action="{{ route('detalleingreso.store', ['ingreso'=>$ingreso->id]) }}" method='POST' class="needs-validation">
           @csrf
           <div class="card-body">
             <div class="row">
@@ -27,48 +18,76 @@
                   <label for="medicamento" class="col-12 control-label">Seleccionar medicamento:</label>
                   <div class="col-12">
                     <select class="medicamento form-control" name="medicamento" id="medicamento">
-                      <option selected='true' disabled='disabled'>Seleccionar medicamento</option>
+                      <option selected disabled='disabled'>Seleccionar medicamento</option>
                       @foreach( $medicamentos as $item )
-                      <option value="{{ $item->id }}">{{ $item->nombre_comercial }}</option>
+                      @if (old('medicamento')==$item->id)
+                          <option value="{{$item->id}}" selected>{{$item->nombre_comercial}}</option>
+                      @else
+                      <option value="{{$item->id}}">{{ $item->nombre_comercial }}</option>
+                      @endif
                       @endforeach
                     </select>
+                    @error('medicamento')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="cantidadIngreso" class="col-12 control-label">Cantidad ingresada:</label>
                   <div class="col-12">
-                    <input id='cantidadIngreso' type='number' min='1' class='form-control' name='cantidadIngreso' placeholder='Cantidad ingresada'>
+                    <input id='cantidadIngreso' type='number' value="{{old('cantidadIngreso')}}" min='1' class='form-control' name='cantidadIngreso' placeholder='Cantidad ingresada'>
                   </div>
+                  @error('cantidadIngreso')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioCompra" class="col-12 control-label">Precio de compra:</label>
                   <div class="col-12">
-                    <input id='precioCompra' type='number' min='0.01' step='0.01' class='form-control' name='precioCompra' placeholder='Precio de la compra'>
+                    <input id='precioCompra' type='number' min='0.01'  value="{{old('precioCompra')}}" step='0.01' class='form-control' name='precioCompra' placeholder='Precio de la compra'>
                   </div>
+
+                  @error('precioCompra')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="descuentoIngreso" class="col-12 control-label">Descuento:</label>
                   <div class="col-12">
-                    <input id='descuentoIngreso' type='text' class='form-control' name='descuentoIngreso' placeholder='Descuento'>
+                    <input id='descuentoIngreso' type='text' value="{{old('descuentoIngreso')}}" class='form-control' name='descuentoIngreso' placeholder='Descuento'>
                   </div>
+                  @error('descuentoIngreso')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               <div class="form-group has-feedback row">
                   <label for="fechaVenc" class="col-12 control-label">Fecha de vencimiento:</label>
                   <div class="col-12">
-                    <input id='fechaVenc' type='date' min="{{ date('Y-m-d') }}" class='form-control' name='fechaVenc' placeholder='Fecha de vencimiento'>
+                    <input id='fechaVenc' value="{{old('fechaVenc')}}" type='date' min="{{ date('Y-m-d') }}" class='form-control' name='fechaVenc' placeholder='Fecha de vencimiento'>
                   </div>
+
+                  @error('fechaVenc')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioCompraUnidad" class="col-12 control-label">Precio de compra por unidad:</label>
                   <div class="col-12">
-                    <input id='precioCompraUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioCompraUnidad' placeholder='Precio de compra por unidad'>
+                    <input id='precioCompraUnidad'  value="{{old('precioCompraUnidad')}}" type='number' min='0.01' step='0.01' class='form-control' name='precioCompraUnidad' placeholder='Precio de compra por unidad'>
                   </div>
+
+                  @error('precioCompraUnidad')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioVentaUnidad" class="col-12 control-label">Precio de venta:</label>
                   <div class="col-12">
-                    <input id='precioVentaUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioVentaUnidad' placeholder='Precio de venta'>
+                    <input id='precioVentaUnidad'  value="{{old('precioVentaUnidad')}}" type='number' min='0.01' step='0.01' class='form-control' name='precioVentaUnidad' placeholder='Precio de venta'>
                   </div>
+                  @error('precioVentaUnidad')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
             </div>

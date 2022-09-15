@@ -6,7 +6,7 @@ use App\Models\Proveedor;
 use App\Models\IngresoMedicamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\IngresoMedicamentoRequest;
 class IngresoMedicamentoController extends Controller
 {
     public function index()
@@ -33,7 +33,7 @@ class IngresoMedicamentoController extends Controller
         $proveedors=Proveedor::all();
         return view('IngresoMedicamento.create', compact('ingresoMedicamentos','creditos','proveedors'));
     }
-    public function store(Request $request)
+    public function store(IngresoMedicamentoRequest $request)
     {
         try{
             $credito = new Credito();

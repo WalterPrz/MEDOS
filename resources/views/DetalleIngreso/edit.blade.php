@@ -1,16 +1,6 @@
 @extends('admin.layouts.index')
 @section('content')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="container">
       <div class="card card-post" id="post_card">
         <div class="card-header">
@@ -30,6 +20,9 @@
                       <option disabled='disabled'>Seleccionar medicamento</option>
                       @foreach( $medicamentos as $item )
 
+                        @if (old('medicamento')==$item->id)
+                        <option value="{{$item->id}}" selected>{{$item->nombre_comercial}}</option>
+                        @endif
                         @if ($item->id == $detalleIngreso->medicamento->id)
                           <option selected='true' value="{{ $item->id }}">{{ $item->nombre_comercial }}</option>
                         @else
@@ -39,42 +32,63 @@
                       @endforeach
                     </select>
                   </div>
+                  @error('medicamento')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="cantidadIngreso" class="col-12 control-label">Cantidad ingresada:</label>
                   <div class="col-12">
-                    <input id='cantidadIngreso' type='number' min='1' class='form-control' name='cantidadIngreso' placeholder='Cantidad ingresada' value='{{ $detalleIngreso->cantidadIngreso }}'>
+                    <input id='cantidadIngreso' type='number' min='1' class='form-control' name='cantidadIngreso' placeholder='Cantidad ingresada' value='{{old('cantidadIngreso',$detalleIngreso->cantidadIngreso ) }}'>
                   </div>
+                  @error('cantidadIngreso')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioCompra" class="col-12 control-label">Precio de compra:</label>
                   <div class="col-12">
-                    <input id='precioCompra' type='number' min='0.01' step='0.01' class='form-control' name='precioCompra' placeholder='Precio de la compra' value='{{ $detalleIngreso->precioCompra }}'>
+                    <input id='precioCompra' type='number' min='0.01' step='0.01' class='form-control' name='precioCompra' placeholder='Precio de la compra' value='{{old('precioCompra',$detalleIngreso->precioCompra)  }}'>
                   </div>
+                  @error('precioCompra')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="descuentoIngreso" class="col-12 control-label">Descuento:</label>
                   <div class="col-12">
-                    <input id='descuentoIngreso' type='text' class='form-control' name='descuentoIngreso' placeholder='Descuento' value='{{ $detalleIngreso->descuentoIngreso }}'>
+                    <input id='descuentoIngreso' type='text' class='form-control' name='descuentoIngreso' placeholder='Descuento' value='{{old('descuentoIngreso',$detalleIngreso->descuentoIngreso)  }}'>
                   </div>
+                  @error('descuentoIngreso')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               <div class="form-group has-feedback row">
                   <label for="fechaVenc" class="col-12 control-label">Fecha de vencimiento:</label>
                   <div class="col-12">
-                    <input id='fechaVenc' type='date' min="{{ date('Y-m-d') }}" class='form-control' name='fechaVenc' placeholder='Fecha de vencimiento' value='{{ $detalleIngreso->fechaVenc }}'>
+                    <input id='fechaVenc' type='date' min="{{ date('Y-m-d') }}" class='form-control' name='fechaVenc' placeholder='Fecha de vencimiento' value='{{old('fechaVenc', $detalleIngreso->fechaVenc) }}'>
                   </div>
+                  @error('fechaVenc')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioCompraUnidad" class="col-12 control-label">Precio de compra por unidad:</label>
                   <div class="col-12">
-                    <input id='precioCompraUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioCompraUnidad' placeholder='Precio de compra por unidad' value='{{ $detalleIngreso->precioCompraUnidad }}'>
+                    <input id='precioCompraUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioCompraUnidad' placeholder='Precio de compra por unidad' value='{{old('precioCompraUnidad',$detalleIngreso->precioCompraUnidad)  }}'>
                   </div>
+                  @error('precioCompraUnidad')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form-group has-feedback row">
                   <label for="precioVentaUnidad" class="col-12 control-label">Precio de venta:</label>
                   <div class="col-12">
-                    <input id='precioVentaUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioVentaUnidad' placeholder='Precio de venta' value='{{ $detalleIngreso->precioVentaUnidad }}'>
+                    <input id='precioVentaUnidad' type='number' min='0.01' step='0.01' class='form-control' name='precioVentaUnidad' placeholder='Precio de venta' value='{{old('precioVentaUnidad',$detalleIngreso->precioVentaUnidad)  }}'>
                   </div>
+                  @error('precioVentaUnidad')
+                  <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
             </div>

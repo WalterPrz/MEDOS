@@ -85,9 +85,12 @@
                                             @csrf
                                             @method('put')
                                             <div class="input-group mb-3">
-                                                <input type="text" value="{{ $item->cantidad_venta }}"
+                                                <input type="text" value="{{ old('cantidad_venta',$item->cantidad_venta) }}"
                                                     name="cantidad_venta" class="form-control" placeholder="Cantidad"
                                                     aria-label="Cantidad" aria-describedby="button-addon2">
+                                                    @error('cantidad_venta')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 <button class="btn btn-success" type="submit"
                                                     id="button-addon2">Actualizar</button>
                                             </div>
