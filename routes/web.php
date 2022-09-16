@@ -11,6 +11,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\InventarioController;
 use App\Models\DetalleVenta;
+use App\Http\Controllers\CitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,9 @@ Route::middleware([
     Route::get('venta/detalle/{venta}', [DetalleVentaController::class,'index'])->name('venta.detalle');
     Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
     Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
-Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
+    Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
+
+    Route::resource('/citas', CitaController::class);
 
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
@@ -99,6 +102,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
 
     });
+
 });
 
 

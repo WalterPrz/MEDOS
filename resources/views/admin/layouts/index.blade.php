@@ -121,6 +121,12 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Categoria</span></a>
       </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/citas">
+          <i class="fas fa-fw fa-calendar"></i>
+            <span>Citas</span></a>
+      </li>
     </ul>
 
     <div id="content-wrapper">
