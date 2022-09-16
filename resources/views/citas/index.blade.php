@@ -48,24 +48,28 @@
             @foreach($citas as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>
-                    @if ($item->user->isNotEmpty())
-                        <span class="badge badge-secondary">
-                            {{user->name}}
-                        </span>
-                    @endif
-                </td>
+                <td>{{$item->user->name}}</td>
                 <td>{{$item->especialidad}}</td>
                 <td>{{$item->paciente}}</td>
                 <td>{{$item->fecha_cita}}</td>
                 <td>{{$item->hora_cita}}</td>
-                <td>{{$item->descricpion}}</td>
-                <td>{{$item->estado}}</td>
-                
+                <td>{{$item->descripcion}}</td>
                 <td>
-                    <a href="/citas/{{ $citas['id'] }}"><i class="fa fa-eye"></i></a>
-                    <a href="/citas/{{ $citas['id'] }}/edit"><i class="fa fa-edit"></i></a>
-                    <a href="#" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$citas['id']}}"><i class="fas fa-trash-alt"></i></a>
+                    @if($item->estado == 1)
+                        <span class="badge badge-success">
+                            Activo
+                        </span>
+                    @endif
+                    @if($item->estado != 1)
+                        <span class="badge badge-danger">
+                            Inactivo
+                        </span>
+                    @endif
+                </td>
+                <td>
+                    <a href="/citas/{{ $item['id'] }}"><i class="fa fa-eye"></i></a>
+                    <a href="/citas/{{ $item['id'] }}/edit"><i class="fa fa-edit"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item['id']}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>
           @endforeach

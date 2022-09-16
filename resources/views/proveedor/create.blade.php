@@ -12,7 +12,7 @@
             <div class="card card-post" id="post_card">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        Creando categoria: 
+                        Creando proveedor: 
                         <div class="pull-right">
                             <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de proveedores">Regresar</a>
                         </div>
