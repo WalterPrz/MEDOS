@@ -121,6 +121,18 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Categoria</span></a>
       </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/diagnostico">
+            <i class="fa fa-user-md" aria-hidden="true"></i>
+            <span>Consultas</span></a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/referenciaMedica">
+            <i class="fa fa-ambulance" aria-hidden="true"></i>
+            <span>Emitir referencia medica</span></a>
+      </li>
     </ul>
 
     <div id="content-wrapper">
