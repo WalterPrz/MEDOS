@@ -21,4 +21,9 @@ class Cita extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function scopeFechaCita($query, $fecha_cita){
+        if($fecha_cita){
+            return $query->where('fecha_cita',$fecha_cita);
+        }
+    }
 }

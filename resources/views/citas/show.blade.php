@@ -56,6 +56,11 @@
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Estado:
+                                @if($cita->estado == 2)
+                                    <span class="badge badge-primary">
+                                        Confirmada
+                                    </span>
+                                @endif
                                 @if($cita->estado == 1)
                                     <span class="badge badge-success">
                                         Pendiente

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('fecha_cita');
             $table->time('hora_cita');
             $table->string('descripcion');
-            $table->boolean('estado');
+            $table->integer('estado');
             $table->timestamps();
             $table->softDeletes();
 

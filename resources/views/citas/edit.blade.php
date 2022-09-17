@@ -77,6 +77,7 @@
                                     </div>
                                 </div>
                                 
+                                <input id="estado" type="hidden" class="form-control" name="estado" value="{{old('estado', $cita->estado)}}" placeholder="Estado">
                                 
                             </div>
                           </div>

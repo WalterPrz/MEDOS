@@ -10,10 +10,23 @@ use Illuminate\Support\Facades\Auth;
 
 class CitaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $fecha_cita_confirmada= $request->get('fecha_cita_confirmada');
+        $fecha_cita_cancelada= $request->get('fecha_cita_cancelada');
+        $fecha_cita_pendiente= $request->get('fecha_cita_pendiente');
+        $citasConfirmadas = Cita::all()
+            ->where('estado', 2);
+        $citasPendientes= Cita::all()
+            ->where('estado', 1);
+        $citasCanceladas = Cita::all()
+            ->where('estado', 0);
+
+        $citasCanceladasFiltradas = Cita::where('estado',0)
+        ->fechaCita($fecha_cita_cancelada)
+        ->get();
         $citas = Cita::all();
-        return view('citas.index',  ['citas' => $citas]);
+        return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas', 'citasCanceladasFiltradas'));
     }
     public function create(){
         return view('citas.create');
@@ -28,7 +41,7 @@ class CitaController extends Controller
         $cita->fecha_cita = $request->fecha_cita;
         $cita->hora_cita = $request->hora_cita;
         $cita->descripcion = $request->descripcion;
-        $cita->estado = true;
+        $cita->estado = 1;
         $cita->save();
 
         return redirect('/citas');
@@ -50,6 +63,14 @@ class CitaController extends Controller
         $cita->fecha_cita = $request->fecha_cita;
         $cita->hora_cita = $request->hora_cita;
         $cita->descripcion = $request->descripcion;
+        $cita->estado = $request->estado;
+        $cita->save();
+
+        return redirect('/citas');
+    }
+
+    public function cancel(Cita $cita){
+        $cita->estado = 0;
         $cita->save();
 
         return redirect('/citas');

@@ -64,6 +64,7 @@ Route::middleware([
     Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
     Route::resource('/citas', CitaController::class);
+    Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
 
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
