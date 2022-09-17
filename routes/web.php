@@ -12,6 +12,7 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\InventarioController;
 use App\Models\DetalleVenta;
 use App\Http\Controllers\ListaVisitasController;
+use App\Http\Controllers\ExpedienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +104,11 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     //listar
     Route::get('visita', [ListaVisitasController::class,'index'])->name('diagnostico.visita');
     // ver detalle visitas
-});Route::get('visita/{diagnostico}', [ListaVisitasController::class,'show'])->name('diagnostico.show');
+    Route::get('visita/{diagnostico}', [ListaVisitasController::class,'show'])->name('diagnostico.show');
+    //----------------------------  Expediente ----------------------------------------------
+    //listar
+    Route::get('expediente', [ExpedienteController::class,'index'])->name('expediente.index');
+});
 
 
 
