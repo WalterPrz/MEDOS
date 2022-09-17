@@ -33,4 +33,25 @@ class CitaController extends Controller
 
         return redirect('/citas');
     }
+
+    public function show(Cita $cita)
+    {
+        return view('citas.show', ['cita' => $cita]);
+    }
+
+    public function edit(Cita $cita){
+        return view ('citas.edit', ['cita' => $cita]);
+    }
+
+    public function update(CitaRequest $request, Cita $cita)
+    {
+        $cita->especialidad = $request->especialidad;
+        $cita->paciente = $request->paciente;
+        $cita->fecha_cita = $request->fecha_cita;
+        $cita->hora_cita = $request->hora_cita;
+        $cita->descripcion = $request->descripcion;
+        $cita->save();
+
+        return redirect('/citas');
+    }
 }
