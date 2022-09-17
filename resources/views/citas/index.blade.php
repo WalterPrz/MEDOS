@@ -22,11 +22,9 @@
             <tr>
             <th scope="col">id</th>
             <th scope="col">Registró</th>
-            <th scope="col">Especialidad</th>
             <th scope="col">Paciente</th>
             <th scope="col">Fecha de cita</th>
             <th scope="col">Hora de cita</th>
-            <th scope="col">Descripcion</th>
             <th scope="col">Estado</th>
             <th scope="col">Opciones</th>
           </tr>
@@ -35,11 +33,9 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">Registró</th>
-            <th scope="col">Especialidad</th>
             <th scope="col">Paciente</th>
             <th scope="col">Fecha de cita</th>
             <th scope="col">Hora de cita</th>
-            <th scope="col">Descripcion</th>
             <th scope="col">Estado</th>
             <th scope="col">Opciones</th>
           </tr>
@@ -49,20 +45,18 @@
                 <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->user->name}}</td>
-                <td>{{$item->especialidad}}</td>
                 <td>{{$item->paciente}}</td>
                 <td>{{$item->fecha_cita}}</td>
                 <td>{{$item->hora_cita}}</td>
-                <td>{{$item->descripcion}}</td>
                 <td>
                     @if($item->estado == 1)
                         <span class="badge badge-success">
-                            Activo
+                            Pendiente
                         </span>
                     @endif
                     @if($item->estado != 1)
                         <span class="badge badge-danger">
-                            Inactivo
+                            Cancelada
                         </span>
                     @endif
                 </td>
