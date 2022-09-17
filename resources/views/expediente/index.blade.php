@@ -38,7 +38,7 @@
                 <td>{{$item->fechaApertura}}</td>
                 <td>{{$item->nombrePaciente}}</td>
                 <td>
-                    <a href="{{route('diagnostico.show',$item->id)}}" ><i class="fa fa fa-eye"></i></a>
+                    <a href="{{route('expediente.show',$item->id)}}" ><i class="fa fa fa-eye"></i></a>
                 </td>
                 </tr>
           @endforeach
