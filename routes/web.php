@@ -108,7 +108,6 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
 
 
     });
-<<<<<<< HEAD
         //----------------------------Diagnostico------------------------
      //listar
     Route::get('diagnostico', [DiagnosticoController::class,'index'])->name('diagnostico.index');
@@ -128,7 +127,6 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
 
 
 
-=======
     //----------------------------Visitas de pacientes------------------------
     //listar
     Route::get('visita', [ListaVisitasController::class,'index'])->name('diagnostico.visita');
@@ -137,7 +135,6 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     //----------------------------  Expediente ----------------------------------------------
     //listar
     Route::get('expediente', [ExpedienteController::class,'index'])->name('expediente.index');
->>>>>>> AA19012
 });
 
 
