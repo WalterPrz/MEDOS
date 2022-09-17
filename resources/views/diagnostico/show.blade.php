@@ -25,25 +25,25 @@
                     <div class="card-body">
                         @foreach($diagnostico as $item)
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <li class="list-group-item justify-content-between align-items-center">
                                 <strong>Fecha consulta:</strong>
                                 <span >
                                     {{$item->fecha}}
                                 </span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <li class="list-group-item justify-content-between align-items-center">
                                <strong>Nombre paciente:</strong>
                                 <span >
                                     {{$item->nombrePaciente}}
                                 </span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <li class="list-group-item justify-content-between align-items-center">
                                 <strong>Peso:</strong>
                                 <span >
                                     {{$item->peso}}
                                 </span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <li class="list-group-item justify-content-between align-items-center">
                                 <strong>Altura:</strong>
                                 <span >
                                     {{$item->altura}}
