@@ -65,6 +65,7 @@ Route::middleware([
 
     Route::resource('/citas', CitaController::class);
     Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
+    Route::post('/citas/{cita}/confirm', [CitaController::class,'confirm'])->name('citas.confirm');
 
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos

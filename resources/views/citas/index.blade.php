@@ -173,6 +173,7 @@
                       <a href="/citas/{{ $item['id'] }}"><i class="fa fa-eye"></i></a>
                       <a href="/citas/{{ $item['id'] }}/edit"><i class="fa fa-edit"></i></a>
                       <a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
+                      <a href="#" class="edit" data-toggle="modal" data-target="#confirmarModal" data-citaid="{{$item->id}}"><i class="fa-solid fa-check-to-slot"></i></a>
                     </td>
                   </tr>
                 @endforeach
@@ -251,7 +252,7 @@
                     <td>
                       <a href="/citas/{{ $item['id'] }}"><i class="fa fa-eye"></i></a>
                       <a href="/citas/{{ $item['id'] }}/edit"><i class="fa fa-edit"></i></a>
-                      <a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
+                      <!--<a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>-->
                     </td>
                   </tr>
                 @endforeach
@@ -263,8 +264,7 @@
     </div>
   </div>
 
-                    
-                    <!-- delete Modal-->
+                    <!-- edi9t Modal-->
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -291,6 +291,33 @@
     <div class="card-footer small text-muted"></div>
 </div>
 
+                    <!-- delete Modal-->
+                    <div class="modal fade" id="confirmarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de que quiere confirmar la cita medica?
+</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">Seleccione "Confirmar" Si realmente desea confirmar esta cita
+</div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="" id="confirmarForm">
+                    @csrf()
+                    <button type="submit" class="btn btn-success btn-lg btn-block" name="action">Confirmar</button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+</div>
+
 @section('js_user_page')
 
 <script>
@@ -303,6 +330,14 @@
             
             var modal = $(this)
             modal.find('form').attr('action','/citas/' + cita_id + '/cancel');
+        })
+
+        $('#confirmarModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) 
+            var cita_id = button.data('citaid') 
+            
+            var modal = $(this)
+            modal.find('form').attr('action','/citas/' + cita_id + '/confirm');
         })
 
         

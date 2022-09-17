@@ -75,4 +75,11 @@ class CitaController extends Controller
 
         return redirect('/citas');
     }
+
+    public function confirm(Cita $cita){
+        $cita->estado = 2;
+        $cita->save();
+
+        return redirect('/citas');
+    }
 }
