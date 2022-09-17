@@ -11,6 +11,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\InventarioController;
 use App\Models\DetalleVenta;
+use App\Http\Controllers\ListaVisitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,6 @@ Route::middleware([
     Route::post('venta/detalle/{venta}/{medicamento}',[DetalleVentaController::class,'store'])->name('detalleventa.store');
     Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
 Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
-
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
         Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
@@ -74,11 +74,11 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
         Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
         Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
-    
+
         //Editar ingreso de medicamentos
         Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
         Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
-    
+
         //Dar de baja el detalle del ingreso
         Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
 
@@ -99,7 +99,11 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
 
     });
-});
+    //----------------------------Visitas de pacientes------------------------
+    //listar
+    Route::get('visita', [ListaVisitasController::class,'index'])->name('diagnostico.visita');
+    // ver detalle visitas
+});Route::get('visita/{diagnostico}', [ListaVisitasController::class,'show'])->name('diagnostico.show');
 
 
 
