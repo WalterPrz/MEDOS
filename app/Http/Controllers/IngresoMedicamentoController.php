@@ -26,7 +26,7 @@ class IngresoMedicamentoController extends Controller
         $ingresoMedicamentos = DB::select(
             "SELECT a.id, nombreProveedor,fechaIngreso FROM ingreso_medicamentos a
             INNER JOIN creditos b ON a.credito_id=b.id
-            INNER JOIN proveedors c ON b.idProveedor = c.id
+            INNER JOIN proveedors c ON b.proveedor_id = c.id
             WHERE fechaIngreso LIKE ? ORDER BY a.id;", [$fechaIngreso]
         );
         $creditos = Credito::all();
@@ -37,7 +37,7 @@ class IngresoMedicamentoController extends Controller
     {
         try{
             $credito = new Credito();
-            $credito->idProveedor = $request->proveedor;
+            $credito->proveedor_id = $request->proveedor;
             $credito->save();
             $ingreso = new IngresoMedicamento();
             $ingreso->credito_id = $credito->id;

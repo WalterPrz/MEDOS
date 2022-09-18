@@ -22,6 +22,7 @@ class IngresoMedicamento extends Model
     {
         return $this->belongsTo(Medicamento::class);
     }
+    
     public function credito()
     {
         return $this->belongsTo(Credito::class);
@@ -29,10 +30,6 @@ class IngresoMedicamento extends Model
     public function detalleIngreso()
     {
         return $this->hasMany(DetalleIngreso::class);
-    }
-    public function proveedor()
-    {
-        return $this->belongsTo(Proveedor::class);
     }
     public function scopeFechaIngreso($query, $fechaIngreso){
         if($fechaIngreso){

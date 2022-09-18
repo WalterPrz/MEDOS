@@ -10,7 +10,7 @@ class Credito extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'idProveedor',
+     
         'credito',
         'diaPago',
         'plazo',

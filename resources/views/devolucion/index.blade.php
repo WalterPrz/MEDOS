@@ -6,7 +6,7 @@
        <h2>Devluciones</h2>
     </div>
     <div class="col-md-6">
-        <form action="{{route('detalledevolucion.index')}}" method="GET">
+        <form action="{{route('devolucion.store')}}" method="POST">
             @csrf
             <button type="submit" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Crear una Devolucion</button>
         </form> 
@@ -32,21 +32,32 @@
             <tr>
             <th scope="col">Fecha de devolución</th>
             <th scope="col">Monto Descuentop</th>
-            <th scope="col">Total medicamentos devueltos</th>
+            
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tfoot>
         <tr>
             <th scope="col">Fecha de devolución</th>
-            <th scope="col">Monto Descuentop</th>
-            <th scope="col">Total medicamentos devueltos</th>
+            <th scope="col">Monto Descuento</th>
+            
             <th scope="col">Acciones</th>
           </tr>
         </tfoot>
-        <tbody>
-
-        </tbody>
+        @foreach ($devoluciones as $item)
+        <tr>
+            <td>{{ $item->fechaDevolucion }}</td>
+            <td>{{ $item->montoDescuento }}</td>
+            <td>
+                <a href="{{ route('devolucion.detalle', $item->id) }}"><i class="fa fa-edit"></i></a>
+                <form action="{{route('devolucion.destroy', ['devolucion' => $item->id])}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true"><i class="fa fa-trash"></i></button>
+                </form> 
+            </td>
+        </tr>
+    @endforeach
       </table>
 </div>
 </div>

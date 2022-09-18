@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('detalle_devolucions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('detalle_ingreso_id')->unsigned();
+            $table->foreign('detalle_ingreso_id')->references('id')->on('detalle_ingresos');
+            $table->unsignedBigInteger('devolucion_id')->unsigned();
+            $table->foreign('devolucion_id')->references('id')->on('devolucions');
+            $table->unsignedBigInteger('cantidad')->unsigned();
             $table->timestamps();
         });
     }

@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('devolucions', function (Blueprint $table) {
             $table->id();
+            $table->string('montoDescuento')->nullable(true);
+            $table->date('fechaDevolucion');
+            $table->boolean('estado');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

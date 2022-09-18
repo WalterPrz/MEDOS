@@ -123,9 +123,15 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         //listar
         Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
         Route::get('medicamento-proximo-vencer', [MedProxVencerController::class,'index'])->name('inventario.proxvencer');
+        
+        //dev
         Route::get('devoluciones', [DevolucionController::class,'index'])->name('devolucion.index');
-        Route::get('devolucion/detalle/', [DetalleDevolucionController::class,'index'])->name('detalledevolucion.index');
-
+        Route::post('devoluciones',[DevolucionController::class,'store'])->name('devolucion.store');
+        Route::put('devoluciones/{devolucion}',[DevolucionController::class,'update'])->name('devolucion.update');
+        Route::delete('devoluciones/{devolucion}',[DevolucionController::class,'destroy'])->name('devolucion.destroy');
+        Route::get('devolucion/detalle/{devolucion}', [DetalleDevolucionController::class,'index'])->name('devolucion.detalle');
+        Route::post('devolucion/detalle/{devolucion}/{id_detalle_ingreso}',[DetalleDevolucionController::class,'store'])->name('detalledevolucion.store');
+        Route::put('devolucion/detalle/{devolucion}/{detalle_dev}',[DetalleDevolucionController::class,'update'])->name('detalledevolucion.update');
 
 
 

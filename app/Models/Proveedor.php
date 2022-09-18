@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Proveedor extends Model
 {
     use HasFactory, SoftDeletes;
@@ -27,6 +26,10 @@ class Proveedor extends Model
     }
     public function credito()
     {
-        return $this->hasMany(Credito::class);
+        return $this->hasMany(Credito::class, 'id','proveedor_id');
+    }
+    public function proveedor()
+    {
+        return $this->hasOneThrough(IngresoMedicamento::class, Credito::class);
     }
 }

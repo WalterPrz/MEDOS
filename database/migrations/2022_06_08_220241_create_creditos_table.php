@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('creditos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idProveedor');
+            $table->unsignedBigInteger('proveedor_id')->unsigned();
             //$table->foreignIdFor(Proveedor::class)->references('id')->on('proveedors');
             $table->decimal('credito', $precision = 5, $scale = 2)->nullable();
             $table->string('diaPago',10)->nullable();
             $table->integer('plazo')->nullable();
             $table->decimal('saldoPendiente', $precision = 5, $scale = 2)->nullable();
             $table->string('fechaCreacion',10)->nullable();
+            $table->foreign('proveedor_id')->references('id')->on('proveedors');
             $table->timestamps();
             $table->softDeletes();
         });

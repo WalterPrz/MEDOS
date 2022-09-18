@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <h1>Detalle de la Devolucion</h1>
-        @if (true)
+        @if ($devolucion->estado ==0)
             <div class="row">
                 <div class="col-sm-6"  style="height:40rem;overflow-y: scroll;">
                     <h3>Ingresa los medicamentos</h3>
@@ -22,99 +22,70 @@
                     <table class="table table-bordered" id="dataTable13" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Medicamento</th>
                                     <th scope="col">Fecha Vencimiento</th>
                                     <th scope="col">Fecha Ingreso</th>
-                                    <th scope="col">Cantidad/th>
+                                    <th scope="col">Proveedor</th>
                                     <th scope="col">Agregar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($medicamentos as $item)
+                                @foreach ($filtered as $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
-                                    <td>{{ $item->nombre_comercial }}</td>
-                                    <td>{{ $item->precio_venta }}</td>
+                                    <th>{{ $item->medicamento->nombre_comercial }}</th>
+                                    <td>{{ $item->fechaVenc }}</td>
+                                    <td>{{ $item->ingresoMedicamento->fechaIngreso }}</td>
+                                    <td>{{ $item->ingresoMedicamento->credito->proveedor->nombreProveedor }}</td>
                                     <td>
-                                        <li>{{ $item->presentacion }}</li>
-                                        <li>{{ $item->componentes }}</li>
-                                    </td>
-                                    <td>
-                                        <form
-                                        action="{{ route('detalleventa.store', ['venta' => $venta->id, 'medicamento' => $item->id]) }}"
+                                    <form
+                                        action="{{ route('detalledevolucion.store', ['devolucion' => $devolucion->id, 'id_detalle_ingreso' => $item->id]) }}"
                                         method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-success">Agregar</button>
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <h3>Medicamentos ingresados en la devolucion</h3>
-                    <form action="" method="POST">
+                    <form action="{{ route('devolucion.update', ['devolucion' => $devolucion->id]) }}" method="POST">
                         @csrf
-                        @method('put')
-                        <button type="submit" class="btn btn-danger float-md-right" style="margin-bottom:1em">Completar Compra</button>
+                        @method('put');
+                        <button type="submit" class="btn btn-danger float-md-right" style="margin-bottom:1em">Completar Devolucion</button>
                     </form>
                     <div class="table-responsive" style="margin-top:1em">
                     <table class="table table-bordered" id="dataTable14" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Medicamento</th>
                                 <th scope="col">Fecha Vencimiento</th>
                                 <th scope="col">Fecha Ingreso</th>
-                                <th scope="col">Cantidad</th>
+                                <th scope="col">Proveedor</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($detalle_venta as $item)
+                           @foreach ($detalle_dev as $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
-                                    <td>{{ $item->medicamento->nombre_comercial }}</td>
-                                    <td>{{ $item->medicamento->precio_venta }}</td>
+                                    <td>{{ $item->detalleIngreso->medicamento->nombre_comercial }}</td>
+                                    <td>{{ $item->detalleIngreso->fechaVenc }}</td>
+                                    <td>{{ $item->detalleIngreso->ingresoMedicamento->fechaIngreso }}</td>
+                                    <td>{{ $item->detalleIngreso->ingresoMedicamento->credito->proveedor->nombreProveedor }}</td>
                                     <td>
                                         <form
-                                            action="{{ route('detalleventa.update', ['venta' => $venta->id, 'detalleVenta' => $item->id]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('put')
-                                            <div class="input-group mb-3">
-                                                <input type="text" value="{{ old('cantidad_venta',$item->cantidad_venta) }}"
-                                                    name="cantidad_venta" class="form-control" placeholder="Cantidad"
-                                                    aria-label="Cantidad" aria-describedby="button-addon2">
-                                                    @error('cantidad_venta')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                <button class="btn btn-success" type="submit"
-                                                    id="button-addon2">Actualizar</button>
-                                            </div>
-                                        </form>
-                                    </td>
-                                    <td>$
-                                        {{ number_format($item->cantidad_venta * $item->medicamento->precio_venta, 2) }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('detalleventa.destroy', ['venta' => $venta, 'detalleVenta' => $item]) }}"
-                                        data-toggle="modal" data-target="#deleteModal" data-ventaid="{{$venta->id}}" data-detalleid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
+                                        action="{{ route('detalledevolucion.update', ['devolucion' => $devolucion->id, 'detalle_dev' => $item->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit" class="btn btn-danger">Quitar</button>
+                                    </form>                                    </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach 
                             <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td><strong>TOTAL</strong</td>
-                                    <td><strong>$ </strong></td>
-                                    <td></td>
-                                </tr>
                             </tfoot>
                         </tbody>
                     </table>
@@ -125,39 +96,29 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    Medicamentos de esta venta
+                    Medicamentos devueltos
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable12" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Medicamento</th>
                                     <th scope="col">Fecha Vencimiento</th>
                                     <th scope="col">Fecha Ingreso</th>
-                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Proveedor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {{-- @foreach ($detalle_venta as $item)
+                                @foreach ($detalle_dev as $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
-                                    <td>{{ $item->medicamento->nombre_comercial }}</td>
-                                    <td>{{ $item->medicamento->precio_venta }}</td>
-                                    <td>{{ $item->cantidad_venta }}</td>
-                                    <td>$ {{ number_format($item->cantidad_venta * $item->medicamento->precio_venta, 2) }}</td>
+                                    <td>{{ $item->detalleIngreso->medicamento->nombre_comercial }}</td>
+                                    <td>{{ $item->detalleIngreso->fechaVenc }}</td>
+                                    <td>{{ $item->detalleIngreso->ingresoMedicamento->fechaIngreso }}</td>
+                                    <td>{{ $item->detalleIngreso->ingresoMedicamento->credito->proveedor->nombreProveedor }}</td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach 
                             <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td><strong>TOTAL</strong></td>
-                                    <td><strong>$ </strong></td>
-                                    <td></td>
-                                </tr>
                             </tfoot>
                             </tbody>
                         </table>
