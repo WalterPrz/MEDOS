@@ -24,7 +24,7 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"tabindex="0">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"tabindex="0" id="tab-confirmar">
       <form action="{{ route('citas.index') }}" method="GET">
         <div style="display: flex; align-items: flex-start; margin: 1em;">
           <div class="col-sm-6">
@@ -103,14 +103,14 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0" id="tab-pendiente">
       <form action="{{ route('citas.index') }}" method="GET">
         <div style="display: flex; align-items: flex-start; margin: 1em;">
           <div class="col-sm-6">
             <input  class="form-control float-md-right" type="date" id="start-pendiente" name="fecha_cita_pendiente" min="2022-01-01">
           </div>
           <div class="col-sm-1">
-            <button type="submit" class="btn btn-success filtrar">Filtrar</button>
+            <button type="submit" class="btn btn-success filtrar" id="filtrar-pendiente">Filtrar</button>
           </div>
         </div>
       </form>
@@ -363,6 +363,11 @@
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
             });
+        });
+    </script>
+    <script>
+        $('.nav-tabs').on("show.bs.tab", "#filtrar-pendiente", function (event) {
+          event.preventDefault();
         });
     </script>
 @endsection

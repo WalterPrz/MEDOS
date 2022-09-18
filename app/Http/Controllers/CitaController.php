@@ -15,20 +15,36 @@ class CitaController extends Controller
         $fecha_cita_confirmada= $request->get('fecha_cita_confirmada');
         $fecha_cita_cancelada= $request->get('fecha_cita_cancelada');
         $fecha_cita_pendiente= $request->get('fecha_cita_pendiente');
-        $citasConfirmadas = Cita::all()
-            ->where('estado', 2);
-        $citasPendientes= Cita::all()
-            ->where('estado', 1);
-        $citasCanceladas = Cita::all()
-            ->where('estado', 0);
+        $citasConfirmadas = Cita::orderBy('fecha_cita', 'asc')
+            ->where('estado', 2)
+            ->get();
+        $citasPendientes= Cita::orderBy('fecha_cita', 'asc')
+            ->where('estado', 1)
+            ->get();
+        $citasCanceladas = Cita::orderBy('fecha_cita', 'asc')
+            ->where('estado', 0)
+            ->get();
 
-        $citasCanceladasFiltradas = Cita::where('estado',0)
+        $citasConfirmadas = Cita::where('estado',2)
+        ->fechaCita($fecha_cita_confirmada)
+        ->get();
+
+        $citasPendientes = Cita::where('estado',1)
+        ->fechaCita($fecha_cita_pendiente)
+        ->get();
+
+        $citasCanceladas= Cita::where('estado',0)
         ->fechaCita($fecha_cita_cancelada)
         ->get();
         $citas = Cita::all();
-        return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas', 'citasCanceladasFiltradas'));
+        return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas'));
     }
     public function create(){
+
+        /*horas = ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:30'];
+        $citasReservadas = Cita::where('fecha_cita',)
+        ->where('hora_cita', )
+        -exists();*/
         return view('citas.create');
     }
 
