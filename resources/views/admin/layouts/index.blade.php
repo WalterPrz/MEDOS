@@ -94,6 +94,16 @@
             <span>Inventario</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/medicamento-proximo-vencer">
+          <i class="fas fa-solid fa-calendar-exclamation"></i>
+          <span>Medicamentos Próximos a Vencer</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/devoluciones">
+          <i class="fas fa-solid fa-calendar-exclamation"></i>
+          <span>Devoluciones</span></a>
+      </li>
+      <li class="nav-item">
           <a class="nav-link" href="/ventas">
             <i class="fas fa-fw fa-coins"></i>
             <span>Ventas</span></a>

@@ -16,12 +16,13 @@ use App\Http\Controllers\ReferenciaMedicaController;
 
 
 use App\Models\DetalleVenta;
+use App\Http\Controllers\MedProxVencerController;
+use App\Http\Controllers\DevolucionController;
+use App\Http\Controllers\DetalleDevolucionController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
-
 use App\Http\Controllers\ReferenciaExternaController;
-
 use App\Http\Controllers\CitaController;
 
 
@@ -122,6 +123,10 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         //----------------------------Inventario------------------------
         //listar
         Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
+        Route::get('medicamento-proximo-vencer', [MedProxVencerController::class,'index'])->name('inventario.proxvencer');
+        Route::get('devoluciones', [DevolucionController::class,'index'])->name('devolucion.index');
+        Route::get('devolucion/detalle/', [DetalleDevolucionController::class,'index'])->name('detalledevolucion.index');
+
 
 
 
