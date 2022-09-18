@@ -17,7 +17,7 @@ class ListaVisitasController extends Controller
         $visitas = DB::select(
             "SELECT a.id, fechaDiagnostico, b.nombrePaciente FROM diagnosticos a
             INNER JOIN expedientes b ON a.idExpediente=b.id
-            WHERE CAST(fechaDiagnostico as varchar(10)) LIKE ? ORDER BY a.id;", [$fechaDiagnostico]
+            WHERE fechaDiagnostico LIKE ? ORDER BY a.id;", [$fechaDiagnostico]
         );
         $expedientes = Expediente::all();
         return view('diagnostico.visita', compact('visitas','expedientes'));
@@ -27,7 +27,7 @@ class ListaVisitasController extends Controller
     public function show($id)
     {
         $diagnostico = DB::select(
-            "SELECT a.id, CAST(fechaDiagnostico as varchar(10)) as fecha, b.nombrePaciente,
+            "SELECT a.id, fechaDiagnostico as fecha, b.nombrePaciente,
             a.peso, a.altura, a.descripcionDiagnostico, a.descripcionReceta FROM diagnosticos a
             INNER JOIN expedientes b ON a.idExpediente=b.id
             WHERE a.id = ?;", [$id]
