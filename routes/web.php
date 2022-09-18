@@ -108,6 +108,11 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     //----------------------------  Expediente ----------------------------------------------
     //listar
     Route::get('expediente', [ExpedienteController::class,'index'])->name('expediente.index');
+
+     //----------------------------  Detalle expediente ----------------------------------------------
+     //Listar detalle del expediente
+     Route::get('expediente/{id}', [ExpedienteController::class,'show'])->name('expediente.show');
+     Route::get('expediente/{id}/download', [ExpedienteController::class, 'download'])->name('expediente.download');
 });
 
 
