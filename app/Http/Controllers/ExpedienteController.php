@@ -74,12 +74,12 @@ class ExpedienteController extends Controller
     {
         $expedientes = DB::select(
             "SELECT id, nombrePaciente,edadPaciente, genero,telefonoPaciente,alergias,
-            CAST(fechaApertura as varchar(10)) as fecha FROM expedientes
+            fechaApertura as fecha FROM expedientes
             WHERE id = ?;", [$id]
         );
 
         $diagnosticos = DB::select(
-            "SELECT a.id, CAST(fechaDiagnostico as varchar(10)) as fecha, b.nombrePaciente,
+            "SELECT a.id, fechaDiagnostico as fecha, b.nombrePaciente,
             a.peso, a.altura, a.descripcionDiagnostico, a.descripcionReceta FROM diagnosticos a
             INNER JOIN expedientes b ON a.idExpediente=b.id
             WHERE a.idExpediente = ?;", [$id]
