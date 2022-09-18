@@ -29,7 +29,7 @@ class CitaController extends Controller
         $citas = Cita::all();
         return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas', 'citasCanceladasFiltradas'));
     }
-    public function create(){
+    /*public function create(){
 
         $citasConfirmadas = Cita::orderBy('fecha_cita', 'asc')
             ->where('estado', 2)
@@ -54,7 +54,7 @@ class CitaController extends Controller
         ->get();
         $citas = Cita::all();
         return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas'));
-    }
+    }*/
     public function create(){
 
         /*horas = ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:30'];
