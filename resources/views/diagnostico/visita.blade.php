@@ -52,6 +52,8 @@
                 <td>{{$item->nombrePaciente}}</td>
                 <td>
                     <a href="{{route('diagnostico.show',$item->id)}}" ><i class="fa fa fa-eye"></i></a>
+                    <a href="{{route('diagnostico.show1',$item->id)}}" ><i class="fa fa-edit"></i></a>
+
                 </td>
                 </tr>
           @endforeach

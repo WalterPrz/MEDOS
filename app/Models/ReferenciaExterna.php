@@ -14,3 +14,9 @@ class ReferenciaExterna extends Model
         'nombreReferencia',
     ];
 }
+        'idExpediente',
+        'ruta',
+        'nombreReferencia'
+    ];
+
+}
