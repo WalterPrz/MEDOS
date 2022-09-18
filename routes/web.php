@@ -164,6 +164,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::get('expediente/crear', [ExpedienteController::class,'create'])->name('expediente.create');
     Route::post('expediente/store',[ExpedienteController::class,'store'])->name('expediente.store');
     //actualizar
+    Route::get('expediente/edit/{expediente}', [ExpedienteController::class,'edit'])->name('expediente.edit');
     Route::get('expediente/{expediente}', [ExpedienteController::class,'show'])->name('expediente.show');
     Route::put('expediente/{expediente}', [ExpedienteController::class,'update'])->name('expediente.update');
     //Eliminar

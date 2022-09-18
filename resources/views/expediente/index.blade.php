@@ -43,6 +43,7 @@
                 <td>{{$item->nombrePaciente}}</td>
                 <td>
                     <a href="{{route('expediente.show',$item->id)}}" ><i class="fa fa fa-eye"></i></a>
+                    <a href="{{route('expediente.edit',$item->id)}}" ><i class="fa fa fa-edit"></i></a>
                     <a href="{{route('expediente.destroy',$item)}}" data-toggle="modal" data-target="#deleteModal" data-expedienteid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>

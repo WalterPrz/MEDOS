@@ -42,7 +42,7 @@ class ExpedienteController extends Controller
         }
     }
 
-    public function show(Expediente $expediente)
+    public function edit(Expediente $expediente)
     {
         try{
             return view('expediente.edit', compact('expediente'));

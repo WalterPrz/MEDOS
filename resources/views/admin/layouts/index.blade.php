@@ -95,12 +95,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/medicamento-proximo-vencer">
-          <i class="fas fa-solid fa-calendar-exclamation"></i>
+          <i class="fa-solid fa-tablets"></i>
           <span>Medicamentos Próximos a Vencer</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/devoluciones">
-          <i class="fas fa-solid fa-calendar-exclamation"></i>
+        <i class="fa-sharp fa-solid fa-box"></i>
           <span>Devoluciones</span></a>
       </li>
       <li class="nav-item">
@@ -134,10 +134,22 @@
       </li>
 
       <li class="nav-item">
+          <a class="nav-link" href="/expediente">
+          <i class="fa-solid fa-file-lines"></i>
+            <span>Expedientes</span></a>
+      </li>  
+
+      <li class="nav-item">
           <a class="nav-link" href="/diagnostico">
             <i class="fa fa-user-md" aria-hidden="true"></i>
             <span>Consultas</span></a>
       </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/refext">
+          <i class="fa-solid fa-file-pdf"></i>
+            <span>Agregar referencias externas</span></a>
+      </li> 
 
       <li class="nav-item">
           <a class="nav-link" href="/referenciaMedica">
