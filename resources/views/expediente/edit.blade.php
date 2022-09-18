@@ -1,68 +1,69 @@
 @extends('admin.layouts.index')
-@section('title','Proveedores')
+@section('title','Expedientes')
 @section('content')
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12"></div>
+    <div class="row py-lg-2">
+        <div class="col-md-6">
+        <h2>Editar expediente</h2>
+        </div>
     </div>
-</div>
-<div class="container">
+
+
     <div class="row">
         <div class="col-12">
             <div class="card card-post" id="post_card">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        Creando proveedor: 
+                        Actualizando expediente: 
                         <div class="pull-right">
-                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de proveedores">Regresar</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de expedientes">Regresar</a>
                         </div>
                     </div>
                 </div>
                 <x-errores class="mb-4" />
-                <form action="{{route('proveedor.store')}}" method="POST">
+                <form action="{{route('expediente.update', $expediente)}}" method="POST">
                 @csrf
-                <div class="card-body">
+                @method('put')
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <div class="form-group has-feedback row">
-                                    <label for="nombreProveedor" class="col-12 control-label">Nombre proveedor:</label>
+                                    <label for="nombrePaciente" class="col-12 control-label">Nombre del paciente:</label>
                                     <div class="col-12">
-                                    <input id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" value="{{old('nombreProveedor')}}" placeholder="Nombre de el proveedor" >
+                                        <input id="nombrePaciente" class="form-control" name="nombrePaciente" value="{{old('nombrePaciente', $expediente->nombrePaciente)}}" >
                                     </div>
                                 </div>
-                                
                                 <div class="form-group has-feedback row">
-                                    <label for="telefonoProveedor" class="col-12 control-label">Teléfono proveedor:</label>
+                                    <label for="edadPaciente" class="col-12 control-label">Edad del paciente:</label>
                                     <div class="col-12">
-                                    <input id="telefonoProveedor" type="tel" class="form-control" name="telefonoProveedor" value="{{old('telefonoProveedor')}}" placeholder="(Código de área) Número">
+                                        <input name="edadPaciente" class="form-control" type="number" min="1" max="200" step="1" value="{{old('edadPaciente', $expediente->edadPaciente)}}" id="edadPaciente"></input>
                                     </div>
                                 </div>
-
                                 <div class="form-group has-feedback row">
-                                    <label for="nombreVendedor" class="col-12 control-label">Nombre vendedor encargado:</label>
+                                    <label for="genero" class="col-12 control-label">Genero del paciente:</label>
                                     <div class="col-12">
-                                    <input id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" value="{{old('nombreVendedor')}}" placeholder="Nombre de el vendedor">
+                                        <select name="genero" id="genero" class="form-control" value="{{old('genero', $expediente->genero)}}">
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                        </select>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group has-feedback row">
-                                    <label for="telefonoVendedor" class="col-12 control-label">Teléfono vendedor encargado:</label>
+                                    <label for="telefonoPaciente" class="col-12 control-label">Telefono del paciente:</label>
                                     <div class="col-12">
-                                    <input id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" value="{{old('telefonoVendedor')}}" placeholder="(Código de área) Número">
+                                        <input name="telefonoPaciente" class="form-control" value="{{old('telefonoPaciente', $expediente->telefonoPaciente)}}" id="telefonoPaciente"></input>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group has-feedback row">
-                                    <label for="plazoDevolucion" class="col-12 control-label">Plazo de devolución (días):</label>
+                                    <label for="alergias" class="col-12 control-label">Alergias:</label>
                                     <div class="col-12">
-                                    <input id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" value="{{old('plazoDevolucion')}}" placeholder="Plazo de devolución en dias">
+                                        <textarea name="alergias" class="form-control" id="alergias" rows="5">{{old('alergias', $expediente->alergias)}}</textarea>
                                     </div>
                                 </div>
-                                
-                                
                             </div>
-                          </div>
-                 </div>
+                        </div>
+                    </div>
                  <div class="card-footer">
                         <div class="row">
                             <div class="col-md-6">
@@ -70,10 +71,10 @@
                                 <button type="submit" class="btn btn-success btn-lg btn-block" value="Guardar" name="action">
                                     <i class="fa fa-save fa-fw">
                                         <span class="sr-only">
-                                            Guardar proveedor Icono
+                                            Guardar expediente Icono
                                         </span>
                                     </i>
-                                    Guardar proveedor
+                                    Guardar expediente
                                     </button>
                                 </span>
                             </div>
@@ -84,4 +85,7 @@
         </div>
     </div>
 </div>   
+<div>
+
 @endsection
+
