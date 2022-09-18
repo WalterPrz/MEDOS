@@ -14,6 +14,7 @@ use App\Models\DetalleVenta;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\ReferenciaExternaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,16 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::put('expediente/{expediente}', [ExpedienteController::class,'update'])->name('expediente.update');
     //Eliminar
     Route::get('expediente/{expediente}/destroy', [ExpedienteController::class,'destroy'])->name('expediente.destroy');
+
+
+    //----------------------------Referencia externa------------------------
+
+    //listar
+    Route::get('refext', [ReferenciaExternaController::class,'index'])->name('refext.index');
+    //Crear
+    Route::get('refext/{expediente}', [ReferenciaExternaController::class,'create'])->name('refext.create');
+    Route::post('refext/{expediente}',[ReferenciaExternaController::class,'store'])->name('refext.store');
+
 });
 
 

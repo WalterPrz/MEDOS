@@ -21,4 +21,8 @@ class Expediente extends Model
     {
         return $this->hasMany(Diagnostico::class);
     }
+    public function refext()
+    {
+        return $this->hasMany(ReferenciaExterna::class);
+    }
 }
