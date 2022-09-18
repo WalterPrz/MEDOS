@@ -16,4 +16,13 @@ class Expediente extends Model
         'alergias',
         'fechaApertura'
     ];
+
+    public function diagnostico()
+    {
+        return $this->hasMany(Diagnostico::class);
+    }
+    public function refext()
+    {
+        return $this->hasMany(ReferenciaExterna::class);
+    }
 }

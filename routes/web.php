@@ -16,9 +16,14 @@ use App\Http\Controllers\ReferenciaMedicaController;
 
 
 use App\Models\DetalleVenta;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
+
+use App\Http\Controllers\ReferenciaExternaController;
+
 use App\Http\Controllers\CitaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +75,12 @@ Route::middleware([
     Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
     Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
+
+    Route::resource('/citas', CitaController::class);
+    Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
+
+Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
+
     Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
     Route::resource('/citas', CitaController::class);
@@ -116,6 +127,7 @@ Route::middleware([
 
 
     });
+
         //----------------------------Diagnostico------------------------
      //listar
     Route::get('diagnostico', [DiagnosticoController::class,'index'])->name('diagnostico.index');
@@ -144,10 +156,30 @@ Route::middleware([
     //listar
     Route::get('expediente', [ExpedienteController::class,'index'])->name('expediente.index');
 
+    //Crear
+    Route::get('expediente/crear', [ExpedienteController::class,'create'])->name('expediente.create');
+    Route::post('expediente/store',[ExpedienteController::class,'store'])->name('expediente.store');
+    //actualizar
+    Route::get('expediente/{expediente}', [ExpedienteController::class,'show'])->name('expediente.show');
+    Route::put('expediente/{expediente}', [ExpedienteController::class,'update'])->name('expediente.update');
+    //Eliminar
+    Route::get('expediente/{expediente}/destroy', [ExpedienteController::class,'destroy'])->name('expediente.destroy');
+
+
+    //----------------------------Referencia externa------------------------
+
+    //listar
+    Route::get('refext', [ReferenciaExternaController::class,'index'])->name('refext.index');
+    //Crear
+    Route::get('refext/{expediente}', [ReferenciaExternaController::class,'create'])->name('refext.create');
+    Route::post('refext/{expediente}',[ReferenciaExternaController::class,'store'])->name('refext.store');
+
+
      //----------------------------  Detalle expediente ----------------------------------------------
      //Listar detalle del expediente
      Route::get('expediente/{id}', [ExpedienteController::class,'show'])->name('expediente.show');
      Route::get('expediente/{id}/download', [ExpedienteController::class, 'download'])->name('expediente.download');
+
 
 });
 

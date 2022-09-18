@@ -65,6 +65,9 @@
                                 <div class="form-group has-feedback row">
                                     <label for="hora_cita" class="col-12 control-label">Hora de la cita:</label>
                                     <div class="col-12">
+
+                                    <input id="hora_cita" type="text" class="form-control" name="hora_cita" value="{{old('hora_cita', $cita->hora_cita)}}" placeholder="Hora de la cita">
+
                                     <select id="hora_cita" type="text" class="form-control" name="hora_cita" value="{{old('hora_cita', $cita->hora_cita)}}" placeholder="Hora de la cita">
                                         <option value="8:00">8:00 - 8:30</option>
                                         <option value="8:30">8:30 - 9:00</option>
@@ -81,6 +84,7 @@
                                         <option value="16:30">16:30 - 17:00</option>
                                         <option value="17:00">17:00 - 17:30</option>
                                     </select>
+
                                     </div>
                                 </div>
                            

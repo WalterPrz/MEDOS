@@ -15,6 +15,22 @@ class CitaController extends Controller
         $fecha_cita_confirmada= $request->get('fecha_cita_confirmada');
         $fecha_cita_cancelada= $request->get('fecha_cita_cancelada');
         $fecha_cita_pendiente= $request->get('fecha_cita_pendiente');
+
+        $citasConfirmadas = Cita::all()
+            ->where('estado', 2);
+        $citasPendientes= Cita::all()
+            ->where('estado', 1);
+        $citasCanceladas = Cita::all()
+            ->where('estado', 0);
+
+        $citasCanceladasFiltradas = Cita::where('estado',0)
+        ->fechaCita($fecha_cita_cancelada)
+        ->get();
+        $citas = Cita::all();
+        return view('citas.index', compact('citasConfirmadas', 'citasPendientes', 'citasCanceladas', 'citasCanceladasFiltradas'));
+    }
+    public function create(){
+
         $citasConfirmadas = Cita::orderBy('fecha_cita', 'asc')
             ->where('estado', 2)
             ->get();
@@ -98,4 +114,5 @@ class CitaController extends Controller
 
         return redirect('/citas');
     }
+
 }

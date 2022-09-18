@@ -24,7 +24,11 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"tabindex="0">
+
     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"tabindex="0" id="tab-confirmar">
+
       <form action="{{ route('citas.index') }}" method="GET">
         <div style="display: flex; align-items: flex-start; margin: 1em;">
           <div class="col-sm-6">
@@ -103,13 +107,20 @@
         </div>
       </div>
     </div>
+
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+
     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0" id="tab-pendiente">
+
       <form action="{{ route('citas.index') }}" method="GET">
         <div style="display: flex; align-items: flex-start; margin: 1em;">
           <div class="col-sm-6">
             <input  class="form-control float-md-right" type="date" id="start-pendiente" name="fecha_cita_pendiente" min="2022-01-01">
           </div>
           <div class="col-sm-1">
+
+            <button type="submit" class="btn btn-success filtrar">Filtrar</button>
+
             <button type="submit" class="btn btn-success filtrar" id="filtrar-pendiente">Filtrar</button>
           </div>
         </div>
@@ -173,7 +184,9 @@
                       <a href="/citas/{{ $item['id'] }}"><i class="fa fa-eye"></i></a>
                       <a href="/citas/{{ $item['id'] }}/edit"><i class="fa fa-edit"></i></a>
                       <a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
+
                       <a href="#" class="edit" data-toggle="modal" data-target="#confirmarModal" data-citaid="{{$item->id}}"><i class="fa-solid fa-check-to-slot"></i></a>
+
                     </td>
                   </tr>
                 @endforeach
@@ -252,7 +265,11 @@
                     <td>
                       <a href="/citas/{{ $item['id'] }}"><i class="fa fa-eye"></i></a>
                       <a href="/citas/{{ $item['id'] }}/edit"><i class="fa fa-edit"></i></a>
+
+                      <a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
+
                       <!--<a href="#" class="edit" data-toggle="modal" data-target="#deleteModal" data-citaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>-->
+
                     </td>
                   </tr>
                 @endforeach
@@ -264,7 +281,12 @@
     </div>
   </div>
 
+
+                    
+                    <!-- delete Modal-->
+
                     <!-- edi9t Modal-->
+
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -290,6 +312,7 @@
     </div>
     <div class="card-footer small text-muted"></div>
 </div>
+
 
                     <!-- delete Modal-->
                     <div class="modal fade" id="confirmarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -318,6 +341,7 @@
     <div class="card-footer small text-muted"></div>
 </div>
 
+
 @section('js_user_page')
 
 <script>
@@ -331,6 +355,7 @@
             var modal = $(this)
             modal.find('form').attr('action','/citas/' + cita_id + '/cancel');
         })
+
 
         $('#confirmarModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
@@ -365,10 +390,12 @@
             });
         });
     </script>
+
     <script>
         $('.nav-tabs').on("show.bs.tab", "#filtrar-pendiente", function (event) {
           event.preventDefault();
         });
     </script>
+
 @endsection
 @endsection
