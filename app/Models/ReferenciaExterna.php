@@ -10,10 +10,6 @@ class ReferenciaExterna extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'ruta',
-        'nombreReferencia',
-    ];
-}
         'idExpediente',
         'ruta',
         'nombreReferencia'

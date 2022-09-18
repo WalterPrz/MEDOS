@@ -23,7 +23,6 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
-use App\Http\Controllers\CitaController;
 
 
 /*
@@ -77,8 +76,8 @@ Route::middleware([
     Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
 
-    Route::resource('/citas', CitaController::class);
-    Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
+    /*Route::resource('/citas', CitaController::class);
+    Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');*/
 
 Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
