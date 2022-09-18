@@ -70,5 +70,9 @@ class User extends Authenticatable
     ];
 
 
+    public function cita()
+    {
+        return $this->hasMany(Cita::class);
+    }
 
 }

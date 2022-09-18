@@ -14,6 +14,7 @@
 
   <!-- Custom fonts for this template-->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <script src="https://kit.fontawesome.com/30866eb011.js" crossorigin="anonymous"></script>
 
   <!-- Page level plugin CSS-->
   <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -120,6 +121,12 @@
           <a class="nav-link" href="/categoria">
             <i class="fas fa-fw fa-table"></i>
             <span>Categoria</span></a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/citas">
+          <i class="fas fa-fw fa-calendar"></i>
+            <span>Citas</span></a>
       </li>
     </ul>
 
