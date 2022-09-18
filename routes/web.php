@@ -11,6 +11,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\InventarioController;
 use App\Models\DetalleVenta;
+use App\Http\Controllers\ListaVisitasController;
+use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\CitaController;
 
 /*
@@ -63,6 +65,8 @@ Route::middleware([
     Route::put('venta/detalle/{venta}/{detalleVenta}',[DetalleVentaController::class,'update'])->name('detalleventa.update');
     Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
 
+    Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaController::class,'destroy'])->name('detalleventa.destroy');
+
     Route::resource('/citas', CitaController::class);
     Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
     Route::post('/citas/{cita}/confirm', [CitaController::class,'confirm'])->name('citas.confirm');
@@ -79,11 +83,11 @@ Route::middleware([
         Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
         Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
         Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
-    
+
         //Editar ingreso de medicamentos
         Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
         Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
-    
+
         //Dar de baja el detalle del ingreso
         Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
 
@@ -104,6 +108,19 @@ Route::middleware([
         Route::get('inventario', [InventarioController::class,'index'])->name('inventario.index');
 
     });
+    //----------------------------Visitas de pacientes------------------------
+    //listar
+    Route::get('visita', [ListaVisitasController::class,'index'])->name('diagnostico.visita');
+    // ver detalle visitas
+    Route::get('visita/{diagnostico}', [ListaVisitasController::class,'show'])->name('diagnostico.show');
+    //----------------------------  Expediente ----------------------------------------------
+    //listar
+    Route::get('expediente', [ExpedienteController::class,'index'])->name('expediente.index');
+
+     //----------------------------  Detalle expediente ----------------------------------------------
+     //Listar detalle del expediente
+     Route::get('expediente/{id}', [ExpedienteController::class,'show'])->name('expediente.show');
+     Route::get('expediente/{id}/download', [ExpedienteController::class, 'download'])->name('expediente.download');
 
 });
 
