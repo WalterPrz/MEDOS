@@ -44,7 +44,7 @@ public function index(Request $request)
             $diagnostico->descripcionReceta = $request->receta;
 
             $diagnostico->save();
-            return redirect()->route('diagnostico.index');
+            return redirect()->route('diagnostico.visita');
         }catch(\Exception $e){
             return $e->getMessage();
         }
@@ -52,13 +52,28 @@ public function index(Request $request)
  
     }
 
-    public function show()
+    public function show1(Diagnostico $diagnostico)
     {
+        try{
+            return view('diagnostico.edit', compact('diagnostico'));
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
 
     }
-    public function update()
+    public function update(Request $request, Diagnostico $diagnostico)
     {
-
+        try{
+            $diagnostico->fechaDiagnostico = new DateTime();
+            $diagnostico->peso= $request->peso;
+            $diagnostico->altura= $request->altura;
+            $diagnostico->descripcionDiagnostico = $request->descripcionDiag;
+            $diagnostico->descripcionReceta = $request->receta;
+            $diagnostico->save();
+            return redirect()->route('diagnostico.visita');
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     public function viewPDF(Request $request){

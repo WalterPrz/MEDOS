@@ -130,10 +130,19 @@
 
       <li class="nav-item">
           <a class="nav-link" href="/referenciaMedica">
-            <i class="fa fa-ambulance" aria-hidden="true"></i>
+            <i class="fa fa-file" aria-hidden="true"></i>
             <span>Emitir referencia medica</span></a>
+      </li>      
+      
+      <li class="nav-item">
+          <a class="nav-link" href="/visita">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Visitas medicas</span></a>
       </li>
     </ul>
+
+
+
 
     <div id="content-wrapper">
 

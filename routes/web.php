@@ -116,7 +116,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::view('diagnostico/crear','diagnostico.create')->name('diagnostico.create');
     Route::post('diagnostico',[DiagnosticoController::class,'store'])->name('diagnostico.store');
     //actualizar
-    Route::get('diagnostico/{diagnostico}', [DiagnosticoController::class,'show'])->name('diagnostico.show');
+    Route::get('diagnostico/{diagnostico}', [DiagnosticoController::class,'show1'])->name('diagnostico.show1');
     Route::put('diagnostico/{diagnostico}', [DiagnosticoController::class,'update'])->name('diagnostico.update');
 
     Route::post('diagnostico/view-pdf/', [DiagnosticoController::class,'viewPDF'])->name('view-pdf');
