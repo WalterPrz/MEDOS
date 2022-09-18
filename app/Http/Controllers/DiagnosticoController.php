@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiagnosticoRequest;
 use App\Models\Diagnostico;
 use App\Models\Expediente;
 use DateTime;
@@ -31,7 +32,7 @@ public function index(Request $request)
         return view("diagnostico.index",compact('expedientes','diagnosticos'));
     }
 
-      public function store(Request $request)
+      public function store(DiagnosticoRequest $request)
     {
 
             try{
@@ -61,7 +62,7 @@ public function index(Request $request)
         }
 
     }
-    public function update(Request $request, Diagnostico $diagnostico)
+    public function update(DiagnosticoRequest $request, Diagnostico $diagnostico)
     {
         try{
             $diagnostico->fechaDiagnostico = new DateTime();
