@@ -19,14 +19,10 @@ class IngresoMedicamentoController extends Controller
         $fechaIngre = $request->get('fechaIngreso');
         $fecha = $ampe1.''.$fechaIngre;
         $fechaIngreso = $fecha.''.$ampe1;
-        //$ingresoMedicamentos = IngresoMedicamento::where('fechaIngreso','like',"%fechaIngreso%")
-        //->fechaIngreso($fechaIngreso)
-        //->get();
-      //  $ingresoMedicamentos = IngresoMedicamento::all();
         $ingresoMedicamentos = DB::select(
             "SELECT a.id, nombreProveedor,fechaIngreso FROM ingreso_medicamentos a
             INNER JOIN creditos b ON a.credito_id=b.id
-            INNER JOIN proveedors c ON b.idProveedor = c.id
+            INNER JOIN proveedors c ON b.proveedor_id = c.id
             WHERE fechaIngreso LIKE ? ORDER BY a.id;", [$fechaIngreso]
         );
         $creditos = Credito::all();
@@ -36,14 +32,20 @@ class IngresoMedicamentoController extends Controller
     public function store(IngresoMedicamentoRequest $request)
     {
         try{
+            $plazoProvee = Proveedor::find($request->proveedor);
+
             $credito = new Credito();
-            $credito->idProveedor = $request->proveedor;
+            $credito->proveedor_id = $request->proveedor;
+            $credito->plazo = $plazoProvee->plazoDevolucion;
+            $credito->fechaCreacion = date('Y-m-d');
             $credito->save();
+
             $ingreso = new IngresoMedicamento();
             $ingreso->credito_id = $credito->id;
             $ingreso->fechaIngreso = date('Y-m-d');
             $ingreso->save();
-            return redirect()->route('ingresomed.detalle',$ingreso);
+
+            return redirect()->route('ingresomed.detalle', [$ingreso, $credito]);
         } catch(\Exception $e){
             return $e->getMessage();
         }

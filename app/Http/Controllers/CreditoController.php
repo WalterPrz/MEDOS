@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Http\Requests\CreditoRequest;
+use Illuminate\Support\Facades\DB;
+use App\Models\Proveedor;
+use App\Models\Credito;
+use GuzzleHttp\Promise\Create;
 
 class CreditoController extends Controller
 {
@@ -13,7 +19,13 @@ class CreditoController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $creditos = Credito::all();
+            return view('credito.index', compact('creditos'));
+
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -23,7 +35,8 @@ class CreditoController extends Controller
      */
     public function create()
     {
-        //
+        $proveedores = Proveedor::all();
+        return view('credito.create', compact('proveedores'));
     }
 
     /**
@@ -32,20 +45,24 @@ class CreditoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreditoRequest $request)
     {
-        //
-    }
+        $fecha = Carbon::now();
+        try{
+            $plazoProvee = Proveedor::find($request->proveedor_id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+            $credito = new Credito();
+            $credito->proveedor_id = $request->proveedor_id;
+            $credito->credito = $request->credito;
+            $credito->diaPago = $request->diaPago;
+            $credito->plazo = $plazoProvee->plazoDevolucion;
+            $credito->saldoPendiente = $request->saldoPendiente;
+            $credito->fechaCreacion = $fecha->format('Y-m-d'); 
+            $credito->save();
+            return redirect()->route('credito.index');
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -54,9 +71,15 @@ class CreditoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Credito $credito)
     {
-        //
+        try{
+            $proveedores = Proveedor::all();
+            return view('credito.edit', compact('credito','proveedores'));
+            
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -66,9 +89,21 @@ class CreditoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreditoRequest $request, Credito $credito)
     {
-        //
+        try{
+            $plazoProvee = Proveedor::find($request->proveedor_id);
+
+            $credito->proveedor_id = $request->proveedor_id;
+            $credito->credito = $request->credito;
+            $credito->diaPago = $request->diaPago;
+            $credito->plazo = $plazoProvee->plazoDevolucion;
+            $credito->saldoPendiente = $request->saldoPendiente; 
+            $credito->save();
+            return redirect()->route('credito.index');
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -77,8 +112,9 @@ class CreditoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Credito $credito)
     {
-        //
+        $credito->delete();
+        return redirect()->route('credito.index'); 
     }
 }

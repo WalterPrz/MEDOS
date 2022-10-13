@@ -8,7 +8,7 @@
             Editando ingrerso:
           </div>
         </div>
-        <form action="{{ route('detalleingreso.update', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$detalleIngreso->id]) }}" method='POST'>
+        <form action="{{ route('detalleingreso.update', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$detalleIngreso->id, 'credit'=>$credit->id]) }}" method='POST'>
           @csrf
           <div class="card-body">
             <div class="row">
@@ -57,7 +57,7 @@
                 <div class="form-group has-feedback row">
                   <label for="descuentoIngreso" class="col-12 control-label">Descuento:</label>
                   <div class="col-12">
-                    <input id='descuentoIngreso' type='text' class='form-control' name='descuentoIngreso' placeholder='Descuento' value='{{old('descuentoIngreso',$detalleIngreso->descuentoIngreso)  }}'>
+                    <input id='descuentoIngreso' type='number' min='0' step='0.01' class='form-control' name='descuentoIngreso' placeholder='Descuento' value='{{old('descuentoIngreso',$detalleIngreso->descuentoIngreso)  }}'>
                   </div>
                   @error('descuentoIngreso')
                   <div class="text-danger">{{ $message }}</div>
