@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Proveedor;
 
 return new class extends Migration
 {
@@ -15,8 +16,7 @@ return new class extends Migration
     {
         Schema::create('creditos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idProveedor');
-            //$table->foreignIdFor(Proveedor::class)->references('id')->on('proveedors');
+            $table->foreignIdFor(Proveedor::class)->references('id')->on('proveedors');
             $table->decimal('credito', $precision = 5, $scale = 2)->nullable();
             $table->string('diaPago',10)->nullable();
             $table->integer('plazo')->nullable();
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->softDeletes();
         });
     }
-
     /**
      * Reverse the migrations.
      *

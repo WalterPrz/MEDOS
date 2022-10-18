@@ -23,6 +23,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
+use App\Http\Controllers\CreditoController;
 
 
 /*
@@ -97,15 +98,15 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::controller(DetalleIngresoController::class)->group(function(){
         //Ingresar detalle
         Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
-        Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
-        Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
+        Route::get('ingresomed/detalle2/{ingreso}/{credit}', 'create')->name('ingresomed.detalle');
+        Route::post('ingresomed/detalle/{ingreso}/{credit}', 'store')->name('detalleingreso.store');
 
         //Editar ingreso de medicamentos
-        Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
-        Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
+        Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}/{credit}', 'edit')->name('detalleingreso.edit');
+        Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}/{credit}', 'update')->name('detalleingreso.update');
 
         //Dar de baja el detalle del ingreso
-        Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
+        Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}/{credit}', 'destroy')->name('detalleingreso.destroy');
 
 
         //----------------------------Proveedor------------------------
@@ -185,6 +186,19 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
      Route::get('expediente/{id}', [ExpedienteController::class,'show'])->name('expediente.show');
      Route::get('expediente/{id}/download', [ExpedienteController::class, 'download'])->name('expediente.download');
 
+
+         //----------------------------  Creditos ----------------------------------------------
+    //listar
+    Route::get('credito', [CreditoController::class,'index'])->name('credito.index');
+
+    //Crear
+    Route::get('credito/crear', [CreditoController::class,'create'])->name('credito.create');
+    Route::post('credito/store',[CreditoController::class,'store'])->name('credito.store');
+    //actualizar
+    Route::get('credito/edit/{credito}', [CreditoController::class,'edit'])->name('credito.edit');
+    Route::put('credito/update/{credito}', [CreditoController::class,'update'])->name('credito.update');
+    //Eliminar
+    Route::get('credito/destroy/{credito}', [CreditoController::class,'destroy'])->name('credito.destroy');
 
 });
 

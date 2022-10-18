@@ -56,7 +56,7 @@
                                 <td>{{ $item->nombreProveedor}}</td>
                                 <td>{{ $item->fechaIngreso }}</td>
                                 <td>
-                                    <a href="{{ route('ingresomed.detalle_consulta', $item->id) }}"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('ingresomed.detalle_consulta', $item->id) }}"><i class="fa fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
