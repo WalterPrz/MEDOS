@@ -94,13 +94,13 @@
                                 <div class="form-group has-feedback row">
                                     <label for="peso" class="col-12 control-label">Peso:</label>
                                     <div class="col-12">
-                                      <input id="peso" type="text" class="form-control" name="peso" value="{{old('peso')}}" placeholder="Peso del paciente" >
+                                      <input id="peso" type="number" min="0.01" max="999" step="0.01" class="form-control" name="peso" value="{{old('peso')}}" placeholder="Peso del paciente" >
                                     </div>
                                 </div>
                                  <div class="form-group has-feedback row">
                                     <label for="altura" class="col-12 control-label">Altura:</label>
                                     <div class="col-12">
-                                      <input id="altura" type="text" class="form-control" name="altura" value="{{old('altura')}}" placeholder="Altura del paciente" >
+                                      <input id="altura" type="numer" class="form-control" name="altura" value="{{old('altura')}}" placeholder="Altura del paciente" >
                                     </div>
                                 </div>
                                 

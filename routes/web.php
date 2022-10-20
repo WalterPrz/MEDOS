@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbonoController;
 use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetalleVentaController;
@@ -24,7 +25,7 @@ use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
 use App\Http\Controllers\CreditoController;
-
+use App\Http\Controllers\MedicamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -199,6 +200,32 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::put('credito/update/{credito}', [CreditoController::class,'update'])->name('credito.update');
     //Eliminar
     Route::get('credito/destroy/{credito}', [CreditoController::class,'destroy'])->name('credito.destroy');
+
+         //----------------------------  Abono ----------------------------------------------
+    //listar
+    Route::get('abono/{abono}', [AbonoController::class,'index'])->name('abono.index');
+
+    //Crear
+    Route::get('abonos/crear/{abono}', [AbonoController::class,'create'])->name('abono.create');
+    Route::post('abono/store',[AbonoController::class,'store'])->name('abono.store');
+    //actualizar
+    Route::get('abono/edit/{abono}', [AbonoController::class,'edit'])->name('abono.edit');
+    Route::put('abono/update/{abono}', [AbonoController::class,'update'])->name('abono.update');
+    //Eliminar
+    Route::get('abono/destroy/{abono}', [AbonoController::class,'destroy'])->name('abono.destroy');
+
+             //----------------------------  Medicamento ----------------------------------------------
+    //listar
+    Route::get('medicamento', [MedicamentoController::class,'index'])->name('medicamento.index');
+
+    //Crear
+    Route::get('medicamento/crear', [MedicamentoController::class,'create'])->name('medicamento.create');
+    Route::post('medicamento/store',[MedicamentoController::class,'store'])->name('medicamento.store');
+    //actualizar
+    Route::get('medicamento/edit/{medicamento}', [MedicamentoController::class,'edit'])->name('medicamento.edit');
+    Route::put('medicamento/update/{medicamento}', [MedicamentoController::class,'update'])->name('medicamento.update');
+    //Eliminar
+    Route::get('medicamento/destroy/{medicamento}', [MedicamentoController::class,'destroy'])->name('medicamento.destroy');
 
 });
 

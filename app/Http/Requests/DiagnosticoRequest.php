@@ -25,8 +25,8 @@ class DiagnosticoRequest extends FormRequest
     {
         return [
             //
-            'peso'=>'required|max:500|integer',
-            'altura'=>'required|max:1000|integer',
+            'peso'=>'required|min:0.01|max:999|numeric',
+            'altura'=>'required|min:0.01|max:999|numeric',
             'descripcionDiag'=>'required|max:250',
             'receta'=>'required|max:250',
         ];

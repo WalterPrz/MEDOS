@@ -165,6 +165,18 @@
           <i class="fas fa-fw fa-calendar"></i>
             <span>Citas</span></a>
       </li>
+
+      <li class="nav-item">
+          <a class="nav-link" href="/credito">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Creditos</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/medicamento">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <span>Medicamentos</span></a>
+    </li>
     </ul>
 
 

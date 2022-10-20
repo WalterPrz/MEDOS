@@ -10,8 +10,12 @@ class Medicamento extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
-        'nombre',
-        'descripcion'
+        'nombre_comercial',
+        'categoria_id',
+        'presentacion',
+        'componentes',
+        'precio_venta'
+
     ];
     public function ingreso_medicamentos()
     {

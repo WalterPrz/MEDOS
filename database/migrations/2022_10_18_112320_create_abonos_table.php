@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Credito;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('referencia_externas', function (Blueprint $table) {
+        Schema::create('abonos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idExpediente');
-            $table->string('ruta',2048);
-            $table->string('nombreReferencia',255);
-            $table->foreign('idExpediente')->references('id')->on('expedientes');
+            $table->foreignIdFor(Credito::class)->references('id')->on('creditos');
+            $table->decimal('cantidadAbonada', $precision = 5, $scale = 2)->nullable();
+            $table->string('fechaAbono',10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_referencia_externa');
+        Schema::dropIfExists('abonos');
     }
 };
