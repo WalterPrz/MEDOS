@@ -27,25 +27,33 @@ public function index(Request $request)
         FROM diagnosticos as subquery
         INNER JOIN expedientes 
         ON subquery.idExpediente = ?",[$nombre]
- 
+
         );
-        return view("diagnostico.index",compact('expedientes','diagnosticos'));
+        $mensaje="No existe registro";
+
+        return view("diagnostico.index",compact('expedientes','diagnosticos','mensaje'));
     }
 
       public function store(DiagnosticoRequest $request)
     {
 
             try{
+     
+            $expedientes = Expediente::where('id',$request->expediente_id)->get();
+            foreach($expedientes as $item){
+                $nombreP = $item->nombrePaciente;
+            }
             $diagnostico = new Diagnostico();
-            $diagnostico->idExpediente = $request->idExpediente;
+            $diagnostico->idExpediente = $request->expediente_id;
             $diagnostico->fechaDiagnostico = new DateTime();
             $diagnostico->peso= $request->peso;
             $diagnostico->altura= $request->altura;
             $diagnostico->descripcionDiagnostico = $request->descripcionDiag;
             $diagnostico->descripcionReceta = $request->receta;
-
             $diagnostico->save();
-            return redirect()->route('diagnostico.visita');
+            return self::viewPDF($request->receta,$nombreP);
+
+            //return redirect()->route('diagnostico.visita');
         }catch(\Exception $e){
             return $e->getMessage();
         }
@@ -65,6 +73,7 @@ public function index(Request $request)
     public function update(DiagnosticoRequest $request, Diagnostico $diagnostico)
     {
         try{
+            $diagnostico->idExpediente=$request->expediente_id;
             $diagnostico->fechaDiagnostico = new DateTime();
             $diagnostico->peso= $request->peso;
             $diagnostico->altura= $request->altura;
@@ -77,11 +86,10 @@ public function index(Request $request)
         }
     }
 
-    public function viewPDF(Request $request){
-        
-        $var = $request->recetaPDF;
-        $pdf = PDF::loadHTML($var."<h1>xd</h1>");
-        return $pdf->stream();
+    public static function viewPDF($request,$nombrePaciente){
+        $valor=$request;
+        $paciente=$nombrePaciente;
+        return view('diagnostico.pdf',compact('valor','paciente'));
     }
 
 }

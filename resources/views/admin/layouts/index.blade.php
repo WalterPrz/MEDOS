@@ -168,13 +168,13 @@
 
       <li class="nav-item">
           <a class="nav-link" href="/credito">
-            <i class="fa fa-users" aria-hidden="true"></i>
+            <i class="fas fa-comment-dollar" aria-hidden="true"></i>
             <span>Creditos</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/medicamento">
-          <i class="fa fa-users" aria-hidden="true"></i>
+          <i class="fas fa-capsules" aria-hidden="true"></i>
           <span>Medicamentos</span></a>
     </li>
     </ul>

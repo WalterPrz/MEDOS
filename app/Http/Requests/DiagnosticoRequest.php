@@ -25,8 +25,9 @@ class DiagnosticoRequest extends FormRequest
     {
         return [
             //
+            'expediente_id'=>'required',
             'peso'=>'required|min:0.01|max:999|numeric',
-            'altura'=>'required|min:0.01|max:999|numeric',
+            'altura'=>'required|min:0.01|max:300|numeric',
             'descripcionDiag'=>'required|max:250',
             'receta'=>'required|max:250',
         ];
@@ -35,7 +36,7 @@ class DiagnosticoRequest extends FormRequest
         public function messages()
     {
         return [
-
+            'expediente_id.*'=>'Necesario',
             'peso.*'=>'El peso es requerido solo numeros y no vacio, maximo 3 digitos.',
             'altura.*'=>'La altura es requerida, solo numeros y no vacia.',
             'descripcionDiag'=>'No puede ser vacio, maximo 250 caracteres',

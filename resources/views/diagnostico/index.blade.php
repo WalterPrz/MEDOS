@@ -4,6 +4,7 @@
 <div class="row py-lg-2">
     <div class="col-md-6">
        <h2>Expediente</h2>
+       <h6>Busque el paciente para agregar su diagnostico</h6>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Html2Pdf  -->
     <script src=
@@ -18,18 +19,18 @@
     <div class="container-fluid">
 <form  role="search">
         <div style="display: flex; align-items: flex-start; margin-top: 1em;">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input  name="texto" class="form-control float-md-right" type="search" placeholder="Buscar por expediente" aria-label="Buscar">
             </div>
                     <div class="col-sm-1">
-                        <button type="submit" class="btn btn-success">Buscar</button>
+                        <button type="submit" class="btn btn-secondary">Buscar</button>
                     </div>
           </div>
         </form>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
             <thead>
             <tr>
             <th scope="col">Nombre del paciente</th>
@@ -64,17 +65,12 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-12" >
             <div class="card card-post" id="post_card">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         Creando diagnostico: 
                     </div>
-                    <div class="pull-right">
-                        <input type="button" class="btn btn-warning btn-lg float-md-right" 
-                        onclick="GeneratePdf();" value="Imprimir Receta">     
-                    </div>
-
                 </div>
 
                 <x-errores class="mb-4" />
@@ -86,21 +82,20 @@
                                 <div class="form-group has-feedback row">
                                     <label for="peso" class="col-12 control-label"></label>
                                     <div class="col-12">
-                                      <input id="idExpediente" type="hidden" class="form-control" name="idExpediente" 
-                                      value="@foreach($expedientes as $item){{$item->id}}
-                                            @endforeach" placeholder="Peso del paciente" >
+                                      <input id="expediente_id" type="hidden" class="form-control" name="expediente_id" 
+                                      value="@foreach($expedientes as $item){{$item->id}}@endforeach" placeholder="Peso del paciente" >
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
-                                    <label for="peso" class="col-12 control-label">Peso:</label>
+                                    <label for="peso" class="col-12 control-label">Peso(lb):</label>
                                     <div class="col-12">
                                       <input id="peso" type="number" min="0.01" max="999" step="0.01" class="form-control" name="peso" value="{{old('peso')}}" placeholder="Peso del paciente" >
                                     </div>
                                 </div>
                                  <div class="form-group has-feedback row">
-                                    <label for="altura" class="col-12 control-label">Altura:</label>
+                                    <label for="altura" class="col-12 control-label">Altura(cm):</label>
                                     <div class="col-12">
-                                      <input id="altura" type="numer" class="form-control" name="altura" value="{{old('altura')}}" placeholder="Altura del paciente" >
+                                      <input id="altura" type="number" min="0.01" max="300" step="0.01" class="form-control" name="altura" value="{{old('altura')}}" placeholder="Altura del paciente" >
                                     </div>
                                 </div>
                                 
@@ -127,7 +122,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <span data-toggle="tooltip" title data-original-title="Guardar cambios realizados">
-                                <button type="submit" class="btn btn-success btn-lg btn-block" value="Guardar" name="action">
+                                <button type="submit" class="btn btn-warning btn-lg btn-block" value="Guardar" name="action">
                                     <i class="fa fa-save fa-fw">
                                         <span class="sr-only">
                                             Guardar categoria Icono
@@ -148,13 +143,7 @@
     </div>
  
 </div> 
-<script>          
-    // Function to GeneratePdf
-    function GeneratePdf() {
-        var element = document.getElementById('recetaPDF');
-        html2pdf(element);
-    }
-</script>
+
 
 <script src=
 "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -213,15 +202,17 @@
     crossorigin="anonymous">
 </script>
 
-<script>
-    $(document).ready(function() {
-    $('#dataTable3').DataTable({
-      dom: '<"top"i>rt<"bottom"flp><"clear">',
-      "language": {
+@section('js_user_page')
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable3').DataTable({
+                "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
-    });
-    });
+            });
+        });
     </script>
+@endsection
 @endsection
 @endsection

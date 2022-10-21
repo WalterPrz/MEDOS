@@ -28,6 +28,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group has-feedback row">
+                                    <div class="col-12">
+                                        <input name="expediente_id" class="form-control" type="hidden" min="0.01" max="999" step="0.01" value="{{old('expediente_id',$diagnostico->idExpediente)}}" placeholder="Peso del paciente" id="expediente_id"></input>
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback row">
                                     <label for="peso" class="col-12 control-label">Peso:</label>
                                     <div class="col-12">
                                         <input name="peso" class="form-control" type="number" min="0.01" max="999" step="0.01" value="{{old('peso',$diagnostico->peso)}}" placeholder="Peso del paciente" id="peso"></input>
