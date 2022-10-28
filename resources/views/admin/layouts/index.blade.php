@@ -88,75 +88,98 @@
             <span>Roles</span></a>
         </li>
       @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/inventario">
             <i class="fas fa-fw fa-box"></i>
             <span>Inventario</span></a>
       </li>
+      @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
         <a class="nav-link" href="/medicamento-proximo-vencer">
           <i class="fa-solid fa-tablets"></i>
           <span>Medicamentos Próximos a Vencer</span></a>
       </li>
+      @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
         <a class="nav-link" href="/devoluciones">
         <i class="fa-sharp fa-solid fa-box"></i>
           <span>Devoluciones</span></a>
       </li>
+      @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/ventas">
             <i class="fas fa-fw fa-coins"></i>
             <span>Ventas</span></a>
         </li>
+        @endrole
+        @role('admin|farmaceutico')
         <li class="nav-item">
           <a class="nav-link" href="/ingresomed/crear">
             <i class="fas fa-fw fa-tag"></i>
             <span>Compras</span></a>
         </li>
+        @endrole
 
-      @permission(['ver.usuarios'])
+        @role('admin')
         <li class="nav-item">
           <a class="nav-link" href="/user">
             <i class="fas fa-fw fa-users"></i>
             <span>Usuarios</span></a>
         </li>
-      @endpermission
+        @endrole
 
+        @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/proveedor">
             <i class="fas fa-fw fa-truck"></i>
             <span>Proveedor</span></a>
       </li>
+      @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/categoria">
             <i class="fas fa-fw fa-table"></i>
             <span>Categoria</span></a>
       </li>
+      @endrole
 
+      @role('admin|medico')
       <li class="nav-item">
           <a class="nav-link" href="/expediente">
           <i class="fa-solid fa-file-lines"></i>
             <span>Expedientes</span></a>
-      </li>  
+      </li>
+      @endrole
 
+      @role('admin|medico')
       <li class="nav-item">
           <a class="nav-link" href="/diagnostico">
             <i class="fa fa-user-md" aria-hidden="true"></i>
             <span>Consultas</span></a>
       </li>
+      @endrole
 
+      @role('admin|medico')
       <li class="nav-item">
           <a class="nav-link" href="/refext">
           <i class="fa-solid fa-file-pdf"></i>
             <span>Agregar referencias externas</span></a>
       </li> 
+      @endrole
 
+      @role('admin|medico')
       <li class="nav-item">
           <a class="nav-link" href="/referenciaMedica">
             <i class="fa fa-file" aria-hidden="true"></i>
             <span>Emitir referencia medica</span></a>
-      </li>      
+      </li>
+      @endrole      
       
+      @role('admin|medico')
       <li class="nav-item">
           <a class="nav-link" href="/visita">
             <i class="fa fa-users" aria-hidden="true"></i>
@@ -165,18 +188,22 @@
           <i class="fas fa-fw fa-calendar"></i>
             <span>Citas</span></a>
       </li>
+      @endrole
 
+      @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/credito">
             <i class="fas fa-comment-dollar" aria-hidden="true"></i>
             <span>Creditos</span></a>
       </li>
-
+      @endrole
+      @role('admin|farmaceutico')
       <li class="nav-item">
         <a class="nav-link" href="/medicamento">
           <i class="fas fa-capsules" aria-hidden="true"></i>
           <span>Medicamentos</span></a>
     </li>
+    @endrole
     </ul>
 
 

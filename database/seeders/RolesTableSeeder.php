@@ -25,9 +25,21 @@ class RolesTableSeeder extends Seeder
                 'level'       => 0,
             ],
             [
-                'name'        => 'User',
-                'slug'        => 'user',
-                'description' => 'Rol de usuario',
+                'name'        => 'Farmaceutico',
+                'slug'        => 'farmaceutico',
+                'description' => 'Rol de encargado de farmacia',
+                'level'       => 0,
+            ],
+            [
+                'name'        => 'Medico',
+                'slug'        => 'medico',
+                'description' => 'Rol de medico encargado',
+                'level'       => 0,
+            ],
+            [
+                'name'        => 'Laboratorista',
+                'slug'        => 'laboratorista',
+                'description' => 'Rol de encargado de laboratorio',
                 'level'       => 0,
             ],
         ];

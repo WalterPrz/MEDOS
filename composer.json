@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
-        "jeremykenedy/laravel-roles": "^8.1",
+        "jeremykenedy/laravel-roles": "^9.0",
         "jeroennoten/laravel-adminlte": "^3.8",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.2",
@@ -15,7 +15,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
-        "spipu/html2pdf": "^4.6"
+        "spipu/html2pdf": "^5.2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
