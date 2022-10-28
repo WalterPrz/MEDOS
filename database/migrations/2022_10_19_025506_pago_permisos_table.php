@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('referencia_externas', function (Blueprint $table) {
+        Schema::create('pago_permisos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idExpediente');
-            $table->string('ruta',2048);
-            $table->string('nombreReferencia',2048);
-            $table->foreign('idExpediente')->references('id')->on('expedientes');
+            $table->unsignedBigInteger('idPermisoFarmacia');
+            $table->date('fechaPago');
+            $table->foreign('idPermisoFarmacia')->references('id')->on('permiso_farmacias');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referencia_externas');
+        Schema::dropIfExists('pago_permisos');
     }
+
 };

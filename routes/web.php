@@ -10,7 +10,7 @@ use App\Http\Controllers\IngresoMedicamentoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\InventarioController; 
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ReferenciaMedicaController;
 
 
@@ -23,7 +23,8 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ListaVisitasController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
-
+use App\Http\Controllers\PermisoFarmaciaController;
+use App\Http\Controllers\PagoPermisoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,7 +145,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::put('diagnostico/{diagnostico}', [DiagnosticoController::class,'update'])->name('diagnostico.update');
 
     Route::post('diagnostico/view-pdf/', [DiagnosticoController::class,'viewPDF'])->name('view-pdf');
-    
+
 
     Route::get('referenciaMedica', [ReferenciaMedicaController::class,'index'])->name('referenciaMedica.index');
     Route::post('referenciaMedica',[ReferenciaMedicaController::class,'store'])->name('referenciaMedica.store');
@@ -184,6 +185,32 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
      //Listar detalle del expediente
      Route::get('expediente/{id}', [ExpedienteController::class,'show'])->name('expediente.show');
      Route::get('expediente/{id}/download', [ExpedienteController::class, 'download'])->name('expediente.download');
+
+     //----------------------------Permisos Farmacia------------------------
+        //listar
+        Route::get('permisoFarmacia', [PermisoFarmaciaController::class,'index'])->name('permisoFarmacia.index');
+        //crear
+        Route::view('permisoFarmacia/crear','permisoFarmacia.create')->name('permisoFarmacia.create');
+        Route::post('permisoFarmacia',[PermisoFarmaciaController::class,'store'])->name('permisoFarmacia.store');
+        //actualizar
+        Route::get('permisoFarmacia/{permiso}', [PermisoFarmaciaController::class,'show'])->name('permisoFarmacia.show');
+        Route::put('permisoFarmacia/{permiso}', [PermisoFarmaciaController::class,'update'])->name('permisoFarmacia.update');
+        //eliminar
+        Route::get('permisoFarmacia/{permiso}/destoy', [PermisoFarmaciaController::class,'destroy'])->name('permisoFarmacia.destroy');
+
+        //----------------------------Pago Permisos------------------------
+        //listar
+        Route::get('pagoPermiso', [PagoPermisoController::class,'index'])->name('pagoPermiso.index');
+        //crear
+        Route::controller(PagoPermisoController::class)->group(function(){
+            Route::get('pagoPermiso/crear', 'create')->name('pagoPermiso.create');
+            Route::post('pagoPermiso/save', 'store')->name('pagoPermiso.store');
+        });
+        //actualizar
+        Route::get('pagoPermiso/{permiso}', [PagoPermisoController::class,'show'])->name('pagoPermiso.show');
+        Route::put('pagoPermiso/{permiso}', [PagoPermisoController::class,'update'])->name('pagoPermiso.update');
+        //eliminar
+        Route::get('pagoPermiso/{permiso}/destoy', [PagoPermisoController::class,'destroy'])->name('pagoPermiso.destroy');
 
 
 });

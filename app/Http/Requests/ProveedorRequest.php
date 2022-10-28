@@ -25,9 +25,9 @@ class ProveedorRequest extends FormRequest
     {
         return [
             'nombreProveedor'=>'required|max:100',
-            'telefonoProveedor'=>'required|min:10000000|max:99999999|integer',
+            'telefonoProveedor'=>'required',
             'nombreVendedor'=>'required|max:100',
-            'telefonoVendedor'=>'required|min:10000000|max:99999999|integer',
+            'telefonoVendedor'=>'required',
             'plazoDevolucion'=>'required|max:365|integer|min:1',
         ];
     }
