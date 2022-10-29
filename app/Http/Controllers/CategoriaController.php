@@ -25,7 +25,7 @@ class CategoriaController extends Controller
         }
     }
 
-    public function show(CategoriaRequest $categoria)
+    public function show( Categoria $categoria)
     {
         try{
             return view('categoria.edit', compact('categoria'));
@@ -33,7 +33,7 @@ class CategoriaController extends Controller
             return $e->getMessage();
         }
     }
-    public function update(Request $request, Categoria $categoria)
+    public function update(CategoriaRequest $request, Categoria $categoria)
     {
         try{
             
