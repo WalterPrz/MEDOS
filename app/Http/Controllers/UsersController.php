@@ -149,7 +149,6 @@ class UsersController extends Controller
     {
         $user->activo = $request->activo;
         $user->save();
-        $users = User::orderBy('id', 'asc')->get();
-        return view('admin.user.index', ['users' => $users]);
+        return redirect('/user');
     }
 }

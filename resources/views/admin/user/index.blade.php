@@ -85,24 +85,21 @@
                         
                     </td>
                     <td>
-
                         @if ($user['activo'] ==0 )
-                        <form id="a1" action="{{route('user.activar',$user)}}" method="POST">
+                        <form id="a2" action="{{route('user.activar',$user['id'])}}" method="POST">
                             @method('put')
                             @csrf
-
                             <input type="hidden" name="activo" value="1"/>
+                            <button type="submit" class="btn btn-link">Activar <i class="fa fa-check-circle"></i></button>
                             <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
-                            <a href="javascript:;" onclick="document.getElementById('a1').submit();"><i class="fa fa-times-circle"></i></a>
                         </form>
-
                         @else
-                        <form id="a2" action="{{route('user.activar',$user)}}" method="POST">
+                        <form id="a1" action="{{route('user.activar',$user['id'])}}" method="POST">
                             @method('put')
                             @csrf
                             <input type="hidden" name="activo" value="0"/>
-                            <a href="javascript:;" onclick="document.getElementById('a2').submit();"><i class="fa fa-check-circle"></i></a>
                             <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
+                            <button type="submit" class="btn btn-link">Desactivar <i class="fa fa-times-circle"></i></button>
                         </form>
                         @endif
                     </td>
