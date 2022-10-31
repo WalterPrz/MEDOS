@@ -54,6 +54,7 @@ Route::middleware([
         return view('admin.bienvenida.index');
     })->name('bienvenida');
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
+    Route::put('/user/{user}/activar', [UsersController::class,'activar'])->name('user.activar');
     //----------------------------Categoria------------------------
     //listar
     Route::get('categoria', [CategoriaController::class,'index'])->name('categoria.index');

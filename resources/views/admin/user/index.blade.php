@@ -31,6 +31,7 @@
                 <th>Rol</th>
                 <th>Permisos</th>
                 <th>Opciones</th>
+                <th>Activar/Desactivar</th>
             </tr>
             </thead>
             <tfoot>
@@ -44,6 +45,7 @@
                 <th>Rol</th>
                 <th>Permisos</th>
                 <th>Opciones</th>
+                <th>Activar/Desactivar</th>
             </tr>
             </tfoot>
             <tbody>
@@ -80,6 +82,26 @@
                         <a href="/user/{{ $user['id'] }}"><i class="fa fa-eye"></i></a>
                         <a href="/user/{{ $user['id'] }}/edit"><i class="fa fa-edit"></i></a>
                         <a href="#" data-toggle="modal" data-target="#deleteModal" data-userid="{{$user['id']}}"><i class="fas fa-trash-alt"></i></a>
+                        
+                    </td>
+                    <td>
+                        @if ($user['activo'] ==0 )
+                        <form id="a2" action="{{route('user.activar',$user['id'])}}" method="POST">
+                            @method('put')
+                            @csrf
+                            <input type="hidden" name="activo" value="1"/>
+                            <button type="submit" class="btn btn-link">Activar <i class="fa fa-check-circle"></i></button>
+                            <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
+                        </form>
+                        @else
+                        <form id="a1" action="{{route('user.activar',$user['id'])}}" method="POST">
+                            @method('put')
+                            @csrf
+                            <input type="hidden" name="activo" value="0"/>
+                            <!--{{-- <input type="hidden" id="user_id" name="user_id" value=""> --}}-->
+                            <button type="submit" class="btn btn-link">Desactivar <i class="fa fa-times-circle"></i></button>
+                        </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

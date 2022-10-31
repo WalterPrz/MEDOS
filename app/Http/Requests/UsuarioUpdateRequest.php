@@ -28,7 +28,7 @@ class UsuarioUpdateRequest extends FormRequest
             'email' => 'required|max:191|email',
             'nombres' => 'required|max:191',
             'apellidos' => 'required|max:191',
-            'password' => 'between:8,191|confirmed',
+            'password' => 'confirmed',
             'password_confirmation' => 'required_with:password',
             'role'=>'required|exists:roles,id'
         

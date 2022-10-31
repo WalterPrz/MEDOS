@@ -139,9 +139,16 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+
         $user->roles()->detach();
         $user->delete();
 
+        return redirect('/user');
+    }
+    public function activar(Request $request, User $user)
+    {
+        $user->activo = $request->activo;
+        $user->save();
         return redirect('/user');
     }
 }
