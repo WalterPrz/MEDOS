@@ -12,7 +12,7 @@
             <div class="card card-post" id="post_card">
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        Creando proveedor: 
+                        Creando proveedor:
                         <div class="pull-right">
                             <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de proveedores">Regresar</a>
                         </div>
@@ -30,7 +30,7 @@
                                     <input id="nombreProveedor" type="text" class="form-control" name="nombreProveedor" value="{{old('nombreProveedor')}}" placeholder="Nombre de el proveedor" >
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoProveedor" class="col-12 control-label">Teléfono proveedor:</label>
                                     <div class="col-12">
@@ -44,22 +44,22 @@
                                     <input id="nombreVendedor" type="text" class="form-control" name="nombreVendedor" value="{{old('nombreVendedor')}}" placeholder="Nombre de el vendedor">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group has-feedback row">
                                     <label for="telefonoVendedor" class="col-12 control-label">Teléfono vendedor encargado:</label>
                                     <div class="col-12">
-                                    <input id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" value="{{old('telefonoVendedor')}}" placeholder="(Código de área) Número">
+                                    <input id="telefonoVendedor" type="tel" class="form-control" name="telefonoVendedor" value="{{old('telefonoVendedor')}}" placeholder="+CódigoNúmero (Ej. +503123456")>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group has-feedback row">
                                     <label for="plazoDevolucion" class="col-12 control-label">Plazo de devolución (días):</label>
                                     <div class="col-12">
                                     <input id="plazoDevolucion" type="number" class="form-control" name="plazoDevolucion" value="{{old('plazoDevolucion')}}" placeholder="Plazo de devolución en dias">
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </div>
                           </div>
                  </div>
@@ -83,5 +83,5 @@
                   </div>
         </div>
     </div>
-</div>   
+</div>
 @endsection

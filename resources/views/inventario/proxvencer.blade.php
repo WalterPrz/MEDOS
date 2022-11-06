@@ -6,7 +6,7 @@
             <h2>Productos próximos a vencer</h2>
         </div>
         <div class="col-md-6">
-            <form action="{{ route('detalledevolucion.index') }}" method="GET">
+            <form action="{{ route('devolucion.index') }}" method="GET">
                 @csrf
                 <button type="submit" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Crear
                     una Devolucion</button>

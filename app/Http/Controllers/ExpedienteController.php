@@ -8,9 +8,12 @@ use App\Http\Requests\ExpedienteRequest;
 use Carbon\Carbon;
 use App\Models\ReferenciaExterna;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ExpedienteController extends Controller
 {
+    private $disk = "public";
     public function index()
     {
         $expedientes = Expediente::all();
@@ -20,7 +23,7 @@ class ExpedienteController extends Controller
     public function create()
     {
         $fecha = Carbon::now();
-        $fechaFormato = $fecha->format('d-m-Y'); 
+        $fechaFormato = $fecha->format('d-m-Y');
         return view('expediente.create', compact('fechaFormato'));
     }
     public function store(ExpedienteRequest $request)
@@ -34,7 +37,7 @@ class ExpedienteController extends Controller
             $expediente->genero = $request->genero;
             $expediente->telefonoPaciente = $request->telefonoPaciente;
             $expediente->alergias = $request->alergias;
-            $expediente->fechaApertura = $fecha->format('Y-m-d'); 
+            $expediente->fechaApertura = $fecha->format('Y-m-d');
             $expediente->save();
             return redirect()->route('expediente.index');
         }catch(\Exception $e){
@@ -68,7 +71,7 @@ class ExpedienteController extends Controller
     public function destroy(Expediente $expediente)
     {
         $expediente->delete();
-        return redirect()->route('expediente.index'); 
+        return redirect()->route('expediente.index');
     }
     public function show($id)
     {
@@ -92,12 +95,14 @@ class ExpedienteController extends Controller
 
         return view('expediente.show', compact('expedientes','diagnosticos','documentos'));
     }
-    public function download($uuid)
+    public function download($uuid )
     {
         $book = ReferenciaExterna::where('id', $uuid)->firstOrFail();
-        $pathToFile = storage_path( $book->nombreReferencia);
+        $pathToFile = storage_path( "app/public/" .$book->nombreReferencia);
         // return response()->download($pathToFile);
         return response()->file($pathToFile);
+       // return Storage::disk($this->disk)->download($referencia->nombreReferencia);
+
     }
 
 }

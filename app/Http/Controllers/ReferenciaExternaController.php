@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Expediente;
 use App\Models\ReferenciaExterna;
 
+
 class ReferenciaExternaController extends Controller
 {
     public function index()
@@ -15,7 +16,7 @@ class ReferenciaExternaController extends Controller
     }
 
     public function create(Expediente $expediente)
-    { 
+    {
         return view('refext.create', compact('expediente'));
     }
     public function store(Request $request, Expediente $expediente)
@@ -23,15 +24,15 @@ class ReferenciaExternaController extends Controller
         try{
             //obtenemos el campo file definido en el formulario
             $file = $request->file('archivo');
-
             //obtenemos el nombre del archivo
-            $nombre = $file->getClientOriginalName();
+            $var = '_';
+            $nombre = strval ($expediente->id) .$var .$file->getClientOriginalName();
 
             $referenciaExterna = new ReferenciaExterna();
             $referenciaExterna->idExpediente = $expediente->id;
             $referenciaExterna->nombreReferencia = $nombre;
             $referenciaExterna->ruta = $nombre;
-            $request->file('archivo')->store('public'); 
+            $file->storeAs('',$nombre,'public');
             $referenciaExterna->save();
             return redirect()->route('refext.index');
         }catch(\Exception $e){
