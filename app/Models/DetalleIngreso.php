@@ -25,4 +25,8 @@ class DetalleIngreso extends Model
     {
         return $this->belongsTo(Medicamento::class);
     }
+    public function detalleDevolucion()
+    {
+        return $this->hasMany(DetalleDevolucion::class);
+    }
 }

@@ -18,13 +18,24 @@ class DetalleDevolucionController extends Controller
 
     public function index(Devolucion $devolucion)
     {
-        $ingresos =  DetalleIngreso::with(['ingresoMedicamento.credito.proveedor','medicamento'])->get();
-        $medVen = $ingresos->map(function ($item) {
+        $ingresos =  DetalleIngreso::with(['ingresoMedicamento.credito.proveedor','medicamento','detalleDevolucion', 'medicamento.detalleventas.venta'])->get();
+        
+         $medVen = $ingresos->map(function ($item) {
             $date =  Carbon::parse($item->fechaVenc);
+            $cantidad = $item->cantidadIngreso ;
+
             $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
             $endDate = $date->subDay($fechaAntes );
             $ahora =  now();
-            if($endDate <= $ahora){
+            
+            $item->cantidad =$cantidad;
+            $arrayVentas = $item->medicamento->detalleventas;
+            foreach ($arrayVentas as $x) {
+                if($x->venta->estado ==1 ){
+                    $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
+                }
+            }
+            if($endDate <= $ahora && count($item->detalleDevolucion) == 0){
                 return $item;
             }
         });
@@ -52,10 +63,11 @@ class DetalleDevolucionController extends Controller
         $existe =  DetalleDevolucion::where('devolucion_id',$devolucion->id)->where('detalle_ingreso_id',$id_detalle_ingreso->id)->get();
         $cantidad = count($existe);
         if($cantidad ==0){
+           
             $detalledev =  new DetalleDevolucion();
             $detalledev->detalle_ingreso_id = $id_detalle_ingreso->id;
             $detalledev->devolucion_id = $devolucion->id;
-            $detalledev->cantidad = 1;
+            $detalledev->cantidad =  $request->cantidad;
             $detalledev->save();
             
         }

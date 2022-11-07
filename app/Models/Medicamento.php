@@ -25,6 +25,10 @@ class Medicamento extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+    public function detalleventas()
+    {
+        return $this->hasMany(DetalleVenta::class);
+    }
     public function ventas()
     {
         return $this->belongsToMany(Venta::class,'detalle_ventas');

@@ -25,6 +25,7 @@
                                     <th scope="col">Medicamento</th>
                                     <th scope="col">Fecha Vencimiento</th>
                                     <th scope="col">Fecha Ingreso</th>
+                                    <th scope="col">Cantidad</th>
                                     <th scope="col">Proveedor</th>
                                     <th scope="col">Agregar</th>
                                 </tr>
@@ -35,12 +36,16 @@
                                     <th>{{ $item->medicamento->nombre_comercial }}</th>
                                     <td>{{ $item->fechaVenc }}</td>
                                     <td>{{ $item->ingresoMedicamento->fechaIngreso }}</td>
+                                    <td>{{ $item->cantidad }}</td>
                                     <td>{{ $item->ingresoMedicamento->credito->proveedor->nombreProveedor }}</td>
                                     <td>
                                     <form
                                         action="{{ route('detalledevolucion.store', ['devolucion' => $devolucion->id, 'id_detalle_ingreso' => $item->id]) }}"
                                         method="POST">
                                         @csrf
+                                        <input hidden type="text" value="{{ old('cantidad',$item->cantidad) }}"
+                                                    name="cantidad" class="form-control" placeholder="Cantidad"
+                                                    aria-label="Cantidad" aria-describedby="button-addon2">
                                         <button type="submit" class="btn btn-success">Agregar</button>
                                     </form>
                                 </td>
@@ -64,6 +69,7 @@
                                 <th scope="col">Medicamento</th>
                                 <th scope="col">Fecha Vencimiento</th>
                                 <th scope="col">Fecha Ingreso</th>
+                                <th scope="col">Cantidad</th>
                                 <th scope="col">Proveedor</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -74,6 +80,7 @@
                                     <td>{{ $item->detalleIngreso->medicamento->nombre_comercial }}</td>
                                     <td>{{ $item->detalleIngreso->fechaVenc }}</td>
                                     <td>{{ $item->detalleIngreso->ingresoMedicamento->fechaIngreso }}</td>
+                                    <td>{{ $item->cantidad }}</td>
                                     <td>{{ $item->detalleIngreso->ingresoMedicamento->credito->proveedor->nombreProveedor }}</td>
                                     <td>
                                         <form

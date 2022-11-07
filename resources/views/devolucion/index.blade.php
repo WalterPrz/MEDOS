@@ -3,7 +3,7 @@
 @section('content')
 <div class="row py-lg-2">
     <div class="col-md-6">
-       <h2>Devluciones</h2>
+       <h2>Devoluciones</h2>
     </div>
     <div class="col-md-6">
         <form action="{{route('devolucion.store')}}" method="POST">
@@ -31,7 +31,7 @@
             <thead>
             <tr>
             <th scope="col">Fecha de devolución</th>
-            <th scope="col">Monto Descuentop</th>
+            <th scope="col">Monto Descuento</th>
             
             <th scope="col">Acciones</th>
           </tr>

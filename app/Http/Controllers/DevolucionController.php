@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Credito;
 use App\Models\Medicamento;
 use App\Models\DetalleIngreso;
+use App\Models\DetalleDevolucion;
 use App\Models\IngresoMedicamento;
 use App\Models\Proveedor;
 use Illuminate\Support\Carbon;
@@ -36,7 +37,15 @@ class DevolucionController extends Controller
     public function update(Request $request, Devolucion $devolucion)
     {
         $devolucion->estado =  true;
-        $devolucion->save();
+        $detalle_dev =  DetalleDevolucion::where('devolucion_id',$devolucion->id)->get();
+        $descuento = 0;
+        foreach ($detalle_dev as $item) {
+           $a =  DetalleIngreso::where('id',$item->detalle_ingreso_id)->first();
+           $descuento =  $descuento + ($item->cantidad * $a->precioCompraUnidad );
+
+        }
+        $devolucion->montoDescuento = $descuento;
+        $devolucion->save();    
         return  redirect()->route('devolucion.index');
     }
 
