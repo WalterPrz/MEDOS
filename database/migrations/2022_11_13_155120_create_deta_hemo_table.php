@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deta_hemo', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
+            $table->foreignIdFor(Examen::class)->references('id')->on('examens')->onDelete('cascade'); 
             $table->integer('globRojos');
             $table->decimal('hematocrito', $precision = 5, $scale = 1);
             $table->decimal('hemoglobinaHemo', $precision = 5, $scale = 1);

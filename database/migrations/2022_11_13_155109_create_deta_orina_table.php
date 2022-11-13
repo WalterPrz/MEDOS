@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deta_orina', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
+            $table->foreignIdFor(Examen::class)->references('id')->on('examens')->onDelete('cascade'); 
             $table->string('colorOrina');
             $table->string('aspecto');
             $table->decimal('densidad', $precision = 5, $scale = 3);

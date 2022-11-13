@@ -64,8 +64,6 @@
                                     <label for="hora_cita" class="col-12 control-label">Hora de la cita:</label>
                                     <div class="col-12">
 
-                                    <input id="hora_cita" type="text" class="form-control" name="hora_cita" value="{{old('hora_cita')}}" placeholder="Hora de la cita">
-
                                     <select id="hora_cita" class="form-control" name="hora_cita" value="{{old('hora_cita')}}" placeholder="Hora de la cita">
                                     <option value="8:00">8:00 - 8:30</option>
                                         <option value="8:30">8:30 - 9:00</option>

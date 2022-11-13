@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deta_exa', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
+            $table->foreignIdFor(Examen::class)->references('id')->on('examens')->onDelete('cascade'); 
             $table->string('nombreExamen');
             $table->string('valorExamen');
             $table->timestamps();

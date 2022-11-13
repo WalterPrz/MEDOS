@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Expediente;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,16 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('examen', function (Blueprint $table) {
+        Schema::create('examens', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->references('id')->on('users');
+            $table->foreignIdFor(Expediente::class)->references('id')->on('expedientes');
             $table->date('fecha');
-            $table->string('expediente_id');
             $table->string('numBoleta');
             $table->integer('edad');
             $table->string('generoExamen');
             $table->timestamps();
-            $table->foreign('expediente_id')->references('id')->on('expedientes');
             $table->softDeletes();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('examen');
+        Schema::dropIfExists('examens');
     }
 };

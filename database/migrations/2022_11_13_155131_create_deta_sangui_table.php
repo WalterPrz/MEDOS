@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deta_sangui', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
+            $table->foreignIdFor(Examen::class)->references('id')->on('examens')->onDelete('cascade'); 
             $table->decimal('glucosaSangui', $precision = 5, $scale = 1);
             $table->decimal('colesterol', $precision = 5, $scale = 1);
             $table->decimal('trigliceridos', $precision = 5, $scale = 1);

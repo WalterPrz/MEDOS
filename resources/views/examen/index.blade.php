@@ -7,7 +7,7 @@
        <h2>Lista de examenes del paciente: </h2>
   </div>
   <div class="col-md-6">
-    <a href="" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Agregar Examen</a>
+    <a href="/examen/paciente/{{id}}/create" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Agregar Examen</a>
   </div>
 </div>
 

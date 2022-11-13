@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deta_heces', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
+            $table->foreignIdFor(Examen::class)->references('id')->on('examens')->onDelete('cascade'); 
             $table->string('colorHeces');
             $table->string('consistencia');
             $table->string('mucus');
