@@ -18,11 +18,12 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->references('id')->on('users');
             $table->date('fecha');
-            $table->string('paciente');
+            $table->string('expediente_id');
             $table->string('numBoleta');
             $table->integer('edad');
             $table->string('generoExamen');
             $table->timestamps();
+            $table->foreign('expediente_id')->references('id')->on('expedientes');
             $table->softDeletes();
         });
     }

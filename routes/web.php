@@ -94,6 +94,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::post('/citas/{cita}/confirm', [CitaController::class,'confirm'])->name('citas.confirm');
 
     Route::resource('/examen', ExamenController::class);
+    Route::get('/examen/paciente/{id}', [ExamenController::class,'index'])->name('examen.index');
 
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
