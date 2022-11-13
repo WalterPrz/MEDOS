@@ -75,4 +75,8 @@ class User extends Authenticatable
         return $this->hasMany(Cita::class);
     }
 
+    public function examen(){
+        return $this->hasOne(Examen::class);
+    }
+
 }

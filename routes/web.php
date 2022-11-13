@@ -26,6 +26,7 @@ use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
 use App\Http\Controllers\CreditoController;
 use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\ExamenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,8 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::resource('/citas', CitaController::class);
     Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
     Route::post('/citas/{cita}/confirm', [CitaController::class,'confirm'])->name('citas.confirm');
+
+    Route::resource('/examen', ExamenController::class);
 
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
