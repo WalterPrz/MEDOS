@@ -204,6 +204,14 @@
           <span>Medicamentos</span></a>
     </li>
     @endrole
+
+    @role('admin|farmaceutico')
+    <li class="nav-item">
+        <a class="nav-link" href="/reportes">
+          <i class="fas fa-fw fa-box"></i>
+          <span>Reportes</span></a>
+    </li>
+    @endrole
     </ul>
 
 

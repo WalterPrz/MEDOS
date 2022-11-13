@@ -79,7 +79,7 @@
                                             Guardar Icono
                                         </span>
                                     </i>
-                                    Guardar abono
+                                    Guardar medicamento
                                     </button>
                                 </span>
                             </div>
