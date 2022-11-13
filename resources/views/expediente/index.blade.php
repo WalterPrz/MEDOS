@@ -24,6 +24,7 @@
             <th scope="col">id</th>
             <th scope="col">Fecha Apertura</th>
             <th scope="col">Nombre paciente</th>
+            <th scope="col">Exámenes Lab.</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -32,15 +33,17 @@
             <th scope="col">id</th>
             <th scope="col">Fecha Apertura</th>
             <th scope="col">Nombre paciente</th>
+            <th scope="col">Exámenes Lab.</th>
             <th scope="col">Opciones</th>
           </tr>
         </tfoot>
-        <tbody>
+        <tbody  class="center">
             @foreach($expedientes as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->fechaApertura}}</td>
                 <td>{{$item->nombrePaciente}}</td>
+                <td> <a href="{{route('examen.index',$item->id)}}" ><i class="fa fa-th-list"></i></a></td>
                 <td>
                     <a href="{{route('expediente.show',$item->id)}}" ><i class="fa fa fa-eye"></i></a>
                     <a href="{{route('expediente.edit',$item->id)}}" ><i class="fa fa fa-edit"></i></a>

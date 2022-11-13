@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Examen;
+use App\Models\Expediente;
 use Illuminate\Http\Request;
-
 class ExamenController extends Controller
 {
     /**
@@ -12,9 +12,11 @@ class ExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Expediente $id)
     {
-        return view('examen.index');
+        $nombrePaciente = $id->nombrePaciente;
+        $examenes = Examen::with(['detaExa','detaHeces','detaHemo','detaOrina','detaSangui'])->where('expediente_id', $id->id)->get();
+        return view('examen.index', compact('nombrePaciente', 'examenes'));
     }
 
     /**
@@ -78,8 +80,9 @@ class ExamenController extends Controller
      * @param  \App\Models\Examen  $examen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Examen $examen)
+    public function destroy( Expediente $expediente, Examen $examen, )
     {
-        //
+        $examen->delete();
+        return redirect()->route('examen.index',  $expediente ); 
     }
 }
