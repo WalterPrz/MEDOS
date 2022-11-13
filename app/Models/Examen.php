@@ -21,7 +21,10 @@ class Examen extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function expediente()
+    {
+        return $this->belongsTo(Expediente::class);
+    }
     public function detaExa(){
         return $this->hasOne(DetaExa::class);
     }

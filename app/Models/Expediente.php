@@ -25,4 +25,8 @@ class Expediente extends Model
     {
         return $this->hasMany(ReferenciaExterna::class);
     }
+    public function Examenes()
+    {
+        return $this->hasMany(Examen::class);
+    }
 }
