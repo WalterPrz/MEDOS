@@ -43,7 +43,7 @@
                 <td>{{$item->nombre}}</td>
                 <td>{{$item->descripcion}}</td>
                 <td>
-                    <a href="{{route('categoria.show',$item->id)}}"><i class="fa fa-edit"></i></a>
+                   
                     <a href="{{route('categoria.destroy',$item)}}" data-toggle="modal" data-target="#deleteModal" data-categoriaid="{{$item->id}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>
