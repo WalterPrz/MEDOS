@@ -32,7 +32,7 @@ class MedProxVencerController extends Controller
                     $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
                 }
             }
-            if($endDate <= $ahora && count($item->detalleDevolucion) == 0){
+            if($endDate <= $ahora && count($item->detalleDevolucion) == 0 && $item->cantidad >0){
                 return $item;
             }
         });

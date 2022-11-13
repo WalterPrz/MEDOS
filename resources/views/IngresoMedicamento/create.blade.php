@@ -13,7 +13,16 @@
                 type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Ingresar medicamento</button>
         </li>
     </ul>
+    @if ($existe)
+    <script >
 
+      Swal.fire(
+      '¡Hay medicamentos próximos a vencer!',
+      'Realiza las devoluciones',
+      'warning'
+      )
+      </script>
+    @endif
 
     <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"tabindex="0">

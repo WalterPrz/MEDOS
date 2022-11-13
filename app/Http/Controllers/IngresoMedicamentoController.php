@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Credito;
-use App\Models\Proveedor;
+use App\Models\Medicamento;
+use App\Models\DetalleIngreso;
 use App\Models\IngresoMedicamento;
+
+use App\Models\Proveedor;
+use Illuminate\Support\Carbon;
+use App\Models\Credito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\IngresoMedicamentoRequest;
@@ -15,6 +19,35 @@ class IngresoMedicamentoController extends Controller
     }
     public function create(Request $request)
     {
+        $ingresos =  DetalleIngreso::with(['ingresoMedicamento.credito.proveedor','medicamento','detalleDevolucion', 'medicamento.detalleventas.venta'])->get();
+        
+        $medVen = $ingresos->map(function ($item) {
+           $date =  Carbon::parse($item->fechaVenc);
+           $cantidad = $item->cantidadIngreso ;
+
+           $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
+           $endDate = $date->subDay($fechaAntes );
+           $ahora =  now();
+
+           $item->cantidad =$cantidad;
+           $arrayVentas = $item->medicamento->detalleventas;
+           foreach ($arrayVentas as $x) {
+               if($x->venta->estado ==1){
+                   $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
+               }
+           }
+           if($endDate <= $ahora && count($item->detalleDevolucion) == 0 && $item->cantidad >0){
+               return $item;
+           }
+       });
+       $filtered = $medVen->filter(function ($value) {
+           return $value !=null;
+       });
+     
+
+
+
+
         $ampe1= "%";
         $fechaIngre = $request->get('fechaIngreso');
         $fecha = $ampe1.''.$fechaIngre;
@@ -31,7 +64,15 @@ class IngresoMedicamentoController extends Controller
         );
         $creditos = Credito::all();
         $proveedors=Proveedor::all();
-        return view('IngresoMedicamento.create', compact('ingresoMedicamentos','creditos','proveedors'));
+        if($filtered->count()>0 ){
+
+            $existe = true;
+            return view('IngresoMedicamento.create', compact('ingresoMedicamentos','creditos','proveedors','existe'));
+       }else{
+        
+            $existe = false;
+            return view('IngresoMedicamento.create', compact('ingresoMedicamentos','creditos','proveedors','existe'));
+       }
     }
     public function store(IngresoMedicamentoRequest $request)
     {

@@ -7,6 +7,16 @@
     </div>
 </div>
 <div>
+  @if ($existe)
+  <script >
+
+    Swal.fire(
+    '¡Hay medicamentos próximos a vencer!',
+    'Realiza las devoluciones',
+    'warning'
+    )
+    </script>
+  @endif
     <div class="container-fluid">
         <form  role="search">
         <div style="display: flex; align-items: flex-start; margin-top: 1em;">

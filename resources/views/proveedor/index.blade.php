@@ -10,6 +10,16 @@
     </div>
 </div>
 <div>
+    @if ($existe)
+    <script >
+  
+      Swal.fire(
+      '¡Hay medicamentos próximos a vencer!',
+      'Realiza las devoluciones',
+      'warning'
+      )
+      </script>
+    @endif
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
