@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deta_exa', function (Blueprint $table) {
+        Schema::create('deta_exas', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Examen::class)->references('id')->on('examen')->onDelete('cascade'); 
             $table->string('nombreExamen');

@@ -77,11 +77,8 @@ class IngresoMedicamentoController extends Controller
 
             $credito = new Credito();
             $credito->proveedor_id = $request->proveedor;
-<<<<<<< HEAD
-=======
             $credito->plazo = $plazoProvee->plazoDevolucion;
             $credito->fechaCreacion = date('Y-m-d');
->>>>>>> 909b0c87f272d85cda0209e265318a4e8214ec13
             $credito->save();
 
             $ingreso = new IngresoMedicamento();

@@ -95,7 +95,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
 
     Route::resource('/examen', ExamenController::class);
     Route::get('/examen/paciente/{id}', [ExamenController::class,'index'])->name('examen.index');
-
+    Route::get('/examen/paciente/{expediente}/{examen}/destroy', [ExamenController::class,'destroy'])->name('examen.delete');
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
         Route::get('ingresomed/crear', 'create')->name('ingresomed.create');

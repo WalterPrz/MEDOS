@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('examen', function (Blueprint $table) {
+        Schema::create('examens', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->references('id')->on('users');
             $table->date('fecha');

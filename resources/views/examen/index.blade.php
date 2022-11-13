@@ -4,7 +4,7 @@
 
 <div class="row py-lg-2">
   <div class="col-md-6">
-       <h2>Lista de examenes del paciente: </h2>
+       <h2>Lista de examenes del paciente: {{$nombrePaciente}}</h2>
   </div>
   <div class="col-md-6">
     <a href="" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Agregar Examen</a>
@@ -37,7 +37,31 @@
             </tr>
          </tfoot>
         <tbody>
+            @foreach($examenes as $item)
+                <tr>
+                <th scope="row">{{$item->id}}</th>
+                <td>
+                    @if($item->detaExa)
+                        
+                        {{$item->detaExa->nombreExamen}}
 
+                    @elseif($item->detaHeces )
+                        {{'HECES'}}
+                    @elseif($item->detaHemo )
+                        {{'HEMOGRAMA'}}
+                    @elseif($item->detaOrina )
+                        {{'ORINA'}}
+                    @elseif($item->detaSangui)
+                        {{'SANGUINEO'}}
+                    @endif
+                </td>
+                <td>{{$item->fecha}}</td>
+                <td>
+                    <a href="{{route('categoria.show',$item->id)}}"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('examen.delete',['expediente'=> $item->expediente_id, 'examen'=> $item] )}}" data-toggle="modal" data-target="#deleteModal" data-categoriaid="{{$item->id}}"  data-expedienteid="{{$item->expediente_id}}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+                </tr>
+          @endforeach
         </tbody>
       </table>
 </div>
@@ -52,7 +76,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
                 </div>
-                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a esta categoria
+                <div class="modal-body">Seleccione "eliminar" Si realmente desea eliminar a este examen
 </div>
                 <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
@@ -76,10 +100,9 @@
         $('#deleteModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
             var categoria_id = button.data('categoriaid') 
-            
+            const expedienteid =  button.data('expedienteid') 
             var modal = $(this)
-            // modal.find('.modal-footer #user_id').val(user_id)
-            modal.find('form').attr('action','/categoria/' + categoria_id + '/destroy');
+            modal.find('form').attr('action','/examen/paciente/'+ expedienteid +'/' + categoria_id + '/destroy');
         })
     </script>
       <script>
