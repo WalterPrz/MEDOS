@@ -157,13 +157,10 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::get('diagnostico/{diagnostico}', [DiagnosticoController::class,'show1'])->name('diagnostico.show1');
     Route::put('diagnostico/{diagnostico}', [DiagnosticoController::class,'update'])->name('diagnostico.update');
 
-<<<<<<< HEAD
     Route::post('diagnostico/view-pdf/', [DiagnosticoController::class,'viewPDF'])->name('view-pdf');
 
-=======
     Route::get('pdf/{var}', [DiagnosticoController::class,'viewPDF'])->name('diagnostico.viewPDF');
     
->>>>>>> 909b0c87f272d85cda0209e265318a4e8214ec13
 
     Route::get('referenciaMedica', [ReferenciaMedicaController::class,'index'])->name('referenciaMedica.index');
 
