@@ -10,7 +10,11 @@ class Credito extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+<<<<<<< HEAD
      
+=======
+        'proveedor_id',
+>>>>>>> 909b0c87f272d85cda0209e265318a4e8214ec13
         'credito',
         'diaPago',
         'plazo',

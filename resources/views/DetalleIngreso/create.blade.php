@@ -7,9 +7,12 @@
         <div class="card-header">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             Detalle del ingreso
+            <div class="pull-right">
+              <a href="{{ url()->previous() }}" class="btn btn-outline-secondary btn-sm float-right" data-toggle="tooltip" data-placement="left" title data-original-title="Regresar a lista de expedientes">Regresar</a>
+            </div>
           </div>
         </div>
-        <form action="{{ route('detalleingreso.store', ['ingreso'=>$ingreso->id]) }}" method='POST' class="needs-validation">
+        <form action="{{ route('detalleingreso.store', ['ingreso'=>$ingreso->id, 'credit'=>$credit->id]) }}" method='POST' class="needs-validation">
           @csrf
           <div class="card-body">
             <div class="row">
@@ -160,8 +163,8 @@
                 <td>{{$itemDet->precioCompraUnidad}}</td>
                 <td>{{$itemDet->precioVentaUnidad}}</td>
                 <td>
-                    <a href="{{route('detalleingreso.edit', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet]) }}" ><i class="fa fa-edit"></i></a>
-                    <a href="{{route('detalleingreso.destroy', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet]) }}" data-toggle="modal" data-target="#deleteModal" data-ingresoid="{{$ingreso->id}}" data-detalleid="{{$itemDet->id}}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{route('detalleingreso.edit', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet, 'credit'=>$credit]) }}" ><i class="fa fa-edit"></i></a>
+                    <a href="{{route('detalleingreso.destroy', ['ingreso'=>$ingreso->id, 'detalleIngreso'=>$itemDet, 'credit'=>$credit]) }}" data-toggle="modal" data-target="#deleteModal" data-ingresoid="{{$ingreso->id}}" data-detalleid="{{$itemDet->id}}" data-creditid="{{$credit->id}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>
           @endforeach
@@ -208,10 +211,11 @@
             var button = $(event.relatedTarget) 
             var ingreso_id = button.data('ingresoid') 
             var detalle_id = button.data('detalleid') 
+            var credito_id = button.data('creditid')
             
             var modal = $(this)
             // modal.find('.modal-footer #user_id').val(user_id)
-            modal.find('form').attr('action','/ingresomed/detalle/destroy/' + ingreso_id + '/' + detalle_id);
+            modal.find('form').attr('action','/ingresomed/detalle/destroy/' + ingreso_id + '/' + detalle_id + '/' + credito_id);
         })
     </script>
     <script>

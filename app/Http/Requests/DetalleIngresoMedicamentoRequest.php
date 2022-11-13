@@ -27,7 +27,7 @@ class DetalleIngresoMedicamentoRequest extends FormRequest
             'medicamento'=>'required|exists:medicamentos,id',
             'cantidadIngreso'=>'required|min:1|max:10000|integer',
             'precioCompra'=>'required|min:0.01|max:10000|numeric',
-            'descuentoIngreso'=>'required|min:0|max:100|integer',
+            'descuentoIngreso'=>'|min:0|max:1000|numeric',
             'fechaVenc'=>'required|',
             'precioCompraUnidad'=>'required|min:0.01|max:1000|numeric',
             'precioVentaUnidad'=>'required|min:0.01|max:1000|numeric',

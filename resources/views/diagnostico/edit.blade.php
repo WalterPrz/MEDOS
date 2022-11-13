@@ -27,32 +27,37 @@
                 <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-
-                                 <div class="form-group has-feedback row">
-                                    <label for="peso" class="col-12 control-label">Peso:</label>
+                                <div class="form-group has-feedback row">
                                     <div class="col-12">
-                                      <input id="peso" type="text" class="form-control" name="peso" value="{{old('peso',$diagnostico->peso)}}" placeholder="Peso del paciente" >
+                                        <input name="expediente_id" class="form-control" type="hidden" min="0.01" max="999" step="0.01" value="{{old('expediente_id',$diagnostico->idExpediente)}}" placeholder="Peso del paciente" id="expediente_id"></input>
                                     </div>
                                 </div>
-                                
+
+                                <div class="form-group has-feedback row">
+                                    <label for="peso" class="col-12 control-label">Peso:</label>
+                                    <div class="col-12">
+                                        <input name="peso" class="form-control" type="number" min="0.01" max="999" step="0.01" value="{{old('peso',$diagnostico->peso)}}" placeholder="Peso del paciente" id="peso"></input>
+                                    </div>
+                                </div>
+
                                 <div class="form-group has-feedback row">
                                     <label for="altura" class="col-12 control-label">Altura:</label>
                                     <div class="col-12">
-                                      <input id="altura" type="text" class="form-control" name="altura" value="{{old('altura',$diagnostico->altura)}}" placeholder="Altura del paciente" >
+                                      <input id="altura" type="number" class="form-control" name="altura" value="{{old('altura',$diagnostico->altura)}}" placeholder="Altura del paciente" >
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <label for="descripcionDiag" class="col-12 control-label">Descripcion de diagnostico:</label>
                                     <div class="col-12">
-                                      <textarea name="descripcionDiag"id="descripcionDiag" class="form-control" value="{{old('descripcionDiag',$diagnostico->descripcionDiag)}}" id="descripcion" rows="3">{{old('descripcionDiag',$diagnostico->descripcionDiag)}}</textarea>
+                                      <textarea name="descripcionDiag" id="descripcionDiag" class="form-control" value="{{old('descripcionDiag',$diagnostico->descripcionDiagnostico)}}" id="descripcion" rows="3">{{$diagnostico->descripcionDiagnostico}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row" id="recetaPDF">
                                     <label for="receta" class="col-12 control-label">Descripcion Receta:</label>
                                     <div class="col-12">
-                                      <textarea name="receta" id="receta" class="form-control" value="{{old('receta',$diagnostico->receta)}}" id="receta" rows="3">{{$diagnostico->receta}}</textarea>
+                                      <textarea name="receta" id="receta" class="form-control" value="{{old('receta',$diagnostico->descipcionReceta)}}" id="receta" rows="3">{{$diagnostico->descripcionReceta}}</textarea>
 
                                     </div>
     

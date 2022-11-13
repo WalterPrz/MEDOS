@@ -18,7 +18,7 @@ class PermissionsTableSeeder extends Seeder
          *
          */
         $Permissionitems = [
-            [
+            /*[
                 'name'        => 'Ver usuarios',
                 'slug'        => 'ver.usuarios',
                 'description' => 'Se pueden ver los usuarios',
@@ -42,6 +42,12 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Se pueden eliminar usuarios',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Listar usuarios',
+                'slug'        => 'listar.usuarios',
+                'description' => 'Se pueden listar usuarios',
+                'model'       => 'Permission',
+            ],*/
         ];
 
         /*

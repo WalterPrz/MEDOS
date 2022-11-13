@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbonoController;
 use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetalleVentaController;
@@ -25,6 +26,9 @@ use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReferenciaExternaController;
 use App\Http\Controllers\PermisoFarmaciaController;
 use App\Http\Controllers\PagoPermisoController;
+use App\Http\Controllers\CreditoController;
+use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\ExamenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +93,8 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::post('/citas/{cita}/cancel', [CitaController::class,'cancel'])->name('citas.cancel');
     Route::post('/citas/{cita}/confirm', [CitaController::class,'confirm'])->name('citas.confirm');
 
+    Route::resource('/examen', ExamenController::class);
+
     Route::controller(IngresoMedicamentoController::class)->group(function(){
         //Ingresar medicamentos
         Route::get('ingresomed/crear', 'create')->name('ingresomed.create');
@@ -99,15 +105,15 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::controller(DetalleIngresoController::class)->group(function(){
         //Ingresar detalle
         Route::get('ingresomed/detalle/{ingreso}', [DetalleIngresoController::class,'index'])->name('ingresomed.detalle_consulta');
-        Route::get('ingresomed/detalle2/{ingreso}', 'create')->name('ingresomed.detalle');
-        Route::post('ingresomed/detalle/{ingreso}', 'store')->name('detalleingreso.store');
+        Route::get('ingresomed/detalle2/{ingreso}/{credit}', 'create')->name('ingresomed.detalle');
+        Route::post('ingresomed/detalle/{ingreso}/{credit}', 'store')->name('detalleingreso.store');
 
         //Editar ingreso de medicamentos
-        Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}', 'edit')->name('detalleingreso.edit');
-        Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}', 'update')->name('detalleingreso.update');
+        Route::get('ingresomed/detalle/edit/{ingreso}/{detalleIngreso}/{credit}', 'edit')->name('detalleingreso.edit');
+        Route::post('ingresomed/detalle/update/{ingreso}/{detalleIngreso}/{credit}', 'update')->name('detalleingreso.update');
 
         //Dar de baja el detalle del ingreso
-        Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}', 'destroy')->name('detalleingreso.destroy');
+        Route::get('ingresomed/detalle/destroy/{ingreso}/{detalleIngreso}/{credit}', 'destroy')->name('detalleingreso.destroy');
 
 
         //----------------------------Proveedor------------------------
@@ -151,11 +157,15 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::get('diagnostico/{diagnostico}', [DiagnosticoController::class,'show1'])->name('diagnostico.show1');
     Route::put('diagnostico/{diagnostico}', [DiagnosticoController::class,'update'])->name('diagnostico.update');
 
+<<<<<<< HEAD
     Route::post('diagnostico/view-pdf/', [DiagnosticoController::class,'viewPDF'])->name('view-pdf');
 
+=======
+    Route::get('pdf/{var}', [DiagnosticoController::class,'viewPDF'])->name('diagnostico.viewPDF');
+    
+>>>>>>> 909b0c87f272d85cda0209e265318a4e8214ec13
 
     Route::get('referenciaMedica', [ReferenciaMedicaController::class,'index'])->name('referenciaMedica.index');
-    Route::post('referenciaMedica',[ReferenciaMedicaController::class,'store'])->name('referenciaMedica.store');
 
 
 
@@ -219,6 +229,45 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
         //eliminar
         Route::get('pagoPermiso/{permiso}/destoy', [PagoPermisoController::class,'destroy'])->name('pagoPermiso.destroy');
 
+
+         //----------------------------  Creditos ----------------------------------------------
+    //listar
+    Route::get('credito', [CreditoController::class,'index'])->name('credito.index');
+
+    //Crear
+    Route::get('credito/crear', [CreditoController::class,'create'])->name('credito.create');
+    Route::post('credito/store',[CreditoController::class,'store'])->name('credito.store');
+    //actualizar
+    Route::get('credito/edit/{credito}', [CreditoController::class,'edit'])->name('credito.edit');
+    Route::put('credito/update/{credito}', [CreditoController::class,'update'])->name('credito.update');
+    //Eliminar
+    Route::get('credito/destroy/{credito}', [CreditoController::class,'destroy'])->name('credito.destroy');
+
+         //----------------------------  Abono ----------------------------------------------
+    //listar
+    Route::get('abono/{abono}', [AbonoController::class,'index'])->name('abono.index');
+
+    //Crear
+    Route::get('abonos/crear/{abono}', [AbonoController::class,'create'])->name('abono.create');
+    Route::post('abono/store',[AbonoController::class,'store'])->name('abono.store');
+    //actualizar
+    Route::get('abono/edit/{abono}', [AbonoController::class,'edit'])->name('abono.edit');
+    Route::put('abono/update/{abono}', [AbonoController::class,'update'])->name('abono.update');
+    //Eliminar
+    Route::get('abono/destroy/{abono}', [AbonoController::class,'destroy'])->name('abono.destroy');
+
+             //----------------------------  Medicamento ----------------------------------------------
+    //listar
+    Route::get('medicamento', [MedicamentoController::class,'index'])->name('medicamento.index');
+
+    //Crear
+    Route::get('medicamento/crear', [MedicamentoController::class,'create'])->name('medicamento.create');
+    Route::post('medicamento/store',[MedicamentoController::class,'store'])->name('medicamento.store');
+    //actualizar
+    Route::get('medicamento/edit/{medicamento}', [MedicamentoController::class,'edit'])->name('medicamento.edit');
+    Route::put('medicamento/update/{medicamento}', [MedicamentoController::class,'update'])->name('medicamento.update');
+    //Eliminar
+    Route::get('medicamento/destroy/{medicamento}', [MedicamentoController::class,'destroy'])->name('medicamento.destroy');
 
 });
 

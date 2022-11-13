@@ -13,7 +13,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $userRole = config('roles.models.role')::where('name', '=', 'User')->first();
+        $farmaciaRole = config('roles.models.role')::where('name', '=', 'Farmaceutico')->first();
+        $medicoRole = config('roles.models.role')::where('name', '=', 'Medico')->first();
+        $laboratoristaRole = config('roles.models.role')::where('name', '=', 'Laboratorista')->first();
         $adminRole = config('roles.models.role')::where('name', '=', 'Admin')->first();
         $permissions = config('roles.models.permission')::all();
 
@@ -34,14 +36,34 @@ class UsersTableSeeder extends Seeder
             }
         }
 
-        if (config('roles.models.defaultUser')::where('email', '=', 'user@user.com')->first() === null) {
+        if (config('roles.models.defaultUser')::where('email', '=', 'farmaceutico@farmaceutico.com')->first() === null) {
             $newUser = config('roles.models.defaultUser')::create([
-                'name'     => 'User',
-                'email'    => 'user@user.com',
+                'name'     => 'Juan Perez',
+                'email'    => 'farmaceutico@farmaceutico.com',
                 'password' => bcrypt('password'),
             ]);
 
-            $newUser->attachRole($userRole);
+            $newUser->attachRole($farmaciaRole);
+        }
+
+        if (config('roles.models.defaultUser')::where('email', '=', 'medico@medico.com')->first() === null) {
+            $newUser = config('roles.models.defaultUser')::create([
+                'name'     => 'Luis Diaz',
+                'email'    => 'medico@medico.com',
+                'password' => bcrypt('password'),
+            ]);
+
+            $newUser->attachRole($medicoRole);
+        }
+
+        if (config('roles.models.defaultUser')::where('email', '=', 'laboratorista@laboratorista.com')->first() === null) {
+            $newUser = config('roles.models.defaultUser')::create([
+                'name'     => 'Maria Lopez',
+                'email'    => 'laboratorista@laboratorista.com',
+                'password' => bcrypt('password'),
+            ]);
+
+            $newUser->attachRole($laboratoristaRole);
         }
     }
 }
