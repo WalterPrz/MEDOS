@@ -204,28 +204,23 @@
           <span>Medicamentos</span></a>
     </li>
     @endrole
-<<<<<<< HEAD
+
+    @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/permisoFarmacia">
           <i class="fa fa-drivers-license-o"></i>
             <span>Permisos Farmacia</span></a>
       </li>
+    @endrole
+
+      @role('admin|farmaceutico')
       <li class="nav-item">
           <a class="nav-link" href="/pagoPermiso">
           <i class="fa fa-money"></i>
             <span>Pago de permisos</span></a>
       </li>
-=======
-
-    @role('admin|farmaceutico')
-    <li class="nav-item">
-        <a class="nav-link" href="/reportes">
-          <i class="fa-solid fa-chart-simple"></i>         
-          <span>Reportes</span></a>
-    </li>
-    @endrole
->>>>>>> origin/RamaJosue
     </ul>
+    @endrole
 
 
 
