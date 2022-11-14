@@ -31,7 +31,7 @@
   <!--CKEditor Plugin-->
   <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
-  
+
 
   @yield('css_role_page')
 
@@ -137,7 +137,7 @@
           <a class="nav-link" href="/expediente">
           <i class="fa-solid fa-file-lines"></i>
             <span>Expedientes</span></a>
-      </li>  
+      </li>
 
       <li class="nav-item">
           <a class="nav-link" href="/diagnostico">
@@ -149,14 +149,14 @@
           <a class="nav-link" href="/refext">
           <i class="fa-solid fa-file-pdf"></i>
             <span>Agregar referencias externas</span></a>
-      </li> 
+      </li>
 
       <li class="nav-item">
           <a class="nav-link" href="/referenciaMedica">
             <i class="fa fa-file" aria-hidden="true"></i>
             <span>Emitir referencia medica</span></a>
-      </li>      
-      
+      </li>
+
       <li class="nav-item">
           <a class="nav-link" href="/visita">
             <i class="fa fa-users" aria-hidden="true"></i>
@@ -164,6 +164,16 @@
           <a class="nav-link" href="/citas">
           <i class="fas fa-fw fa-calendar"></i>
             <span>Citas</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/permisoFarmacia">
+          <i class="fa fa-drivers-license-o"></i>
+            <span>Permisos Farmacia</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/pagoPermiso">
+          <i class="fa fa-money"></i>
+            <span>Pago de permisos</span></a>
       </li>
     </ul>
 
