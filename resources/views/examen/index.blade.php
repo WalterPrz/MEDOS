@@ -7,7 +7,7 @@
        <h2>Lista de examenes del paciente: {{$nombrePaciente}}</h2>
   </div>
   <div class="col-md-6">
-    <a href="/examen/paciente/{{id}}/create" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Agregar Examen</a>
+    <a href="/examen/paciente/{{$idPaciente}}/create" class="btn btn-primary btn-lg float-md-right" role="button" aria-pressed="true">Agregar Examen</a>
   </div>
 </div>
 
@@ -42,22 +42,33 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>
                     @if($item->detaExa)
-                        
                         {{$item->detaExa->nombreExamen}}
-
+                        {{$idTipoExamen = $item->detaExa->id}}
                     @elseif($item->detaHeces )
                         {{'HECES'}}
+                        {{$idTipoExamen = $item->detaHeces->id}}
                     @elseif($item->detaHemo )
                         {{'HEMOGRAMA'}}
+                        {{$idTipoExamen = $item->detaHemo->id}}
                     @elseif($item->detaOrina )
                         {{'ORINA'}}
+                        {{$idTipoExamen = $item->detaOrina->id}}
                     @elseif($item->detaSangui)
                         {{'SANGUINEO'}}
+                        {{$idTipoExamen = $item->detaSangui->id}}
                     @endif
                 </td>
                 <td>{{$item->fecha}}</td>
                 <td>
-                    <a href="{{route('categoria.show',$item->id)}}"><i class="fa fa-edit"></i></a>
+                    @if($item->detaSangui)
+                        <a href="{{route('examen.editSangui',['expediente'=> $item->expediente_id, 'examen'=> $item, $idTipoExamen]  )}}"><i class="fa fa-edit"></i></a>
+                    @elseif($item->detaHemo )
+                        <a href="{{route('examen.editHemo',['expediente'=> $item->expediente_id, 'examen'=> $item, $idTipoExamen]  )}}"><i class="fa fa-edit"></i></a>
+                    @elseif($item->detaHeces )
+                        <a href="{{route('examen.editHeces',['expediente'=> $item->expediente_id, 'examen'=> $item, $idTipoExamen]  )}}"><i class="fa fa-edit"></i></a>
+                    @elseif($item->detaOrina )
+                        <a href="{{route('examen.editOrina',['expediente'=> $item->expediente_id, 'examen'=> $item, $idTipoExamen]  )}}"><i class="fa fa-edit"></i></a>
+                    @endif
                     <a href="{{route('examen.delete',['expediente'=> $item->expediente_id, 'examen'=> $item] )}}" data-toggle="modal" data-target="#deleteModal" data-categoriaid="{{$item->id}}"  data-expedienteid="{{$item->expediente_id}}"><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>

@@ -10,11 +10,13 @@ class Examen extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+        'id',
         'fecha',
         'paciente',
         'numBoleta',
         'edad',
-        'generoExamen'
+        'generoExamen',
+        'tipoExamen'
     ];
 
     public function user()

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('densidad', $precision = 5, $scale = 3);
             $table->decimal('ph', $precision = 3, $scale = 2);
             $table->string('nitritos');
-            $table->string('proteinas',$precision = 4, $scale = 1);
+            $table->decimal('proteinas',$precision = 4, $scale = 1);
             $table->string('glucosOrina');
             $table->string('cetonicos');
             $table->string('urobilinogeno');

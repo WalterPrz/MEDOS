@@ -20,10 +20,10 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->references('id')->on('users');
             $table->foreignIdFor(Expediente::class)->references('id')->on('expedientes');
             $table->date('fecha');
-            $table->unsignedBigInteger('expediente_id');
             $table->string('numBoleta');
             $table->integer('edad');
             $table->string('generoExamen');
+            $table->string('tipoExamen');
             $table->timestamps();
             $table->softDeletes();
         });

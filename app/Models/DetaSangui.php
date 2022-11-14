@@ -10,6 +10,7 @@ class DetaSangui extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
+        'id',
         'glucosaSangui',
         'colesterol',
         'trigliceridos',

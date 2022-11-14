@@ -97,6 +97,15 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::get('/examen/paciente/{id}', [ExamenController::class,'index'])->name('examen.index');
     Route::get('/examen/paciente/{id}/create', [ExamenController::class,'create'])->name('examen.create');
     Route::get('/examen/paciente/{expediente}/{examen}/destroy', [ExamenController::class,'destroy'])->name('examen.delete');
+    Route::get('/examen/paciente/{expediente}/{examen}/{idTipoExamen}/editSangui', [ExamenController::class,'editSangui'])->name('examen.editSangui');
+    Route::get('/examen/paciente/{expediente}/{examen}/{idTipoExamen}/editHemo', [ExamenController::class,'editHemo'])->name('examen.editHemo');
+    Route::get('/examen/paciente/{expediente}/{examen}/{idTipoExamen}/editHeces', [ExamenController::class,'editHeces'])->name('examen.editHeces');
+    Route::get('/examen/paciente/{expediente}/{examen}/{idTipoExamen}/editOrina', [ExamenController::class,'editOrina'])->name('examen.editOrina');
+    Route::put('/examen/{examen}/{detaSangui}', [ExamenController::class,'updateSangui'])->name('examen.updateSangui');
+    Route::put('/examen/{examen}/{detaHemo}', [ExamenController::class,'updateHemo'])->name('examen.updateHemo');
+    Route::put('/examen/{examen}/{detaHeces}', [ExamenController::class,'updateHeces'])->name('examen.updateHeces');
+    Route::put('/examen/{examen}/{detaOrina}', [ExamenController::class,'updateOrina'])->name('examen.updateOrina');
+
 
     
     Route::controller(IngresoMedicamentoController::class)->group(function(){
