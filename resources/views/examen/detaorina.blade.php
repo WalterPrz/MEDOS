@@ -1,7 +1,14 @@
 @extends('admin.layouts.index')
 
 @section('content')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous">
+</script>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="pull-right">
+                    <input type="button" class="btn btn-success btn-lg float-md-right" onclick="GeneratePdf();" value="Imprimir examen">
+                </div>
+            </div>
+<div class="container-fluid" id="ref">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-post" id="post_card">
@@ -260,6 +267,7 @@
             </form>
         </div>
     </div>
+</div>
     <!--<div class="col-sm-9">
         <div class="card card-post" id="post_card">
             <div class="card-header">
@@ -323,6 +331,22 @@
         $('#tipoExamen').trigger('change');
     });
 </script>
+<script>
+    // Function to GeneratePdf
+    function GeneratePdf() {
+        var element = document.getElementById('ref');
+        html2pdf(element);
+    }
+</script>
+<script>
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    day = date.getDate();
+    document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+</script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+</script>
 @endsection
 @endsection
