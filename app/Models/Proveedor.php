@@ -26,7 +26,7 @@ class Proveedor extends Model
     }
     public function credito()
     {
-        return $this->hasMany(Credito::class, 'id','proveedor_id');
+        return $this->hasMany(Credito::class, 'proveedor_id' ,'id');
     }
     public function proveedor()
     {
