@@ -43,7 +43,6 @@
                 <td>{{$item->permisoFarmacia->monto}}</td>
                 <td>{{$item->fechaPago}}</td>
                 <td>
-                    <a href="{{route('pagoPermiso.show',$item->id)}}" ><i class="fa fa-edit"></i></a>
                     <a href="{{route('pagoPermiso.destroy',$item)}}" data-toggle="modal" data-target="#deleteModal" data-permisoid="{{$item->id}}" ><i class="fas fa-trash-alt"></i></a>
                 </td>
                 </tr>

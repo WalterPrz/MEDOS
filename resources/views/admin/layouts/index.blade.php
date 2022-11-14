@@ -31,7 +31,7 @@
   <!--CKEditor Plugin-->
   <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
-  
+
 
   @yield('css_role_page')
 
@@ -204,6 +204,16 @@
           <span>Medicamentos</span></a>
     </li>
     @endrole
+      <li class="nav-item">
+          <a class="nav-link" href="/permisoFarmacia">
+          <i class="fa fa-drivers-license-o"></i>
+            <span>Permisos Farmacia</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/pagoPermiso">
+          <i class="fa fa-money"></i>
+            <span>Pago de permisos</span></a>
+      </li>
     </ul>
 
 
