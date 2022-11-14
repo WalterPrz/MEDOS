@@ -14,7 +14,6 @@ class Abono extends Model
         'credito_id',
         'cantidadAbonada',
         'fechaAbono'
-
     ];
 
     public function credito()

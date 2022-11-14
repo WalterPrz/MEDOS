@@ -33,7 +33,7 @@ use App\Http\Controllers\DetaOrinaController;
 use App\Http\Controllers\DetaSanguiController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\ExamenController;
-use App\Models\DetaSangui;
+use App\Http\Controllers\ReportesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,10 +59,10 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/bienvenida', function () {
-        //$role = config('roles.models.role')::where('name', '=', 'Admin')->first();  //choose the default role upon user creation.
-        //auth()->user()->attachRole($role);
         return view('admin.bienvenida.index');
     })->name('bienvenida');
+
+    
     Route::resource('/user', UsersController::class)->middleware('role:admin, user');
     Route::put('/user/{user}/activar', [UsersController::class,'activar'])->name('user.activar');
     //----------------------------Categoria------------------------
@@ -273,7 +273,7 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     //Crear
     Route::get('abonos/crear/{abono}', [AbonoController::class,'create'])->name('abono.create');
     Route::post('abono/store',[AbonoController::class,'store'])->name('abono.store');
-    //actualizar
+    //actualizar   
     Route::get('abono/edit/{abono}', [AbonoController::class,'edit'])->name('abono.edit');
     Route::put('abono/update/{abono}', [AbonoController::class,'update'])->name('abono.update');
     //Eliminar
@@ -291,6 +291,11 @@ Route::get('venta/detalle/{venta}/eliminar/{detalleVenta}', [DetalleVentaControl
     Route::put('medicamento/update/{medicamento}', [MedicamentoController::class,'update'])->name('medicamento.update');
     //Eliminar
     Route::get('medicamento/destroy/{medicamento}', [MedicamentoController::class,'destroy'])->name('medicamento.destroy');
+
+
+    //Reportes
+    Route::get('reportes/', [ReportesController::class,'GraIngresoMed'])->name('InMedicamento.grafico');
+
 
 });
 
