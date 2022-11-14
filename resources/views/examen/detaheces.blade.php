@@ -14,7 +14,7 @@
                 </div>
             </div>
             <x-errores class="mb-4" />
-            <form method="POST" action="{{route('examen.updateOrina', ['examen'=> $examen->id, 'detaOrina'=> $detaOrina->id] )}}" enctype="multipart/form-data" class="mb-0 needs-validation" role="form">
+            <form method="POST" action="{{route('detaheces.update', ['examen'=> $examen->id, 'detaHeces'=> $detaHeces->id] )}}" enctype="multipart/form-data" class="mb-0 needs-validation" role="form">
                 @method('PUT')
                 @csrf()
                 <div class="card-body">
@@ -82,74 +82,53 @@
                         </div>
 
                         <div class="col-md-4">
-                            <!--ORINA-->
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="colorOrina" class="col-12 control-label">Color:</label>
+                            <!--HECES-->
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="colorHeces" class="col-12 control-label">Color:</label>
                                 <div class="col-12">
-                                    <input id="colorOrina" type="text" class="form-control orina" name="colorOrina" value="{{old('colorOrina', $detaOrina->colorOrina)}}" placeholder="Color">
+                                    <input id="colorHeces" type="text" class="form-control heces" name="colorHeces" value="{{old('colorHeces', $detaHeces->colorHeces)}}" placeholder="Color">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="aspecto" class="col-12 control-label">Aspecto:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="consistencia" class="col-12 control-label">Consistencia:</label>
                                 <div class="col-12">
-                                    <input id="aspecto" type="text" class="form-control orina" name="aspecto" value="{{old('aspecto', $detaOrina->aspecto)}}" placeholder="Aspecto">
+                                    <input id="consistencia" type="text" class="form-control heces" name="consistencia" value="{{old('consistencia', $detaHeces->consistencia)}}" placeholder="Consistencia">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="densidad" class="col-12 control-label">Densidad:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="mucus" class="col-12 control-label">Mucus:</label>
                                 <div class="col-12">
-                                    <input id="densidad" type="number" step="any" class="form-control orina" name="densidad" value="{{old('densidad', $detaOrina->densidad)}}" placeholder="Densidad">
+                                    <input id="mucus" type="text" class="form-control heces" name="mucus" value="{{old('mucus', $detaHeces->mucus)}}" placeholder="Mucus">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="ph" class="col-12 control-label">PH:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="bacteriasHeces" class="col-12 control-label">Bacterias:</label>
                                 <div class="col-12">
-                                    <input id="ph" type="number" step="any" class="form-control orina" name="ph" value="{{old('ph', $detaOrina->ph)}}" placeholder="PH">
+                                    <input id="bacteriasHeces" type="text" class="form-control heces" name="bacteriasHeces" value="{{old('bacteriasHeces', $detaHeces->bacteriasHeces)}}" placeholder="Bacterias">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="nitritos" class="col-12 control-label">Nitritos:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="hematiesHeces" class="col-12 control-label">Hematies:</label>
                                 <div class="col-12">
-                                    <input id="nitritos" type="text" class="form-control orina" name="nitritos" value="{{old('nitritos', $detaOrina->nitritos)}}" placeholder="Nitritos">
+                                    <input id="hematiesHeces" type="text" class="form-control heces" name="hematiesHeces" value="{{old('hematiesHeces', $detaHeces->hematiesHeces)}}" placeholder="Hematies">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="proteinas" class="col-12 control-label">Proteinas:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="leucocitosHeces" class="col-12 control-label">Leucocitos:</label>
                                 <div class="col-12">
-                                    <input id="proteinas" type="number" step="any" class="form-control orina" name="proteinas" value="{{old('proteinas', $detaOrina->proteinas)}}" placeholder="Proteinas">
+                                    <input id="leucocitosHeces" type="text" class="form-control heces" name="leucocitosHeces" value="{{old('leucocitosHeces', $detaHeces->leucocitosHeces)}}" placeholder="Leucocitos">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="glucosOrina" class="col-12 control-label">Glucosa:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="macroscopicos" class="col-12 control-label">Macroscopicos:</label>
                                 <div class="col-12">
-                                    <input id="glucosOrina" type="text" class="form-control orina" name="glucosOrina" value="{{old('glucosOrina', $detaOrina->glucosOrina)}}" placeholder="Glucosa">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="cetonicos" class="col-12 control-label">Cetonicos:</label>
-                                <div class="col-12">
-                                    <input id="cetonicos" type="text" class="form-control orina" name="cetonicos" value="{{old('cetonicos', $detaOrina->cetonicos)}}" placeholder="Cetonicos">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="urobilinogeno" class="col-12 control-label">Urobilinogeno:</label>
-                                <div class="col-12">
-                                    <input id="urobilinogeno" type="text" class="form-control orina" name="urobilinogeno" value="{{old('urobilinogeno', $detaOrina->urobilinogeno)}}" placeholder="Urobilinogeno">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="bilirrubina" class="col-12 control-label">Bilirrubina:</label>
-                                <div class="col-12">
-                                    <input id="bilirrubina" type="text" class="form-control orina" name="bilirrubina" value="{{old('bilirrubina', $detaOrina->bilirrubina)}}" placeholder="Bilirrubina">
+                                    <input id="macroscopicos" type="text" class="form-control heces" name="macroscopicos" value="{{old('macroscopicos', $detaHeces->macroscopicos)}}" placeholder="Macroscopicos">
                                 </div>
                             </div>
                         </div>
@@ -157,82 +136,48 @@
 
 
                         <div class="col-sm-4">
-                            <!--ORINA-->
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="SangreOculta" class="col-12 control-label">Sangre oculta:</label>
+                            <!--HECES-->
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="microscopicos" class="col-12 control-label">Microscopicos:</label>
                                 <div class="col-12">
-                                    <input id="SangreOculta" type="text" class="form-control orina" name="SangreOculta" value="{{old('SangreOculta', $detaOrina->SangreOculta)}}" placeholder="Sangre oculta">
+                                    <input id="microscopicos" type="text" class="form-control heces" name="microscopicos" value="{{old('microscopicos', $detaHeces->microscopicos)}}" placeholder="Microscopicos">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="leucocitaria" class="col-12 control-label">leucocitaria:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="trofozoitos" class="col-12 control-label">Trofozoitos:</label>
                                 <div class="col-12">
-                                    <input id="leucocitaria" type="text" class="form-control orina" name="leucocitaria" value="{{old('leucocitaria', $detaOrina->leucocitaria)}}" placeholder="Leucocitaria">
+                                    <input id="trofozoitos" type="text" class="form-control heces" name="trofozoitos" value="{{old('trofozoitos', $detaHeces->trofozoitos)}}" placeholder="Trofozoitos">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="hemoglobinaOrina" class="col-12 control-label">Hemoglobina:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="quistes" class="col-12 control-label">Quistes:</label>
                                 <div class="col-12">
-                                    <input id="hemoglobinaOrina" type="text" class="form-control orina" name="hemoglobinaOrina" value="{{old('hemoglobinaOrina', $detaOrina->hemoglobinaOrina)}}" placeholder="Hemoglobina">
+                                    <input id="quistes" type="text" class="form-control heces" name="quistes" value="{{old('quistes', $detaHeces->quistes)}}" placeholder="Quistes">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="cilindros" class="col-12 control-label">Cilindros:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="huevos" class="col-12 control-label">Huevos:</label>
                                 <div class="col-12">
-                                    <input id="cilindros" type="text" class="form-control orina" name="cilindros" value="{{old('cilindros', $detaOrina->cilindros)}}" placeholder="Cilindros">
+                                    <input id="huevos" type="text" class="form-control heces" name="huevos" value="{{old('huevos', $detaHeces->huevos)}}" placeholder="Huevos">
                                 </div>
                             </div>
 
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="hematiesOrina" class="col-12 control-label">Hematies:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="larvas" class="col-12 control-label">Larvas:</label>
                                 <div class="col-12">
-                                    <input id="hematiesOrina" type="text" class="form-control orina" name="hematiesOrina" value="{{old('hematiesOrina', $detaOrina->hematiesOrina)}}" placeholder="hematiesOrina">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="leucocitosOrina" class="col-12 control-label">Leucocitos:</label>
-                                <div class="col-12">
-                                    <input id="leucocitosOrina" type="text" class="form-control orina" name="leucocitosOrina" value="{{old('leucocitosOrina', $detaOrina->leucocitosOrina)}}" placeholder="Leucocitos">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="escamosas" class="col-12 control-label">Escamosas:</label>
-                                <div class="col-12">
-                                    <input id="escamosas" type="text" class="form-control orina" name="escamosas" value="{{old('escamosas', $detaOrina->escamosas)}}" placeholder="Escamosas">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="oxalatosCalcio" class="col-12 control-label">Oxalatos calcio:</label>
-                                <div class="col-12">
-                                    <input id="oxalatosCalcio" type="text" class="form-control orina" name="oxalatosCalcio" value="{{old('oxalatosCalcio', $detaOrina->oxalatosCalcio)}}" placeholder="Oxalatos calcio">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="bacteriasOrina" class="col-12 control-label">Bacterias:</label>
-                                <div class="col-12">
-                                    <input id="bacteriasOrina" type="text" class="form-control orina" name="bacteriasOrina" value="{{old('bacteriasOrina', $detaOrina->bacteriasOrina)}}" placeholder="Bacterias">
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="parasitologico" class="col-12 control-label">Parasito logico:</label>
-                                <div class="col-12">
-                                    <input id="parasitologico" type="text" class="form-control orina" name="parasitologico" value="{{old('parasitologico', $detaOrina->parasitologico)}}" placeholder="Parasito logico">
+                                    <input id="larvas" type="text" class="form-control heces" name="larvas" value="{{old('larvas', $detaHeces->larvas)}}" placeholder="Larvas">
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12">
-                            <div class="form-group has-feedback row orina" style="display: none;">
-                                <label for="observacionesOrina" class="col-12 control-label">Observaciones:</label>
+                            <div class="form-group has-feedback row heces" style="display: none;">
+                                <label for="observacionesHeces" class="col-12 control-label">Observaciones:</label>
                                 <div class="col-12">
-                                    <textarea rows="5" cols="50" id="observacionesOrina" type="text" class="form-control orina" name="observacionesOrina" value="{{old('observacionesOrina', $detaOrina->observacionesOrina)}}" placeholder="Observaciones">{{old('observacionesOrina', $detaOrina->observacionesOrina)}}</textarea>
+                                    <textarea rows="5" cols="50" id="observacionesHeces" type="text" class="form-control heces" name="observacionesHeces" value="{{old('observacionesHeces', $detaHeces->observacionesHeces)}}" placeholder="Observaciones">{{old('observacionesHeces', $detaHeces->observacionesHeces)}}</textarea>
                                 </div>
                             </div>
                         </div>

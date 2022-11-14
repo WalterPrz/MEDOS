@@ -167,7 +167,7 @@ class ExamenController extends Controller
      */
     public function edit(Expediente $expediente, Examen $examen, int $idTipoExamen)
     {
-        $idPaciente = $expediente->id;
+        /*$idPaciente = $expediente->id;
         if ($examen->tipoExamen == "Sanguineo") {
             $detaSangui = DetaSangui::find($idTipoExamen);
             return view('examen.edit', compact('examen', 'idPaciente', 'detaSangui'));
@@ -180,10 +180,10 @@ class ExamenController extends Controller
         } else if ($examen->tipoExamen == "Orina") {
             $detaOrina = DetaOrina::find($idTipoExamen);
             return view('examen.edit', compact('examen', 'idPaciente', 'detaOrina'));
-        }
+        }*/
     }
 
-    public function editSangui(Expediente $expediente, Examen $examen, int $idTipoExamen){
+    /*public function editSangui(Expediente $expediente, Examen $examen, int $idTipoExamen){
         $idPaciente = $expediente->id;
         if ($examen->tipoExamen == "Sanguineo") {
             $detaSangui = DetaSangui::find($idTipoExamen);
@@ -213,7 +213,7 @@ class ExamenController extends Controller
             $detaOrina = DetaOrina::find($idTipoExamen);
             return view('examen.editOrina', compact('examen', 'idPaciente', 'detaOrina'));
         }
-    }
+    }*/
 
     
     /**
@@ -223,7 +223,7 @@ class ExamenController extends Controller
      * @param  \App\Models\Examen  $examen
      * @return \Illuminate\Http\Response
      */
-    public function updateSangui(Request $request, Examen $examen, DetaSangui $detaSangui){
+    /*public function updateSangui(Request $request, Examen $examen, DetaSangui $detaSangui){
 
         $examen->user_id = Auth::user()->id;
         $examen->expediente_id = $request->idPaciente;
@@ -236,7 +236,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if ($examen->save()) {
-            if ($examen->tipoExamen == "Sanguineo") {
+            //if ($examen->tipoExamen == "Sanguineo") {
             $detaSangui->examen_id = $examen->id;
             $detaSangui->glucosaSangui = $request->glucosaSangui;
             $detaSangui->colesterol = $request->colesterol;
@@ -245,7 +245,7 @@ class ExamenController extends Controller
             $detaSangui->creatinina = $request->creatinina;
             $detaSangui->observacionesSangui = $request->observacionesSangui;
             $detaSangui->save();
-            }
+           // }
         }
 
         return redirect('/examen/paciente/' . $request->idPaciente);
@@ -264,7 +264,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if ($examen->save()) {
-            if ($examen->tipoExamen == "Hemograma") {
+            //if ($examen->tipoExamen == "Hemograma") {
             $detaHemo->examen_id = $examen->id;
             $detaHemo->globRojos = $request->globRojos;
             $detaHemo->hematocrito = $request->hematocrito;
@@ -285,7 +285,7 @@ class ExamenController extends Controller
             $detaHemo->monocitos = $request->monocitos;
             $detaHemo->observacionesHemo = $request->observacionesHemo;
             $detaHemo->save();
-            }
+            //}
         }
 
         return redirect('/examen/paciente/' . $request->idPaciente);
@@ -303,7 +303,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if ($examen->save()) {
-            if ($examen->tipoExamen == "Heces") {
+            //if ($examen->tipoExamen == "Heces") {
             $detaHeces->examen_id = $examen->id;
             $detaHeces->colorHeces = $request->colorHeces;
             $detaHeces->consistencia = $request->consistencia;
@@ -319,7 +319,7 @@ class ExamenController extends Controller
             $detaHeces->larvas = $request->larvas;
             $detaHeces->observacionesHeces = $request->observacionesHeces;
             $detaHeces->save();
-            }
+            //}
         }
         return redirect('/examen/paciente/' . $request->idPaciente);
     }
@@ -336,7 +336,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if ($examen->save()) {
-            if ($examen->tipoExamen == "Orina") {
+            //if ($examen->tipoExamen == "Orina") {
             $detaOrina->examen_id = $examen->id;
             $detaOrina->colorOrina = $request->colorOrina;
             $detaOrina->aspecto = $request->aspecto;
@@ -360,10 +360,10 @@ class ExamenController extends Controller
             $detaOrina->parasitologico = $request->parasitologico;
             $detaOrina->observacionesOrina = $request->observacionesOrina;
             $detaOrina->save();
-            }
+            //}
         }
         return redirect('/examen/paciente/' . $request->idPaciente);
-    }
+    }*/
     
 
     /**

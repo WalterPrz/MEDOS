@@ -14,7 +14,7 @@
                 </div>
             </div>
             <x-errores class="mb-4" />
-            <form method="POST" action="{{route('examen.updateSangui', ['examen'=> $examen->id, 'detaSangui'=> $detaSangui->id] )}}" enctype="multipart/form-data" class="mb-0 needs-validation" role="form">
+            <form method="POST" action="{{route('detasangui.update', ['examen'=> $examen->id, 'detaSangui'=> $detaSangui->id] )}}" enctype="multipart/form-data" class="mb-0 needs-validation" role="form">
                 @method('PUT')
                 @csrf()
                 <div class="card-body">
