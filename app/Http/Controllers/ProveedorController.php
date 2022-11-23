@@ -22,20 +22,21 @@ class ProveedorController extends Controller
         $medVen = $ingresos->map(function ($item) {
            $date =  Carbon::parse($item->fechaVenc);
            $cantidad = $item->cantidadIngreso ;
-
-           $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
-           $endDate = $date->subDay($fechaAntes );
-           $ahora =  now();
-
-           $item->cantidad =$cantidad;
-           $arrayVentas = $item->medicamento->detalleventas;
-           foreach ($arrayVentas as $x) {
-               if($x->venta->estado ==1){
-                   $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
-               }
-           }
-           if($endDate <= $ahora && count($item->detalleDevolucion) == 0 && $item->cantidad >0){
-               return $item;
+           if($item->ingresoMedicamento->credito != null){
+            $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
+            $endDate = $date->subDay($fechaAntes );
+            $ahora =  now();
+ 
+            $item->cantidad =$cantidad;
+            $arrayVentas = $item->medicamento->detalleventas;
+            foreach ($arrayVentas as $x) {
+                if($x->venta->estado ==1){
+                    $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
+                }
+            }
+            if($endDate <= $ahora && count($item->detalleDevolucion) == 0 && $item->cantidad >0){
+                return $item;
+            }
            }
        });
        $filtered = $medVen->filter(function ($value) {

@@ -23,21 +23,23 @@ class DetalleDevolucionController extends Controller
          $medVen = $ingresos->map(function ($item) {
             $date =  Carbon::parse($item->fechaVenc);
             $cantidad = $item->cantidadIngreso ;
-
-            $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
-            $endDate = $date->subDay($fechaAntes );
-            $ahora =  now();
-            
-            $item->cantidad =$cantidad;
-            $arrayVentas = $item->medicamento->detalleventas;
-            foreach ($arrayVentas as $x) {
-                if($x->venta->estado ==1 ){
-                    $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
+            if($item->ingresoMedicamento->credito != null){
+                $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
+                $endDate = $date->subDay($fechaAntes );
+                $ahora =  now();
+                
+                $item->cantidad =$cantidad;
+                $arrayVentas = $item->medicamento->detalleventas;
+                foreach ($arrayVentas as $x) {
+                    if($x->venta->estado ==1 ){
+                        $item['cantidad'] = $item['cantidad'] - $x->cantidad_venta;
+                    }
+                }
+                if($endDate <= $ahora && count($item->detalleDevolucion) == 0){
+                    return $item;
                 }
             }
-            if($endDate <= $ahora && count($item->detalleDevolucion) == 0){
-                return $item;
-            }
+
         });
         $filtered = $medVen->filter(function ($value) {
             return $value !=null;
@@ -50,12 +52,15 @@ class DetalleDevolucionController extends Controller
         $ingresos =  DetalleIngreso::with(['ingresoMedicamento.credito.proveedor','medicamento'])->get();
         $medVen = $ingresos->map(function ($item) {
             $date =  Carbon::parse($item->fechaVenc);
-            $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
-            $endDate = $date->subDay($fechaAntes );
-            $ahora =  now();
-            if($endDate <= $ahora){
-                return $item;
+            if($item->ingresoMedicamento->credito != null){
+                $fechaAntes = $item->ingresoMedicamento->credito->proveedor->plazoDevolucion;
+                $endDate = $date->subDay($fechaAntes );
+                $ahora =  now();
+                if($endDate <= $ahora){
+                    return $item;
+                }
             }
+
         });
         $filtered = $medVen->filter(function ($value) {
             return $value !=null;
